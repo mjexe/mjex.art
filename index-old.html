@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="theme-color" content="#0000dd">
+
+	<title>mjex</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="/main.css">
+	<link href="//cdn.xf8.co/fonts/VCR-OSD-MONO/stylesheet.css" rel="stylesheet">
+	<link href="//cdn.xf8.co/fonts/Highway-Gothic/stylesheet.css" rel="stylesheet">
+
+	<script type="text/javascript" src="//cdn.xf8.co/bs/md/4.5.9-Free/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/granim/1.1.1/granim.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.2/ScrollMagic.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjs/5.2.0/math.min.js"></script>
+</head>
+
+<body>
+	<div id="container-squared">
+		<div id="container">
+			<canvas id="background"></canvas>
+			<div id="logo"></div>
+			<div id="p5_loading"></div>
+
+			<div id="logo-overlay">
+				<div class="header">
+					<!-- <img src="/img/mjex.png"> -->
+					<div class="fake-canvas"></div>
+		
+					<div class="links">
+						<table>
+							<tr>
+								<td><div id="bandcamp"><a href="//mjex.bandcamp.com/">Bandcamp</a></div></td>
+								<td><div id="deviantart"><a href="//mjexe.deviantart.com/">DeviantArt</a></div></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="about">
+			<h1>About</h1>
+			I make stuff. Zoom in if the animation is slow.
+			<canvas></canvas>
+		</div>
+	</div>
+	
+
+	<script>
+			var granimInstance = new Granim({
+				element: '#background',
+				name: 'basic-gradient',
+				direction: 'top-bottom', // 'diagonal', 'top-bottom', 'radial'
+				opacity: [1, 1],
+				isPausedWhenNotInView: true,
+				states : {
+					"default-state": {
+						gradients: [
+							['#0000dd', '#000080'],
+							['#00af92', '#00583b']
+						],
+						
+						transitionSpeed: 12000
+					}
+				}
+			});
+
+		let metaThemeColor = document.querySelector('meta[name=theme-color');
+
+		function animateThemeColor() {
+			let metaThemeColor = document.querySelector('meta[name=theme-color');
+			metaThemeColor.setAttribute('content', getGradientColor());
+
+			setTimeout(function() {
+				animateThemeColor();
+			}, 500);
+		}
+
+
+		$(function() {
+			$([document.documentElement, document.body]).animate({
+				scrollTop: $('#background').offset().top
+			}, 0);
+		})
+
+		function scrollDude(argument) {
+			$([document.documentElement, document.body]).animate({
+				scrollTop: argument
+			}, 250);
+		}
+	</script>
+
+	<script src="/scripts/main.js"></script>
+</body>
+</html>
