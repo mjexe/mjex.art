@@ -97,11 +97,6 @@ class Display {
 		this.pointerUpdate();
 	}
 
-	getSelection(menu) {
-		menu = menu || this.currentMenu;
-		return this.menus[menu].items[this.pointer.pos];
-	}
-
 	movePointer(direction) {
 		switch(direction) {
 			case 'up': this.pointer.up(); break;
@@ -116,6 +111,15 @@ class Display {
 			if(i == this.pointer.pos) this.set('>', this.pointer.anchor.x, this.pointer.anchor.y + i)
 			else this.set(' ', this.pointer.anchor.x, this.pointer.anchor.y + i);
 		}
+	}
+	
+	getSelection(menu) {
+		menu = menu || this.currentMenu;
+		return this.menus[menu].items[this.pointer.pos];
+	}
+
+	select(menu) {
+		menu = menu || this.currentMenu;
 	}
 }
 
