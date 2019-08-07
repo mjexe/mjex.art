@@ -40,7 +40,7 @@ class Display {
 			this.setchar(string[i], x + i, y);
 			i++;
 			if(i == string.length) clearInterval(anim);
-		}, speed);
+		}, 50);
 
 		if(typeof callback != 'undefined') callback();
 	}
@@ -51,5 +51,7 @@ class Display {
 let charCache = [];
 let charIndex = 0;
 let charloop = setInterval(() => {
-	if(charCache.length > 0) {}
+	if(charCache.length > 0) {
+		this.setchar(string[i], x + i, y);
+	}
 }, 50)
