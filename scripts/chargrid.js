@@ -2,6 +2,7 @@ class Display {
 	constructor(width, height, element) {
 		this.dim = {width: width, height: height}
 		this.element = element;
+		// this.element[0].style.fontSize = this
 		this.element[0].style.width = this.dim.width + 'ch';
 		this.element[0].style.height = this.dim.height + 'em';
 	}

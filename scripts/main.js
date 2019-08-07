@@ -4,9 +4,14 @@ menu.cls('');
 
 $(() => {
 	setTimeout(() => {
+		menu.element[0].style.transition = 'none';
 		menu.animMultiset([
-			['mjex', 18, 1],
-			['work in progress', 12, 3],
+			['mjex', 18, 2],
+			['art',    18, 5],
+			['music',  18, 6],
+			['photos', 18, 7],
+			['video',  18, 8],
+			['web',    18, 9],
 		]);
 	}, 1250);
 });
