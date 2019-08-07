@@ -12,7 +12,7 @@ body {
 	overflow: hidden;
 
 	/* text stuff */
-	font-family: 'vcr_osd_monoregular';
+	font-family: 'VCR OSD Mono';
 }
 
 i {font-style: normal}
@@ -20,7 +20,8 @@ i {font-style: normal}
 
 #container {
 	/* stylistic stuff */
-	background: #0000ff;
+	background: darkblue;
+	overflow: hidden;
 
 	/* spatial stuff */
 	position: absolute;
@@ -28,8 +29,8 @@ i {font-style: normal}
 	height: 0;
 
 	/* text stuff */
-	color: white;
-	line-height: 1;
+	color: lightgray;
+	line-height: 0.97;
 	/* word-break: break-all; */
 
 	/* transition stuff */
@@ -38,6 +39,8 @@ i {font-style: normal}
 	/* misc stuff */
 	user-select: none;
 }
+
+#container > div {word-break: keep-all}
 
 @media (min-aspect-ratio: 4/3) {
 	#container {font-size: calc(100vh / 18);}
