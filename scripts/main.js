@@ -20,7 +20,7 @@ $(() => {
 
 
 
-$('i').mouseenter((x) => menu.setlineF(x.target.getAttribute('data-x') + ' ' + x.target.getAttribute('data-y') + '  ', 0, 0, 'white', 'darkblue'));
+$('i').mouseenter((x) => menu.setlineF(x.target.getAttribute('data-x') + ' ' + x.target.getAttribute('data-y') + ' ', 0, 0, 'white', 'darkblue'));
 
 
 Mousetrap.bind('')

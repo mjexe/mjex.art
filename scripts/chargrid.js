@@ -69,4 +69,4 @@ let charloop = setInterval(() => {
 		ci++;
 		if(ci == chcache.length) {chcache = []; ci = 0};
 	}
-}, 15)
+}, 0)
