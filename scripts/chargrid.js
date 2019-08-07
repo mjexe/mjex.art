@@ -35,17 +35,7 @@ class Display {
 		string = string.length + x > this.dim.width ? string.substring(0, this.dim.width - x) : string;
 		let temp = this.element[0].children[y].textContent;
 
-		for(let i = 0; i < string.length; i++) {
-			chcache.push([string[i], x + i, y]);
-		}
-		// let i = 0;
-		// let anim = setInterval(() => {
-		// 	this.setchar(string[i], x + i, y);
-		// 	i++;
-		// 	if(i == string.length) clearInterval(anim);
-		// }, 50);
-
-		// if(typeof callback != 'undefined') callback();
+		for(let i = 0; i < string.length; i++) chcache.push([string[i], x + i, y]);
 	}
 
 	animMultiset(payload) {payload.forEach((line) => this.animSet(line[0], line[1], line[2]))}
