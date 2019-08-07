@@ -5,11 +5,11 @@ menu.cls('');
 $(() => {
 	setTimeout(() => {
 		menu.element[0].style.transition = 'none';
-		menu.animMultiset([
+		menu.multiset([
 			['mjex', 18, 2],
 			['art',    18, 5],
 			['music',  18, 6],
-			['photos', 18, 7],
+			['photo',  18, 7],
 			['video',  18, 8],
 			['web',    18, 9],
 		]);

@@ -15,35 +15,34 @@ body {
 	font-family: 'vcr_osd_monoregular';
 }
 
+i {font-style: normal}
+
+
 #container {
 	/* stylistic stuff */
 	background: #0000ff;
 
 	/* spatial stuff */
+	position: absolute;
 	width: 0;
 	height: 0;
-	/* height: 25ex; */
 
 	/* text stuff */
 	color: white;
 	line-height: 1;
-	word-break: break-all;
+	/* word-break: break-all; */
 
 	/* transition stuff */
 	transition: width 0.25s, height 1s;
+
+	/* misc stuff */
+	user-select: none;
 }
 
-@media (orientation: landscape) {
-	body {background: #002200}
-	#container {font-size: calc(100vw / 30);}
+@media (min-aspect-ratio: 4/3) {
+	#container {font-size: calc(100vh / 18);}
 }
 
-@media (orientation: landscape) and (min-aspect-ratio: 4/3) {
-	body {background: #220000}
-	#container {font-size: calc(100vh / 20);}
-}
-
-@media (orientation: portrait) {
-	body {background: #000022}
-	#container {font-size: calc(100vw / 30);}
+@media (max-aspect-ratio: 4/3) {
+	#container {font-size: calc(100vw / 25);}
 }
