@@ -6,21 +6,21 @@ $(() => {
 	setTimeout(() => {
 		menu.element[0].style.transition = 'none';
 		menu.multiset([
-			['   mjex   ', 15, 3, 'lightgray', 'darkblue'],
-			['art',    18, 5],
-			['music',  18, 6],
-			['photo',  18, 7],
-			['video',  18, 8],
-			['web',    18, 9],
-			['__________', 15, 11],
-			['▲▼', 15, 12],
+			['     mjex     ', 13, 3, 'white', 'darkblue'],
+			['     art      ', 13, 5],
+			['     music    ', 13, 6],
+			['     photo    ', 13, 7],
+			['     video    ', 13, 8],
+			['     web      ', 13, 9],
+			['______________', 13, 11],
+			[' ▲▼           ', 13, 12],
 		]);
 	}, 1250);
 });
 
 
 
-$('i').mouseenter((x) => menu.setlineF(x.target.getAttribute('data-x') + ' ' + x.target.getAttribute('data-y') + '  ', 0, 0, 'white', 'blue'));
+$('i').mouseenter((x) => menu.setlineF(x.target.getAttribute('data-x') + ' ' + x.target.getAttribute('data-y') + '  ', 0, 0, 'white', 'darkblue'));
 
 
 Mousetrap.bind('')
