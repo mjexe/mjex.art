@@ -16,9 +16,7 @@ $(() => {
 $(menu.element).hover((x) => console.log(x));
 
 
-// function mainloop() {
-// 	requestAnimationFrame(mainloop);
-// }
+
 
 
 

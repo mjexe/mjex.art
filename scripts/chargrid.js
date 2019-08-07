@@ -35,23 +35,28 @@ class Display {
 		string = string.length + x > this.dim.width ? string.substring(0, this.dim.width - x) : string;
 		let temp = this.element[0].children[y].textContent;
 
-		let i = 0;
-		let anim = setInterval(() => {
-			this.setchar(string[i], x + i, y);
-			i++;
-			if(i == string.length) clearInterval(anim);
-		}, 50);
+		for(let i = 0; i < string.length; i++) {
+			chcache.push([string[i], x + i, y]);
+		}
+		// let i = 0;
+		// let anim = setInterval(() => {
+		// 	this.setchar(string[i], x + i, y);
+		// 	i++;
+		// 	if(i == string.length) clearInterval(anim);
+		// }, 50);
 
-		if(typeof callback != 'undefined') callback();
+		// if(typeof callback != 'undefined') callback();
 	}
 
-	animMultiset(payload) {payload.forEach((line) => this.animSet(line[0], line[1], line[2], line[3] || undefined))}
+	animMultiset(payload) {payload.forEach((line) => this.animSet(line[0], line[1], line[2]))}
 }
 
-let charCache = [];
-let charIndex = 0;
+let chcache = [];
+let ci = 0;
 let charloop = setInterval(() => {
-	if(charCache.length > 0) {
-		this.setchar(string[i], x + i, y);
+	if(chcache.length > 0) {
+		menu.setchar(chcache[ci][0], chcache[ci][1], chcache[ci][2]);
+		ci++;
+		if(ci == chcache.length) {chcache = []; ci = 0};
 	}
-}, 50)
+}, 15)
