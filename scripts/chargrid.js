@@ -2,10 +2,9 @@ class Display {
 	constructor(width, height, element) {
 		this.dim = {width: width, height: height}
 		this.element = element;
-		// this.element[0].style.fontSize = this
 		this.element[0].style.width = this.dim.width + 'ch';
-		this.element[0].style.height = 'max-content';
-		// this.element[0].style.height = this.dim.height + 'em';
+		// this.element[0].style.height = 'max-content';
+		this.element[0].style.height = this.dim.height + 'em';
 
 		this.element.empty();
 		let line = '';
@@ -15,6 +14,19 @@ class Display {
 			line += '<div>' + char + '</div>';
 		}
 		this.element[0].innerHTML = line;
+
+		this.menus = {
+			main: [
+				['     mjex     ', 13, 3, 'white', 'darkblue'],
+				['     art      ', 13, 5],
+				['     music    ', 13, 6],
+				['     photo    ', 13, 7],
+				['     video    ', 13, 8],
+				['     web      ', 13, 9],
+				['______________', 13, 11],
+				[' ▲▼           ', 13, 12],
+			],
+		}
 	}
 
 	clearline(line) {this.element[0].children[line].textContent = '\xa0'.repeat(this.dim.width)}
@@ -56,8 +68,8 @@ class Display {
 	multiset(payload) {payload.forEach((line) => this.setline(line[0], line[1], line[2], line[3], line[4]))}
 
 
-	loadMenu() {
-		
+	loadMenu(menu) {
+		this.multiset(this.menus[menu]);
 	}
 }
 

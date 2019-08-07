@@ -30,7 +30,8 @@ i {font-style: normal}
 
 	/* text stuff */
 	color: white;
-	line-height: 0.97;
+	line-height: 1;
+	/* line-height: 0.97; */
 	/* word-break: break-all; */
 
 	/* transition stuff */

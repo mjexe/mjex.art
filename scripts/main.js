@@ -5,16 +5,7 @@ menu.cls('');
 $(() => {
 	setTimeout(() => {
 		menu.element[0].style.transition = 'none';
-		menu.multiset([
-			['     mjex     ', 13, 3, 'white', 'darkblue'],
-			['     art      ', 13, 5],
-			['     music    ', 13, 6],
-			['     photo    ', 13, 7],
-			['     video    ', 13, 8],
-			['     web      ', 13, 9],
-			['______________', 13, 11],
-			[' ▲▼           ', 13, 12],
-		]);
+		menu.loadMenu('main');
 	}, 1250);
 });
 
