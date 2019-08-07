@@ -1,208 +1,49 @@
-/*
-	<-- Base HTML Stuff -->
-*/
-
-html, body {
-	/* <-- Spatial Attributes --> */
-	margin: 0;
-	overflow: hidden;
-
-
-	/* <-- Text Attributes --> */
-	font-family: 'vcr_osd_monoregular';
-	text-align: center;
-}
-
-a {
-	/* <-- Stylistic Attributes --> */
-	color: lightgray;
-	text-decoration: none;
-}
-
-a:hover {
-	color: darkgray;
-}
-
-
-/*
-	<-- Logo Container Stuff -->
-*/
-
-#logo-container {
-	/* <-- Spatial Attributes --> */
-	width: 100vw;
+body {
+	/* spatial stuff */
 	height: 100vh;
+	margin: 0;
 
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
+
+	/* stylistic stuff */
+	background: #000000;
+	overflow: hidden;
+
+	/* text stuff */
+	font-family: 'vcr_osd_monoregular';
 }
 
-#logo-container .gradient-bg {
-	/* <-- Spatial Attributes --> */
-	position: absolute;
-    display: block;
-    width: inherit;
-	height: inherit;
+#container {
+	/* stylistic stuff */
+	background: #0000ff;
 
-	/* <-- Stylistic Attributes --> */
-	background: linear-gradient(#0000dd, #000080);
-	
-	-webkit-box-shadow: 0px 5px 10vh 1px rgba(0,0,0,0.75);
-	-moz-box-shadow: 0px 5px 10vh 1px rgba(0,0,0,0.75);
-	box-shadow: 0px 5px 10vh 1px rgba(0,0,0,0.75);
-}
+	/* spatial stuff */
+	width: 0;
+	/* height: 25ex; */
 
-#logo-container #logo {
-	/* <-- Spatial Attributes --> */
-	position: absolute;
+	/* text stuff */
+	color: white;
+	font-size: 30px;
+	line-height: 1;
+	word-break: break-all;
 
-	top: 0;
-	left: 0;
-}
-
-#logo-container #overlay {
-	/* <-- Spatial Attributes --> */
-	/* position: absolute;
-
-	top: 50%;
-	left: 50%;
-	*/
-
-	transform: translate(3%, 0);
-
-	z-index: 1;
-
-
-	/* <-- Text Attributes --> */
-	color: rgb(206, 183, 183);
-}
-
-#logo-container #overlay table {
-	/* <-- Spatial Attributes --> */
-	width: 100%;
-}
-
-/* --> Each individual link <-- */
-#logo-container #overlay .links .left {
-	/* <-- Text Attributes --> */
-	text-align: left;
-	padding-right: 2vw;
-}
-
-#logo-container #overlay .links .right {
-	/* <-- Text Attributes --> */
-	text-align: right;
-	padding-left: 2vw;
-}
-
-#logo-container #overlay .links .center {
-	/* <-- Text Attributes --> */
-	text-align: center;
-	padding-left: 2vw;
-	padding-right: 2vw;
+	/* transition stuff */
+	transition: width 1s;
 }
 
 
-/* --> Orientation specific styling <-- */
-@media (orientation: landscape) {
-	#logo-container #overlay {
-		/* <-- Text Attributes --> */
-		font-size: 2.4vh;
+/* @media (orientation: landscape) {
+	#container {
+		width: 133vh;
+		height: 100vh;
 	}
 }
 
 @media (orientation: portrait) {
-	#logo-container #overlay {
-		/* <-- Text Attributes --> */
-		font-size: 4vw;
+	#container {
+		width: 100vw;
+		height: 75vw;
 	}
-}
-
-
-@media only screen and (min-width: 1000px) {
-	#logo-container #logo {
-		/* <-- Spatial Attributes --> */
-
-		/*
-		This will be used to automatically optimize the application
-		by downsampling it and then upsampling it without mipmapping.
-		*/
-	}
-}
-
-
-/*
-	<-- Button Thing Stuff -->
-*/
-
-#button-thing {
-	/* <-- Spatial Attributes --> */
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translate(-50%, 0);
-
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	height: 100vh;
-}
-
-#button-thing .content {
-	/* <-- Spatial Attributes --> */
-	padding-bottom: 2vh;
-
-	/* <-- Text Attributes --> */
-	font-size: 2vh;
-}
-
-
-/*
-	<-- About Container Stuff -->
-*/
-
-#about-container {
-	/* <-- Spatial Attributes --> */
-	height: max-content;
-
-	padding-top: 3vh;
-	padding-bottom: 3vh;
-
-	/* <-- Stylistic Attributes --> */
-	background: #314263;
-
-	/* <-- Text Attributes --> */
-	color: lightgray;
-}
-
-#about-container .header {
-	/* <-- Spatial Attributes --> */
-	padding-bottom: 2vh;
-	/* <-- Text Attributes --> */
-	font-size: 4vh;
-}
-
-#about-container .content  {
-	font-size: 2vh;
-}
-
-
-/*
-	<-- Other Stuff -->
-*/
-
-.hidden {
-	/* <-- Stylistic Attributes --> */
-	visibility: hidden;
-	opacity: 0;
-}
-
-.unselectable {
-	/* <-- Other Attributes --> */
-	user-select: none;
-	-moz-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	-o-user-select: none;
-}
+} */
