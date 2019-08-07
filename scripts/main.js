@@ -7,11 +7,11 @@ $(() => {
 		menu.element[0].style.transition = 'none';
 		menu.multiset([
 			['   mjex   ', 15, 3, 'lightgray', 'darkblue'],
-			['art',    18, 5, 'red'],
-			['music',  18, 6, 'red'],
-			['photo',  18, 7, 'red'],
-			['video',  18, 8, 'red'],
-			['web',    18, 9, 'red'],
+			['art',    18, 5],
+			['music',  18, 6],
+			['photo',  18, 7],
+			['video',  18, 8],
+			['web',    18, 9],
 			['__________', 15, 11],
 			['▲▼', 15, 12],
 		]);

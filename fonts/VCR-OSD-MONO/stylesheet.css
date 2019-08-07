@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'VCR OSD Mono';
-    src: local('VCR OSD Mono'), local('VCROSDMono'),
+    src: local('VCR OSD Mono'), local('VCR OSD Mono'),
         url('hinted-subset-VCROSDMono.woff2') format('woff2'),
         url('hinted-subset-VCROSDMono.woff') format('woff');
     font-weight: normal;
