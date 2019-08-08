@@ -46,7 +46,7 @@ setInterval(() => {
 
 app.stage.filters = [
 	new PIXI.filters.RGBSplitFilter([1.7, 0], [0, 0], [-3, 0]),
-	new PIXI.filters.BlurFilter(window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight / 750 : window.innerWidth / 750, 3),
+	new PIXI.filters.BlurFilter(window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight / 750 : window.innerWidth / 1500, 3),
 	new PIXI.filters.CRTFilter({
 		curvature: 0,
 		lineWidth: 3,
