@@ -33,10 +33,10 @@
 	<!-- my scripts -->
 	<script type="text/javascript" src="scripts/webgl-display.js"></script>
 	<script type="text/javascript" src="scripts/webgl-main.js"></script>
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
 	<script>
-		WebFontConfig = {active: fontloaded()};
+		WebFontConfig = {active: setTimeout(x => fontloaded(), 100)};
 		WebFont.load({
 			custom: {
 				families: ['VCR OSD Mono'],
