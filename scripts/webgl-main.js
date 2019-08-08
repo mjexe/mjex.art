@@ -1,3 +1,6 @@
+let length = window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth;
+
+
 let type = 'WebGL';
 if(!PIXI.utils.isWebGLSupported()) type = 'canvas';
 PIXI.utils.sayHello(type);
@@ -8,7 +11,6 @@ app.renderer.view.style.display = "block";
 app.renderer.autoDensity = false;
 app.renderer.backgroundColor = 0x202020;
 document.body.appendChild(app.view);
-
 
 let bg = new PIXI.Graphics().beginFill(0x000000).drawRect(0, 0, window.innerWidth, window.innerHeight).endFill();
 app.stage.addChild(bg);
@@ -24,9 +26,10 @@ $(() => {
 
 
 $(window).resize(() => {
+	length = window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth;
 	app.resize();
 	crt.resize(findSize(window.innerWidth, window.innerHeight, 0.7, 40, 18));
-	app.stage.filters[2].radius = window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth;
+	app.stage.filters[2].radius = length;
 	console.log(app.renderer.view);
 });
 
@@ -45,11 +48,11 @@ setInterval(() => {
 }, 1);
 
 app.stage.filters = [
-	new PIXI.filters.RGBSplitFilter([1.7, 0], [0, 0], [-3, 0]),
+	new PIXI.filters.RGBSplitFilter([length / 1000, 0], [0, 0], [-length / 650, 0]),
 	new PIXI.filters.BlurFilter(window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight / 750 : window.innerWidth / 1500, 3),
 	new PIXI.filters.CRTFilter({
 		curvature: 0,
-		lineWidth: 3,
+		lineWidth: length / 500,
 		lineContrast: 0.3,
 		verticalLine: false,
 		noise: 0.2,
