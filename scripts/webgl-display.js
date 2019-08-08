@@ -1,8 +1,20 @@
+let colors = {
+	lightgray: 0xc0c0c0,
+	lightblue: 0x000099,
+}
+
+let schemes = {
+	normal: [colors.lightgray, colors.lightblue],
+}
+
+
+
+
 class Character {
 	constructor(char, x, y, size, parent, color, bg) {
 		this.parent = parent;
-		color = color || 0xc0c0c0;
-		bg = bg || 0x000099;
+		color = color || schemes.normal[0];
+		bg = bg || schemes.normal[1];
 		size /= 0.586
 		this.text = new PIXI.Text(char[0], {fontFamily: 'VCR OSD Mono', fontSize: size, fill: color});
 		this.text.position.set(x, y);
@@ -64,9 +76,9 @@ class Display {
 		this.menus = {
 			main: {
 				text: [
-					['     mjex     ', 13, 3, 0x000099, 0xc0c0c0],
+					['     mjex     ', 13, 3, schemes.normal[1], schemes.normal[0]],
 					['              ', 13, 4],
-					['     art      ', 13, 5],
+					['     arts     ', 13, 5],
 					['     music    ', 13, 6],
 					['     photos   ', 13, 7],
 					['     videos   ', 13, 8],
@@ -79,14 +91,36 @@ class Display {
 				],
 
 				items: [
-					{text: 'art',    type: 'local', action: 'art'},
-					{text: 'music',  type: 'local', action: 'music'},
-					{text: 'photos', type: 'local', action: 'photo'},
-					{text: 'videos', type: 'local', action: 'video'},
-					{text: 'webdev', type: 'local', action: 'web'},
-					{text: 'about',  type: 'local', action: 'art'},
+					{text: 'arts',   action: x => this.clm(y => this.loadMenu('arts'))},
+					{text: 'music',  action: 'music'},
+					{text: 'photos', action: 'photo'},
+					{text: 'videos', action: 'video'},
+					{text: 'webdev', action: 'web'},
+					{text: 'about',  action: 'art'},
 				],
 
+				scheme: 'normal',
+				pointerAnchor: {x: 16, y: 5},
+			},
+
+			arts: {
+				text: [
+					['       arts       ', 11, 3, schemes.normal[1], schemes.normal[0]],
+					['                  ', 11, 4],
+					['       deviantart ', 11, 5],
+					['       back       ', 11, 6],
+					['                  ', 11, 7],
+					['__________________', 11, 8],
+					[' ▲▼               ', 11, 9],
+					['--callback', x => setTimeout(() => this.createPointer('arts'), 500)],
+				],
+	
+				items: [
+					{text: 'deviantart', action: x => location.href = '//www.deviantart.com/mjexe'},
+					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
+				],
+	
+				scheme: 'normal',
 				pointerAnchor: {x: 16, y: 5},
 			}
 		}
@@ -104,9 +138,7 @@ class Display {
 		this.container.position.set((window.innerWidth / 2) - (this.width / 2), (window.innerHeight / 2) - (this.height / 2));
 	}
 
-	set(char, x, y, bg, color) {
-		this.grid[y][x].set(char[0], null, null, null, bg, color);
-	}
+	set(char, x, y, bg, color) {this.grid[y][x].set(char[0], null, null, null, bg, color)}
 
 	setline(char, x, y, bg, color) {
 		if(char == '--callback') {chcache.push([char, x])}
@@ -117,7 +149,26 @@ class Display {
 	}
 
 	multiset(payload) {payload.forEach((line) => this.setline(line[0], line[1], line[2], line[3], line[4]))}
-	loadMenu(menu) {this.multiset(this.menus[menu].text); this.currentMenu = menu}
+
+	loadMenu(menu) {this.multiset(this.menus[menu].text); this.currentMenu = menu; location.hash = '#' + menu}
+
+	cls(callback) {
+		for(let y = 0; y < this.rows; y++) for(let x = 0; x < this.cols; x++) chcache.push([' ', x, y, schemes.normal[0], schemes.normal[1]]);
+		if(typeof callback != 'undefined') callback();
+	}
+
+	clm(callback) {
+		let scheme = this.menus[this.currentMenu].scheme;
+		this.menus[this.currentMenu].text.forEach((e) => {
+			for(let i = 0; i < e[0].length; i++) {
+				if(e[0] != '--callback') {
+					chcache.push([' ', e[1] + i, e[2], schemes[scheme][0], schemes[scheme][1]]);
+				}
+			}
+		});
+		if(typeof callback != 'undefined') callback();
+	}
+
 
 	createPointer(menu) {
 		menu = menu || this.currentMenu;
@@ -136,8 +187,10 @@ class Display {
 
 	pointerUpdate() {
 		for(let i = 0; i < this.pointer.range; i++) {
-			if(i == this.pointer.pos) this.set('►', this.pointer.anchor.x, this.pointer.anchor.y + i)
-			else this.set(' ', this.pointer.anchor.x, this.pointer.anchor.y + i);
+			if(i == this.pointer.pos) {
+				if(this.menus[this.currentMenu].items[this.pointer.pos].text == 'back') this.set('◄', this.pointer.anchor.x, this.pointer.anchor.y + i)
+				else this.set('►', this.pointer.anchor.x, this.pointer.anchor.y + i);
+			} else this.set(' ', this.pointer.anchor.x, this.pointer.anchor.y + i);
 		}
 	}
 	
@@ -148,6 +201,7 @@ class Display {
 
 	select(menu) {
 		menu = menu || this.currentMenu;
+		this.menus[menu].items[this.pointer.pos].action();
 	}
 }
 
@@ -177,10 +231,10 @@ let charloop = setInterval(() => {
 		ci++;
 		if(ci == chcache.length) {chcache = []; ci = 0};
 	}
-}, 15);
+}, 10);
 
 
 
 Mousetrap.bind('up', () => crt.movePointer('up'));
 Mousetrap.bind('down', () => crt.movePointer('down'));
-Mousetrap.bind('enter', () => console.log(crt.getSelection()));
+Mousetrap.bind('enter', () => console.log(crt.select()));

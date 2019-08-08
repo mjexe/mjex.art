@@ -21,10 +21,16 @@ let crt = new Display(40, 18, findSize(window.innerWidth, window.innerHeight, 0.
 
 $(() => {
 	setTimeout(() => {
-		crt.loadMenu('main');
+
+		crt.loadMenu(gethash());
 	}, 500);
 });
 
+// if('onhashchange' in window) crt.clm(y => crt.loadMenu(gethash()));
+$(window).on('hashchange', () => {
+	if(crt.currentMenu != gethash()) crt.clm(y => crt.loadMenu(gethash()));
+	else location.hash = gethash();
+});
 
 $(window).resize(() => {
 	length = window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth;
@@ -48,6 +54,11 @@ function findSize(width, height, scale, cols, rows) {
 	height *= scale;
 	if(width / height > (680 / 429)) return Math.floor((height / rows) / 1.4);
 	else return Math.floor(width / cols);
+}
+
+function gethash() {
+	let hash = location.hash.substring(1);
+	return hash == '' ? 'main' : (crt.menus.hasOwnProperty(hash) ? hash : 'main');
 }
 
 
