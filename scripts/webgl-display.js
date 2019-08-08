@@ -1,7 +1,7 @@
 class Character {
 	constructor(char, x, y, size, parent, color, bg) {
 		this.parent = parent;
-		color = color || 0xffffff;
+		color = color || 0xc0c0c0;
 		bg = bg || 0x0000ff;
 		size /= 0.586
 		this.text = new PIXI.Text(char[0], {fontFamily: 'VCR OSD Mono', fontSize: size, fill: color});
@@ -66,17 +66,17 @@ class Display {
 		this.menus = {
 			main: {
 				text: [
-					['     mjex     ', 13, 2, 0x0000ff, 0xffffff],
-					['              ', 13, 3],
-					['     art      ', 13, 4],
-					['     music    ', 13, 5],
-					['     photos   ', 13, 6],
-					['     videos   ', 13, 7],
-					['     webdev   ', 13, 8],
-					['     about    ', 13, 9],
-					['              ', 13, 10],
-					['______________', 13, 11],
-					[' ▲▼           ', 13, 12],
+					['     mjex     ', 13, 3, 0x0000ff, 0xc0c0c0],
+					['              ', 13, 4],
+					['     art      ', 13, 5],
+					['     music    ', 13, 6],
+					['     photos   ', 13, 7],
+					['     videos   ', 13, 8],
+					['     webdev   ', 13, 9],
+					['     about    ', 13, 10],
+					['              ', 13, 11],
+					['______________', 13, 12],
+					[' ▲▼           ', 13, 13],
 					['--callback', x => setTimeout(() => this.createPointer('main'), 500)],
 				],
 
@@ -89,7 +89,7 @@ class Display {
 					{text: 'about',  type: 'local', action: 'art'},
 				],
 
-				pointerAnchor: {x: 16, y: 4},
+				pointerAnchor: {x: 16, y: 5},
 			}
 		}
 	}

@@ -2,11 +2,10 @@ let type = 'WebGL';
 if(!PIXI.utils.isWebGLSupported()) type = 'canvas';
 PIXI.utils.sayHello(type);
 
-let app = new PIXI.Application({width: 256, height: 256});
+let app = new PIXI.Application({resizeTo: window});
 app.renderer.view.style.position = 'absolute';
 app.renderer.view.style.display = "block";
 app.renderer.autoDensity = false;
-app.renderer.resize(window.innerWidth, window.innerHeight);
 app.renderer.backgroundColor = 0x202020;
 document.body.appendChild(app.view);
 
@@ -14,7 +13,7 @@ document.body.appendChild(app.view);
 let bg = new PIXI.Graphics().beginFill(0x000000).drawRect(0, 0, window.innerWidth, window.innerHeight).endFill();
 app.stage.addChild(bg);
 
-let crt = new Display(40, 18, findSize(window.innerWidth, window.innerHeight, 0.8, 40, 18), app.stage);
+let crt = new Display(40, 18, findSize(window.innerWidth, window.innerHeight, 0.7, 40, 18), app.stage);
 
 
 $(() => {
@@ -25,8 +24,9 @@ $(() => {
 
 
 $(window).resize(() => {
-	app.renderer.resize(window.innerWidth, window.innerHeight);
-	crt.resize(findSize(window.innerWidth, window.innerHeight, 0.8, 40, 18));
+	app.resize();
+	crt.resize(findSize(window.innerWidth, window.innerHeight, 0.7, 40, 18));
+	app.stage.filters[2].radius = window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth;
 });
 
 
@@ -40,7 +40,7 @@ function findSize(width, height, scale, cols, rows) {
 
 setInterval(() => {
 	app.stage.filters[0].seed += 10;
-	// app.stage.filters[0].time += 0.25;
+	app.stage.filters[0].time += 0.05;
 }, 1);
 
 app.stage.filters = [
@@ -58,7 +58,7 @@ app.stage.filters = [
 		time: 0
 	}),
 	new PIXI.filters.RGBSplitFilter([1.2, 0], [0, 0], [-2, 0]),
-	new PIXI.filters.BulgePinchFilter([0.5, 0.5], 1000, 0.3),
+	new PIXI.filters.BulgePinchFilter([0.5, 0.5], window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth, 0.4),
 ];
 
 
