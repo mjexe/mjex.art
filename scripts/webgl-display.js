@@ -19,9 +19,9 @@ class Character {
 		this.text = new PIXI.Text(char[0], {fontFamily: 'VCR OSD Mono', fontSize: size, fill: color});
 		this.text.position.set(x, y);
 		this.text.calculateBounds();
-		this.text.zIndex = 100;
+		this.text.zOrder = 100;
 		this.back = new PIXI.Graphics().beginFill(bg).drawRect(x, y, this.text._bounds.maxX + 1, this.text._bounds.maxY + 1).endFill();
-		this.back.zIndex = 0;
+		this.back.zOrder = 0;
 		this.parent.addChild(this.back, this.text);
 
 		this.width = this.text._bounds.maxX; this.height = this.text._bounds.maxY;
@@ -69,11 +69,13 @@ class Display {
 		this.container.position.set((window.innerWidth / 2) - (this.width / 2), (window.innerHeight / 2) - (this.height / 2));
 		this.parent.addChild(this.container);
 
+
 		this.grid = [];
 		for(let y = 0; y < this.rows; y++) {
 			this.grid[y] = [];
 			for(let x = 0; x < this.cols; x++) this.grid[y][x] = new Character(' ', x * this.size, y * this.length, size, this.container);
 		}
+
 
 		this.menus = {
 			main: {
@@ -180,7 +182,7 @@ class Display {
 
 	multiset(payload) {payload.forEach((line) => this.setline(line[0], line[1], line[2], line[3], line[4]))}
 
-	loadMenu(menu) {this.multiset(this.menus[menu].text); this.currentMenu = menu; location.hash = '#' + menu}
+	loadMenu(menu) {this.multiset(this.menus[menu].text); this.currentMenu = menu; location.hash = menu == 'main' ? '' : menu}
 
 	cls(callback) {
 		this.erasePointer();
@@ -288,4 +290,4 @@ let charloop = setInterval(() => {
 
 Mousetrap.bind('up', () => crt.movePointer('up'));
 Mousetrap.bind('down', () => crt.movePointer('down'));
-Mousetrap.bind('enter', () => console.log(crt.select()));
+Mousetrap.bind('enter', () => crt.select());
