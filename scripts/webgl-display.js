@@ -2,7 +2,7 @@ class Character {
 	constructor(char, x, y, size, parent, color, bg) {
 		this.parent = parent;
 		color = color || 0xc0c0c0;
-		bg = bg || 0x0000ff;
+		bg = bg || 0x000099;
 		size /= 0.586
 		this.text = new PIXI.Text(char[0], {fontFamily: 'VCR OSD Mono', fontSize: size, fill: color});
 		this.text.position.set(x, y);
@@ -66,7 +66,7 @@ class Display {
 		this.menus = {
 			main: {
 				text: [
-					['     mjex     ', 13, 3, 0x0000ff, 0xc0c0c0],
+					['     mjex     ', 13, 3, 0x000099, 0xc0c0c0],
 					['              ', 13, 4],
 					['     art      ', 13, 5],
 					['     music    ', 13, 6],
