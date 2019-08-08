@@ -10,17 +10,27 @@
 
 	<link rel="stylesheet" href="crt.css">
 	<link rel="stylesheet" href="main.css">
-	<link href="fonts/VCR-OSD-MONO/stylesheet.css" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+	<script>
+		WebFont.load({
+			custom: {
+				families: ['VCR OSD Mono'],
+				urls: ['fonts/VCR-OSD-MONO/stylesheet.css']
+			}});
+	</script>
 </head>
 
 <body>
-	<div id="container" class="display crt"></div>
+	<!-- <div id="container" class="display crt"></div> -->
 
 	<!-- third party scripts -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
-	<script src="scripts/mousetrap.min.js"></script>
-	
+	<script type="text/javascript" src="scripts/pixi.min.js"></script>
+	<script type="text/javascript" src="scripts/pixi-filters.js"></script>
+	<script type="text/javascript" src="scripts/mousetrap.min.js"></script>
+
 	<!-- <script src="https://cdn.jsdelivr.net/npm/three@0.107.0/build/three.min.js"></script> -->
 	<!-- <script src="https://cdn.jsdelivr.net/npm/postprocessing@6.5.1/build/postprocessing.min.js"></script> -->
 	<!-- <script src="scripts/glfx.js"></script> -->
@@ -28,7 +38,9 @@
 	<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjs/5.2.0/math.min.js"></script> -->
 	
 	<!-- my scripts -->
-	<script type="text/javascript" src="scripts/chargrid.js"></script>
-	<script type="text/javascript" src="scripts/main.js"></script>
+	<script type="text/javascript" src="scripts/webgl-display.js"></script>
+	<script type="text/javascript" src="scripts/webgl-main.js"></script>
+
+	<!-- <script type="text/javascript" src="scripts/html-disp-load.js"></script> -->
 </body>
 </html>
