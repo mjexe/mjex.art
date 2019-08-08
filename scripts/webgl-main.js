@@ -14,24 +14,14 @@ app.renderer.backgroundColor = 0x202020;
 document.body.appendChild(app.view);
 
 
-let bg = new PIXI.Graphics().beginFill(0x000000).drawRect(0, 0, window.innerWidth, window.innerHeight).endFill();
-app.stage.addChild(bg);
 
-let crt = new Display(40, 18, findSize(window.innerWidth, window.innerHeight, 0.86, 40, 18), app.stage);
-
-
-
-let poopy = PIXI.Sprite.from('img/hqdefault.jpg');
-poopy.zOrder = 5;
-crt.container.addChild(poopy);
-
-
-
-
+let crt, bg;
 
 $(() => {
-	setTimeout(() => {
+	bg = new PIXI.Graphics().beginFill(0x000000).drawRect(0, 0, window.innerWidth, window.innerHeight).endFill(); app.stage.addChild(bg);
+	crt = new Display(40, 18, findSize(window.innerWidth, window.innerHeight, 0.86, 40, 18), app.stage);
 
+	setTimeout(() => {
 		crt.loadMenu(gethash());
 	}, 500);
 });
