@@ -15,7 +15,7 @@ document.body.appendChild(app.view);
 let bg = new PIXI.Graphics().beginFill(0x000000).drawRect(0, 0, window.innerWidth, window.innerHeight).endFill();
 app.stage.addChild(bg);
 
-let crt = new Display(40, 18, findSize(window.innerWidth, window.innerHeight, 0.7, 40, 18), app.stage);
+let crt = new Display(40, 18, findSize(window.innerWidth, window.innerHeight, 0.8, 40, 18), app.stage);
 
 
 $(() => {
@@ -30,14 +30,14 @@ $(window).resize(() => {
 
 	app.resize();
 	bg.width = window.innerWidth; bg.height = window.innerHeight;
-	crt.resize(findSize(window.innerWidth, window.innerHeight, 0.7, 40, 18));
+	crt.resize(findSize(window.innerWidth, window.innerHeight, 0.8, 40, 18));
 
-	app.stage.filters[0].red[0] = length / 1000;
+	app.stage.filters[0].red[0] = length / 800;
 	app.stage.filters[0].blue[0] = length / 650;
 	app.stage.filters[1].blur = window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight / 750 : window.innerWidth / 1500;
 	app.stage.filters[2].lineWidth = length / 500;
 	app.stage.filters[2].noiseSize = length / 500;
-	app.stage.filters[3].radius = length;
+	app.stage.filters[3].radius = window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth * 0.75;
 });
 
 
@@ -55,7 +55,7 @@ setInterval(() => {
 }, 1);
 
 app.stage.filters = [
-	new PIXI.filters.RGBSplitFilter([length / 1000, 0], [0, 0], [-length / 650, 0]),
+	new PIXI.filters.RGBSplitFilter([length / 800, 0], [0, 0], [-length / 650, 0]),
 	new PIXI.filters.BlurFilter(window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight / 750 : window.innerWidth / 1500, 3),
 	new PIXI.filters.CRTFilter({
 		curvature: 0,
@@ -70,7 +70,7 @@ app.stage.filters = [
 		seed: 0,
 		time: 0
 	}),
-	new PIXI.filters.BulgePinchFilter([0.5, 0.5], length, 0.4),
+	new PIXI.filters.BulgePinchFilter([0.5, 0.5], window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth * 0.75, 0.3),
 ];
 
 
