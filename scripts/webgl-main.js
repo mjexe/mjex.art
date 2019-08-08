@@ -18,13 +18,19 @@ document.body.appendChild(app.view);
 let crt, bg;
 
 $(() => {
+
+});
+
+function fontloaded() {
 	bg = new PIXI.Graphics().beginFill(0x000000).drawRect(0, 0, window.innerWidth, window.innerHeight).endFill(); app.stage.addChild(bg);
 	crt = new Display(40, 18, findSize(window.innerWidth, window.innerHeight, 0.86, 40, 18), app.stage);
-
+	crt.loadMenu(gethash());
+	
 	setTimeout(() => {
-		crt.loadMenu(gethash());
-	}, 500);
-});
+	});
+}
+
+
 
 // if('onhashchange' in window) crt.clm(y => crt.loadMenu(gethash()));
 $(window).on('hashchange', () => {
