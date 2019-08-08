@@ -88,7 +88,7 @@ class Display {
 					['     about    ', 13, 10],
 					['              ', 13, 11],
 					['______________', 13, 12],
-					[' ▲▼           ', 13, 13],
+					['  ▼           ', 13, 13],
 					['--callback', x => setTimeout(() => this.createPointer('main'), 500)],
 				],
 
@@ -103,6 +103,7 @@ class Display {
 
 				scheme: 'normal',
 				pointerAnchor: {x: 16, y: 5},
+				directionAnchor: {x: 14, y: 13},
 			},
 
 			art: {
@@ -113,7 +114,7 @@ class Display {
 					['       back       ', 11, 8],
 					['                  ', 11, 9],
 					['__________________', 11, 10],
-					[' ▲▼               ', 11, 11],
+					['  ▼               ', 11, 11],
 					['--callback', x => setTimeout(() => this.createPointer('art'), 500)],
 				],
 	
@@ -124,6 +125,7 @@ class Display {
 	
 				scheme: 'normal',
 				pointerAnchor: {x: 16, y: 7},
+				directionAnchor: {x: 12, y: 11},
 			},
 
 			music: {
@@ -136,7 +138,7 @@ class Display {
 					['       back       ', 11, 9],
 					['                  ', 11, 10],
 					['__________________', 11, 11],
-					[' ▲▼               ', 11, 12],
+					['  ▼               ', 11, 12],
 					['--callback', x => setTimeout(() => this.createPointer('music'), 500)],
 				],
 	
@@ -149,6 +151,7 @@ class Display {
 	
 				scheme: 'normal',
 				pointerAnchor: {x: 16, y: 6},
+				directionAnchor: {x: 12, y: 12},
 			},
 		}
 	}
@@ -222,6 +225,18 @@ class Display {
 				else if(this.menus[this.currentMenu].items[this.pointer.pos].text == 'prev') this.set('«', this.pointer.anchor.x, this.pointer.anchor.y + i);
 				else this.set('►', this.pointer.anchor.x, this.pointer.anchor.y + i);
 			} else this.set(' ', this.pointer.anchor.x, this.pointer.anchor.y + i);
+		}
+
+		let arrowAnchor = this.menus[this.currentMenu].directionAnchor;
+		if(this.pointer.pos == 0) {
+			this.set(' ', arrowAnchor.x, arrowAnchor.y);
+			this.set('▼', arrowAnchor.x + 1, arrowAnchor.y);
+		} else if(0 > this.pointer.pos || this.pointer.pos < this.pointer.range - 1) {
+			this.set('▲', arrowAnchor.x, arrowAnchor.y);
+			this.set('▼', arrowAnchor.x + 1, arrowAnchor.y);
+		} else if(this.pointer.pos == this.pointer.range - 1) {
+			this.set('▲', arrowAnchor.x, arrowAnchor.y);
+			this.set(' ', arrowAnchor.x + 1, arrowAnchor.y);
 		}
 	}
 
