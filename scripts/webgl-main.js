@@ -16,7 +16,7 @@ document.body.appendChild(app.view);
 let bg = new PIXI.Graphics().beginFill(0x000000).drawRect(0, 0, window.innerWidth, window.innerHeight).endFill();
 app.stage.addChild(bg);
 
-let crt = new Display(40, 18, findSize(window.innerWidth, window.innerHeight, 0.8, 40, 18), app.stage);
+let crt = new Display(40, 18, findSize(window.innerWidth, window.innerHeight, 0.88, 40, 18), app.stage);
 
 
 $(() => {
@@ -32,7 +32,7 @@ $(window).resize(() => {
 
 	app.resize();
 	bg.width = window.innerWidth; bg.height = window.innerHeight;
-	crt.resize(findSize(window.innerWidth, window.innerHeight, 0.8, 40, 18));
+	crt.resize(findSize(window.innerWidth, window.innerHeight, 0.88, 40, 18));
 
 	app.stage.filters[0].red[0] = length / 800;
 	app.stage.filters[0].blue[0] = length / 650;
@@ -72,7 +72,7 @@ app.stage.filters = [
 		seed: 0,
 		time: 0
 	}),
-	new PIXI.filters.BulgePinchFilter([0.5, 0.5], landscape ? window.innerHeight : window.innerWidth * 0.75, 0.3),
+	new PIXI.filters.BulgePinchFilter([0.5, 0.5], landscape ? window.innerHeight : window.innerWidth * 0.75, 0.2),
 ];
 
 

@@ -136,7 +136,7 @@ class Display {
 
 	pointerUpdate() {
 		for(let i = 0; i < this.pointer.range; i++) {
-			if(i == this.pointer.pos) this.set('>', this.pointer.anchor.x, this.pointer.anchor.y + i)
+			if(i == this.pointer.pos) this.set('►', this.pointer.anchor.x, this.pointer.anchor.y + i)
 			else this.set(' ', this.pointer.anchor.x, this.pointer.anchor.y + i);
 		}
 	}
