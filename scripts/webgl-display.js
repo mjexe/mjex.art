@@ -51,8 +51,6 @@ class Display {
 		this.width = cols * size;
 		this.height = rows * this.length;
 
-		console.log(rows * this.length);
-
 		this.container = new PIXI.Container();
 		this.container.position.set((window.innerWidth / 2) - (this.width / 2), (window.innerHeight / 2) - (this.height / 2));
 		this.parent.addChild(this.container);
@@ -97,6 +95,11 @@ class Display {
 	resize(size) {
 		let length = size / 0.714285714;
 		for(let y = 0; y < this.rows; y++) for(let x = 0; x < this.cols; x++) this.grid[y][x].set(null, x * size, y * length, size, null, null);
+		
+		this.size = size;
+		this.length = size / 0.714285714;
+		this.width = this.cols * size;
+		this.height = this.rows * this.length;
 
 		this.container.position.set((window.innerWidth / 2) - (this.width / 2), (window.innerHeight / 2) - (this.height / 2));
 	}

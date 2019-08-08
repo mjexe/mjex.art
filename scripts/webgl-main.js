@@ -27,10 +27,17 @@ $(() => {
 
 $(window).resize(() => {
 	length = window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth;
+
 	app.resize();
+	bg.width = window.innerWidth; bg.height = window.innerHeight;
 	crt.resize(findSize(window.innerWidth, window.innerHeight, 0.7, 40, 18));
-	app.stage.filters[2].radius = length;
-	console.log(app.renderer.view);
+
+	app.stage.filters[0].red[0] = length / 1000;
+	app.stage.filters[0].blue[0] = length / 650;
+	app.stage.filters[1].blur = window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight / 750 : window.innerWidth / 1500;
+	app.stage.filters[2].lineWidth = length / 500;
+	app.stage.filters[2].noiseSize = length / 500;
+	app.stage.filters[3].radius = length;
 });
 
 
@@ -56,14 +63,14 @@ app.stage.filters = [
 		lineContrast: 0.3,
 		verticalLine: false,
 		noise: 0.2,
-		noiseSize: 3,
+		noiseSize: length / 500,
 		vignetting: 0.3,
 		vignettingAlpha: 1,
 		vignettingBlur: 0.3,
 		seed: 0,
 		time: 0
 	}),
-	new PIXI.filters.BulgePinchFilter([0.5, 0.5], window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth, 0.4),
+	new PIXI.filters.BulgePinchFilter([0.5, 0.5], length, 0.4),
 ];
 
 
