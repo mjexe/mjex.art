@@ -1,4 +1,5 @@
 let length = window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth;
+landscape = window.innerWidth / window.innerHeight > (680 / 429);
 
 
 let type = 'WebGL';
@@ -27,6 +28,7 @@ $(() => {
 
 $(window).resize(() => {
 	length = window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth;
+	landscape = window.innerWidth / window.innerHeight > (680 / 429);
 
 	app.resize();
 	bg.width = window.innerWidth; bg.height = window.innerHeight;
@@ -34,10 +36,10 @@ $(window).resize(() => {
 
 	app.stage.filters[0].red[0] = length / 800;
 	app.stage.filters[0].blue[0] = length / 650;
-	app.stage.filters[1].blur = window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight / 750 : window.innerWidth / 1500;
-	app.stage.filters[2].lineWidth = length / 500;
-	app.stage.filters[2].noiseSize = length / 500;
-	app.stage.filters[3].radius = window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth * 0.75;
+	app.stage.filters[1].blur = landscape ? window.innerHeight / 750 : window.innerWidth / 1500;
+	app.stage.filters[2].lineWidth = landscape ? window.innerHeight / 300 : window.innerWidth / 500;
+	app.stage.filters[2].noiseSize = landscape ? window.innerHeight / 300 : window.innerWidth / 500;
+	app.stage.filters[3].radius = landscape ? window.innerHeight : window.innerWidth * 0.75;
 });
 
 
@@ -56,21 +58,21 @@ setInterval(() => {
 
 app.stage.filters = [
 	new PIXI.filters.RGBSplitFilter([length / 800, 0], [0, 0], [-length / 650, 0]),
-	new PIXI.filters.BlurFilter(window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight / 750 : window.innerWidth / 1500, 3),
+	new PIXI.filters.BlurFilter(landscape ? window.innerHeight / 750 : window.innerWidth / 1500, 3),
 	new PIXI.filters.CRTFilter({
 		curvature: 0,
-		lineWidth: length / 500,
+		lineWidth: landscape ? window.innerHeight / 300 : window.innerWidth / 500,
 		lineContrast: 0.3,
 		verticalLine: false,
 		noise: 0.2,
-		noiseSize: length / 500,
+		noiseSize: landscape ? window.innerHeight / 300 : window.innerWidth / 500,
 		vignetting: 0.3,
 		vignettingAlpha: 1,
 		vignettingBlur: 0.3,
 		seed: 0,
 		time: 0
 	}),
-	new PIXI.filters.BulgePinchFilter([0.5, 0.5], window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth * 0.75, 0.3),
+	new PIXI.filters.BulgePinchFilter([0.5, 0.5], landscape ? window.innerHeight : window.innerWidth * 0.75, 0.3),
 ];
 
 
