@@ -19,7 +19,9 @@ class Character {
 		this.text = new PIXI.Text(char[0], {fontFamily: 'VCR OSD Mono', fontSize: size, fill: color});
 		this.text.position.set(x, y);
 		this.text.calculateBounds();
+		this.text.zIndex = 100;
 		this.back = new PIXI.Graphics().beginFill(bg).drawRect(x, y, this.text._bounds.maxX + 1, this.text._bounds.maxY + 1).endFill();
+		this.back.zIndex = 0;
 		this.parent.addChild(this.back, this.text);
 
 		this.width = this.text._bounds.maxX; this.height = this.text._bounds.maxY;
