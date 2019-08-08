@@ -27,6 +27,7 @@ $(window).resize(() => {
 	app.resize();
 	crt.resize(findSize(window.innerWidth, window.innerHeight, 0.7, 40, 18));
 	app.stage.filters[2].radius = window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth;
+	console.log(app.renderer.view);
 });
 
 
@@ -39,11 +40,13 @@ function findSize(width, height, scale, cols, rows) {
 
 
 setInterval(() => {
-	app.stage.filters[0].seed += 10;
-	app.stage.filters[0].time += 0.05;
+	app.stage.filters[2].seed += 0.005;
+	app.stage.filters[2].time += 0.05;
 }, 1);
 
 app.stage.filters = [
+	new PIXI.filters.RGBSplitFilter([1.7, 0], [0, 0], [-3, 0]),
+	new PIXI.filters.BlurFilter(0.7, 3),
 	new PIXI.filters.CRTFilter({
 		curvature: 0,
 		lineWidth: 3,
@@ -54,10 +57,9 @@ app.stage.filters = [
 		vignetting: 0.3,
 		vignettingAlpha: 1,
 		vignettingBlur: 0.3,
-		seed: 1,
+		seed: 0,
 		time: 0
 	}),
-	new PIXI.filters.RGBSplitFilter([1.2, 0], [0, 0], [-2, 0]),
 	new PIXI.filters.BulgePinchFilter([0.5, 0.5], window.innerWidth / window.innerHeight > (680 / 429) ? window.innerHeight : window.innerWidth, 0.4),
 ];
 
