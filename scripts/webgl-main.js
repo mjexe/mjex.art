@@ -10,21 +10,23 @@ let app = new PIXI.Application({resizeTo: window});
 app.renderer.view.style.position = 'absolute';
 app.renderer.view.style.display = "block";
 app.renderer.autoDensity = false;
-app.renderer.backgroundColor = 0x202020;
+app.renderer.backgroundColor = 0x000000;
 document.body.appendChild(app.view);
 
 
 
 let crt, bg;
 
-$(() => {
-
-});
+$(() => {});
 
 function fontloaded() {
 	bg = new PIXI.Graphics().beginFill(0x000000).drawRect(0, 0, window.innerWidth, window.innerHeight).endFill(); app.stage.addChild(bg);
 	crt = new Display(40, 18, findSize(window.innerWidth, window.innerHeight, 0.86, 40, 18), app.stage);
-	
+
+	let poopy = PIXI.Sprite.from('img/hqdefault.jpg');
+	poopy.zOrder = 10;
+	crt.container.addChild(poopy);
+
 	setTimeout(() => crt.loadMenu(gethash()), 500);
 }
 

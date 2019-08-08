@@ -19,9 +19,9 @@ class Character {
 		this.text = new PIXI.Text(char[0], {fontFamily: 'VCR OSD Mono', fontSize: size, fill: color});
 		this.text.position.set(x, y);
 		this.text.calculateBounds();
-		this.text.zOrder = 100;
+		this.text.zIndex = 100;
 		this.back = new PIXI.Graphics().beginFill(bg).drawRect(x, y, this.text._bounds.maxX + 1, this.text._bounds.maxY + 1).endFill();
-		this.back.zOrder = 0;
+		this.back.zIndex = 0;
 		this.parent.addChild(this.back, this.text);
 
 		this.width = this.text._bounds.maxX; this.height = this.text._bounds.maxY;
@@ -66,6 +66,7 @@ class Display {
 		this.height = rows * this.length;
 
 		this.container = new PIXI.Container();
+		this.container.sortableChildren = false;
 		this.container.position.set((window.innerWidth / 2) - (this.width / 2), (window.innerHeight / 2) - (this.height / 2));
 		this.parent.addChild(this.container);
 
