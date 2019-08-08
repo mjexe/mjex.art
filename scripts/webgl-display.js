@@ -80,7 +80,7 @@ class Display {
 				text: [
 					['     mjex     ', 13, 3, schemes.normal[1], schemes.normal[0]],
 					['              ', 13, 4],
-					['     arts     ', 13, 5],
+					['     art      ', 13, 5],
 					['     music    ', 13, 6],
 					['     photos   ', 13, 7],
 					['     videos   ', 13, 8],
@@ -93,28 +93,28 @@ class Display {
 				],
 
 				items: [
-					{text: 'arts',   action: x => this.clm(y => this.loadMenu('arts'))},
-					{text: 'music',  action: 'music'},
+					{text: 'art',    action: x => this.clm(y => this.loadMenu('art'))},
+					{text: 'music',  action: x => this.clm(y => this.loadMenu('music'))},
 					{text: 'photos', action: 'photo'},
 					{text: 'videos', action: 'video'},
 					{text: 'webdev', action: 'web'},
-					{text: 'about',  action: 'art'},
+					{text: 'about',  action: 'about'},
 				],
 
 				scheme: 'normal',
 				pointerAnchor: {x: 16, y: 5},
 			},
 
-			arts: {
+			art: {
 				text: [
-					['       arts       ', 11, 3, schemes.normal[1], schemes.normal[0]],
-					['                  ', 11, 4],
-					['       deviantart ', 11, 5],
-					['       back       ', 11, 6],
-					['                  ', 11, 7],
-					['__________________', 11, 8],
-					[' ▲▼               ', 11, 9],
-					['--callback', x => setTimeout(() => this.createPointer('arts'), 500)],
+					['       art        ', 11, 5, schemes.normal[1], schemes.normal[0]],
+					['                  ', 11, 6],
+					['       deviantart ', 11, 7],
+					['       back       ', 11, 8],
+					['                  ', 11, 9],
+					['__________________', 11, 10],
+					[' ▲▼               ', 11, 11],
+					['--callback', x => setTimeout(() => this.createPointer('art'), 500)],
 				],
 	
 				items: [
@@ -123,8 +123,33 @@ class Display {
 				],
 	
 				scheme: 'normal',
-				pointerAnchor: {x: 16, y: 5},
-			}
+				pointerAnchor: {x: 16, y: 7},
+			},
+
+			music: {
+				text: [
+					['       music      ', 11, 4, schemes.normal[1], schemes.normal[0]],
+					['                  ', 11, 5],
+					['       bandcamp   ', 11, 6],
+					['       soundcloud ', 11, 7],
+					['       spotify    ', 11, 8],
+					['       back       ', 11, 9],
+					['                  ', 11, 10],
+					['__________________', 11, 11],
+					[' ▲▼               ', 11, 12],
+					['--callback', x => setTimeout(() => this.createPointer('music'), 500)],
+				],
+	
+				items: [
+					{text: 'bandcamp', action: x => location.href = '//www.deviantart.com/mjexe'},
+					{text: 'soundcloud', action: x => location.href = '//www.deviantart.com/mjexe'},
+					{text: 'spotify', action: x => location.href = '//www.deviantart.com/mjexe'},
+					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
+				],
+	
+				scheme: 'normal',
+				pointerAnchor: {x: 16, y: 6},
+			},
 		}
 	}
 
@@ -155,11 +180,13 @@ class Display {
 	loadMenu(menu) {this.multiset(this.menus[menu].text); this.currentMenu = menu; location.hash = '#' + menu}
 
 	cls(callback) {
+		this.erasePointer();
 		for(let y = 0; y < this.rows; y++) for(let x = 0; x < this.cols; x++) chcache.push([' ', x, y, schemes.normal[0], schemes.normal[1]]);
 		if(typeof callback != 'undefined') callback();
 	}
 
 	clm(callback) {
+		this.erasePointer();
 		let scheme = this.menus[this.currentMenu].scheme;
 		this.menus[this.currentMenu].text.forEach((e) => {
 			for(let i = 0; i < e[0].length; i++) {
@@ -190,10 +217,17 @@ class Display {
 	pointerUpdate() {
 		for(let i = 0; i < this.pointer.range; i++) {
 			if(i == this.pointer.pos) {
-				if(this.menus[this.currentMenu].items[this.pointer.pos].text == 'back') this.set('◄', this.pointer.anchor.x, this.pointer.anchor.y + i)
+				if(this.menus[this.currentMenu].items[this.pointer.pos].text == 'back') this.set('◄', this.pointer.anchor.x, this.pointer.anchor.y + i);
+				else if(this.menus[this.currentMenu].items[this.pointer.pos].text == 'next') this.set('»', this.pointer.anchor.x, this.pointer.anchor.y + i);
+				else if(this.menus[this.currentMenu].items[this.pointer.pos].text == 'prev') this.set('«', this.pointer.anchor.x, this.pointer.anchor.y + i);
 				else this.set('►', this.pointer.anchor.x, this.pointer.anchor.y + i);
 			} else this.set(' ', this.pointer.anchor.x, this.pointer.anchor.y + i);
 		}
+	}
+
+	erasePointer() {
+		for(let i = 0; i < this.pointer.range; i++) this.set(' ', this.pointer.anchor.x, this.pointer.anchor.y + i);
+		this.pointer = undefined;
 	}
 	
 	getSelection(menu) {
