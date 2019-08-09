@@ -25,7 +25,7 @@ function fontloaded() {
 
 	let poopy = PIXI.Sprite.from('img/hqdefault.jpg');
 	poopy.zOrder = 10;
-	crt.container.addChild(poopy);
+	// crt.container.addChild(poopy);
 
 	setTimeout(() => crt.loadMenu(gethash()), 500);
 }
@@ -91,7 +91,6 @@ app.stage.filters = [
 	}),
 	new PIXI.filters.BulgePinchFilter([0.5, 0.5], landscape ? window.innerHeight : window.innerWidth * 0.75, 0.2),
 ];
-
 
 
 Mousetrap.bind('left', () => app.renderer.backgroundColor = 0xff0000);
