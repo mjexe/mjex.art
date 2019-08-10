@@ -39,10 +39,10 @@ function fontloaded() {
 		parent: app.stage
 	});
 
-	let poopy = PIXI.Sprite.from('img/hqdefault.jpg');
+	let poopy = PIXI.Sprite.from('img/hankyspanky.png');
 	poopy.width = crt.container.width;
 	poopy.height = crt.container.height;
-	// crt.imgCont.addChild(poopy);
+	crt.imgCont.addChild(poopy);
 	
 
 	// load the menu
@@ -117,14 +117,14 @@ function loadFilters() {
 			bloomScale: 0.8,
 			brightness: 0.8,
 			blur: 5,
-			quality: 3
+			quality: 4
 		}),
 		new PIXI.filters.AdvancedBloomFilter({
 			threshold: 0,
 			bloomScale: 0.3,
 			brightness: 0.8,
 			blur: 40,
-			quality: 3
+			quality: 4
 		}),
 	];
 
@@ -137,8 +137,8 @@ function loadFilters() {
 }
 
 function setFilters() {
-	app.stage.filters[0].red[0] = length / 1250;
-	app.stage.filters[0].blue[0] = -length / 800;
+	app.stage.filters[0].red[0] = length / 800;
+	app.stage.filters[0].blue[0] = -length / 400;
 
 	app.stage.filters[1].blur = orientation ? window.innerHeight / 750 : window.innerWidth / 1500;
 

@@ -242,8 +242,8 @@ class Display {
 		this.container.position.set((window.innerWidth / 2) - (this.width / 2), (window.innerHeight / 2) - (this.height / 2));
 		this.bg.width = this.width;
 		this.bg.height = this.height;
-		// this.container.width = this.width;
-		// this.container.height = this.height;
+		this.imgCont.width = this.width;
+		this.imgCont.height = this.height;
 	}
 
 	set(data) {this.grid[data.y][data.x].set(data.data)}
