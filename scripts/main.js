@@ -78,7 +78,6 @@ function animate() {
 		app.stage.filters[2].seed += 0.005;
 		app.stage.filters[2].time += 0.05;
 		crt.container.filters[0].refresh();
-		crt.container.filters[0].offset = length / (Math.pow(frame, 0.8));
 	}
 
 	frame++;
@@ -193,5 +192,5 @@ function setFilters() {
 
 	app.stage.filters[3].radius = orientation ? window.innerHeight : window.innerWidth * 0.75;
 
-	crt.container.filters[0].offset = length / 1;
+	crt.container.filters[0].offset = length / 750;
 }
