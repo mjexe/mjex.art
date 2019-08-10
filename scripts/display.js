@@ -235,7 +235,7 @@ class Display {
 				],
 	
 				items: [
-					{text: 'deviantart',   action: x => location.href = '//www.deviantart.com/mjexe'},
+					{text: 'deviantart', action: x => location.href = '//www.deviantart.com/mjexe'},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
 				],
 	
@@ -257,7 +257,7 @@ class Display {
 				],
 	
 				items: [
-					{text: 'bandcamp',   action: x => location.href = '//www.youtube.com/channel/UC-uJ-BtQ-5GE52UhBpZF8UQ'},
+					{text: 'hyperverse', action: x => location.href = '//www.youtube.com/channel/UC-uJ-BtQ-5GE52UhBpZF8UQ'},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
 				],
 	
@@ -279,7 +279,7 @@ class Display {
 				],
 	
 				items: [
-					{text: 'bandcamp',   action: x => location.href = '//hyperve.rs/'},
+					{text: 'hyperverse', action: x => location.href = '//hyperve.rs/'},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
 				],
 	
@@ -300,7 +300,7 @@ class Display {
 				],
 	
 				items: [
-					{text: 'return',       action: x => this.clm(y => this.loadMenu('main'))},
+					{text: 'return', action: x => this.clm(y => this.loadMenu('main'))},
 				],
 	
 				scheme: 'normal',
