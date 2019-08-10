@@ -11,13 +11,9 @@ ratio = 680 / 429;
 type = 'WebGL';
 if(!PIXI.utils.isWebGLSupported()) type = 'canvas';
 PIXI.utils.sayHello(type);
-// set canvas type to WebGL or SVG mode
 
 // create new app instance and resize it to fill the window
 let app = new PIXI.Application({resizeTo: window});
-// app.renderer,view.style.position = 'absolute';
-// app.renderer.view.style.display = 'block';
-// app.renderer.autoDensity = false;
 app.renderer.backgroundColor = 0x000000;
 document.body.appendChild(app.view);
 
@@ -42,6 +38,11 @@ function fontloaded() {
 		size: findSize(width, height, 0.86, 40, 18),
 		parent: app.stage
 	});
+
+	let poopy = PIXI.Sprite.from('img/hqdefault.jpg');
+	poopy.width = crt.container.width;
+	poopy.height = crt.container.height;
+	// crt.imgCont.addChild(poopy);
 	
 
 	// load the menu
@@ -120,12 +121,11 @@ function loadFilters() {
 		}),
 		new PIXI.filters.AdvancedBloomFilter({
 			threshold: 0,
-			bloomScale: 0.5,
-			brightness: 0.7,
-			blur: 20,
+			bloomScale: 0.3,
+			brightness: 0.8,
+			blur: 40,
 			quality: 20
 		}),
-		new PIXI.filters.AdjustmentFilter({gamma: 0.8, contrast: 1.3}),
 	];
 
 	setFilters();
