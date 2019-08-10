@@ -125,6 +125,7 @@ class Display {
 		this.parent.addChild(this.container);
 		// add container to main stage
 
+		// create character array
 		this.grid = [];
 		for(let y = 0; y < this.rows; y++) {
 			this.grid[y] = [];
