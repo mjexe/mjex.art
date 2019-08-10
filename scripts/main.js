@@ -20,9 +20,7 @@ let app = new PIXI.Application({resizeTo: window});
 // app.renderer.autoDensity = false;
 app.renderer.backgroundColor = 0x000000;
 document.body.appendChild(app.view);
-loadFilters();
-setStandards();
-setFilters();
+
 
 
 
@@ -30,7 +28,8 @@ setFilters();
 // when the font is loaded this function is called
 function fontloaded() {
 	setStandards();
-	// set standard variables and set filters
+	loadFilters();
+	// set standard variables
 
 	// create background
 	bg = new PIXI.Graphics().beginFill(0x000000).drawRect(0, 0, width, height);
@@ -43,9 +42,10 @@ function fontloaded() {
 		size: findSize(width, height, 0.86, 40, 18),
 		parent: app.stage
 	});
+	
 
 	// load the menu
-	setTimeout(() => crt.loadMenu(gethash()), 500);
+	setTimeout(() => crt.loadMenu(gethash()), 1000);
 }
 
 // hash change listener
@@ -112,12 +112,20 @@ function loadFilters() {
 		}),
 		new PIXI.filters.BulgePinchFilter([0.5, 0.5], 0, 0.2),
 		new PIXI.filters.AdvancedBloomFilter({
-			threshold: 0.7,
+			threshold: 0.65,
 			bloomScale: 0.8,
-			brightness: 1,
-			blur: 10,
+			brightness: 0.8,
+			blur: 5,
 			quality: 20
 		}),
+		new PIXI.filters.AdvancedBloomFilter({
+			threshold: 0,
+			bloomScale: 0.5,
+			brightness: 0.7,
+			blur: 20,
+			quality: 20
+		}),
+		new PIXI.filters.AdjustmentFilter({gamma: 0.8, contrast: 1.3}),
 	];
 
 	setFilters();

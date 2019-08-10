@@ -25,14 +25,14 @@ class Character {
 	}
 
 	set(data) {
-		this.char = data.char || this.char;
-		this.x = data.x || this.x;
-		this.y = data.y || this.y;
-		this.size = data.size / 0.586 || this.size;
-		this.color = data.color || this.color;
-		this.bg = data.bg || this.bg;
-		this.alpha = data.alpha || this.alpha;
-		this.mask = typeof data.mask == 'undefined' ? this.mask : data.mask;
+		this.char  = data.char || this.char;
+		this.x     = typeof data.x == 'undefined' ? this.x : data.x;
+		this.y     = typeof data.y == 'undefined' ? this.y : data.y;
+		this.size  = typeof data.size == 'undefined' ? this.size : data.size / 0.586;
+		this.color = typeof data.color == 'undefined' ? this.color : data.color;
+		this.bg    = typeof data.bg == 'undefined' ? this.bg : data.bg;
+		this.alpha = typeof data.alpha == 'undefined' ? this.alpha : data.alpha;
+		this.mask  = typeof data.mask == 'undefined' ? this.mask : data.mask;
 		// data gathering
 
 		this.parent.removeChild(this.text, this.charmask, this.back);
@@ -105,16 +105,25 @@ class Display {
 		// calculations
 
 		this.container = new PIXI.Container();
-		// create container for display graphics
+		this.bgCont = new PIXI.Container();
+		this.imgCont = new PIXI.Container();
+		this.charCont = new PIXI.Container();
+		// create containers for display graphics
+
+		this.container.addChild(this.bgCont, this.imgCont, this.charCont);
+		// adds the subcontainers to the main container
 
 		this.bg = new PIXI.Graphics()
 			.beginFill(schemes.normal[1])
 			.drawRect(this.container.x, this.container.y, this.width, this.height);
-		this.container.addChild(this.bg);
+		this.bgCont.addChild(this.bg);
 		// create CRT background
 
 		this.container.position.set((width / 2) - (this.width / 2), (height / 2) - (this.height / 2));
+		// center the main container
+		
 		this.parent.addChild(this.container);
+		// add container to main stage
 
 		this.grid = [];
 		for(let y = 0; y < this.rows; y++) {
@@ -128,7 +137,7 @@ class Display {
 				bg: schemes.normal[1],
 				alpha: 0,
 				mask: false,
-				parent: this.container,
+				parent: this.charCont,
 			});
 		}
 
@@ -240,8 +249,6 @@ class Display {
 	setline(data) {
 		if(typeof data.callback != 'undefined') {chcache.push(data)}
 		else {
-			console.log(data.line, data.data)
-			// let char = data.line.length + data.x > this.cols ? data.line.substring(0, this.dim.width - data.x) : data.line;
 			for(let i = 0; i < data.line.length; i++) {
 				let tempdata = {
 					char: data.line[i],
