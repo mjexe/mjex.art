@@ -353,7 +353,7 @@ class Display {
 
 	multiset(payload) {payload.forEach((line) => this.setline(line))}
 
-	loadMenu(menu) {this.multiset(this.menus[menu].text); this.currentMenu = menu; location.hash = menu == 'main' ? '' : menu}
+	loadMenu(menu) {this.multiset(this.menus[menu].text); this.currentMenu = menu; location.hash = menu == 'main' ? '' : menu; document.title = 'mjex' + (menu == 'main' ? '' : ' - ' + menu)}
 
 	clm(callback) {
 		this.erasePointer();
