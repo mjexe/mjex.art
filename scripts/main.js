@@ -18,12 +18,14 @@ app.renderer.backgroundColor = 0x000000;
 app.renderer.autoDensity = true;
 document.body.appendChild(app.view);
 
+// let poopy = PIXI.Sprite.from('img/hankyspanky.png');
 
+init();
 
 
 
 // when the font is loaded this function is called
-function fontloaded() {
+function init() {
 	setStandards();
 	// set standard variables
 
@@ -41,14 +43,13 @@ function fontloaded() {
 
 	loadFilters();
 
-	let poopy = PIXI.Sprite.from('img/hankyspanky.png');
-	poopy.width = crt.container.width;
-	poopy.height = crt.container.height;
+	// poopy.width = crt.container.width;
+	// poopy.height = crt.container.height;
 	// crt.imgCont.addChild(poopy);
 	
 
 	// load the menu
-	setTimeout(() => crt.loadMenu(gethash()), 1000);
+	setTimeout(() => crt.loadMenu(gethash()), 0);
 }
 
 // hash change listener

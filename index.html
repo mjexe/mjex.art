@@ -2,6 +2,16 @@
 
 <html>
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-132345912-4"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-132345912-4');
+	</script> -->
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="theme-color" content="#000000">
@@ -10,16 +20,27 @@
 
 	<link rel="stylesheet" href="crt.css">
 	<link rel="stylesheet" href="main.css">
+
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+	<script>
+		// WebFontConfig = {active: fontloaded()};
+		WebFont.load({
+			custom: {
+				families: ['VCR OSD Mono'],
+				urls: ['fonts/VCR-OSD-MONO/stylesheet.css']
+			}
+		});
+	</script> -->
+
+	<script type="text/javascript" src="scripts/pixi.min.js"></script>
+	<script type="text/javascript" src="scripts/pixi-filters.js"></script>
 </head>
 
 <body>
-	<!-- <div id="container" class="display crt"></div> -->
-
 	<!-- third party scripts -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
-	<script type="text/javascript" src="scripts/pixi.min.js"></script>
-	<script type="text/javascript" src="scripts/pixi-filters.js"></script>
+	<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script> -->
+
 	<script type="text/javascript" src="scripts/mousetrap.min.js"></script>
 
 	<!-- <script src="https://cdn.jsdelivr.net/npm/three@0.107.0/build/three.min.js"></script> -->
@@ -31,18 +52,5 @@
 	<!-- my scripts -->
 	<script type="text/javascript" src="scripts/display.js"></script>
 	<script type="text/javascript" src="scripts/main.js"></script>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
-	<script>
-		WebFontConfig = {active: setTimeout(x => fontloaded(), 100)};
-		WebFont.load({
-			custom: {
-				families: ['VCR OSD Mono'],
-				urls: ['fonts/VCR-OSD-MONO/stylesheet.css']
-			}
-		});
-	</script>
-
-	<!-- <script type="text/javascript" src="scripts/html-disp-load.js"></script> -->
 </body>
 </html>
