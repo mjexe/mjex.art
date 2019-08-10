@@ -43,9 +43,9 @@ function init() {
 
 	loadFilters();
 
-	poopy.width = crt.container.width;
-	poopy.height = crt.container.height;
-	crt.imgCont.addChild(poopy);
+	// poopy.width = crt.container.width;
+	// poopy.height = crt.container.height;
+	// crt.imgCont.addChild(poopy);
 	
 
 	// load the menu
