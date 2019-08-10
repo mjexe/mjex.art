@@ -18,7 +18,7 @@ app.renderer.backgroundColor = 0x000000;
 app.renderer.autoDensity = true;
 document.body.appendChild(app.view);
 
-// let poopy = PIXI.Sprite.from('img/hankyspanky.png');
+let poopy = PIXI.Sprite.from('img/hankyspanky.png');
 
 init();
 
@@ -43,9 +43,9 @@ function init() {
 
 	loadFilters();
 
-	// poopy.width = crt.container.width;
-	// poopy.height = crt.container.height;
-	// crt.imgCont.addChild(poopy);
+	poopy.width = crt.container.width;
+	poopy.height = crt.container.height;
+	crt.imgCont.addChild(poopy);
 	
 
 	// load the menu
