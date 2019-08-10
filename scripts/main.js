@@ -1,7 +1,16 @@
 let width, height, ratio,
 	length, orientation,
-	crt, bg;
+	crt, bg, frame = 0;
+
+let animateFilters = false;
 // variable initialization
+
+
+let img = {
+	stinky: PIXI.Sprite.from('img/hankyspanky.png'),
+};
+// image loading
+
 
 // static variable setting
 ratio = 680 / 429;
@@ -18,11 +27,10 @@ app.renderer.backgroundColor = 0x000000;
 app.renderer.autoDensity = true;
 document.body.appendChild(app.view);
 
-// let poopy = PIXI.Sprite.from('img/hankyspanky.png');
+
+
 
 init();
-
-
 
 // when the font is loaded this function is called
 function init() {
@@ -42,6 +50,7 @@ function init() {
 	});
 
 	loadFilters();
+	animate();
 
 	// poopy.width = crt.container.width;
 	// poopy.height = crt.container.height;
@@ -62,7 +71,19 @@ $(window).resize(() => {
 	setStandards();
 	resizeApp();
 	setFilters();
-})
+});
+
+function animate() {
+	if(animateFilters) {
+		app.stage.filters[2].seed += 0.005;
+		app.stage.filters[2].time += 0.05;
+		crt.container.filters[0].refresh();
+		crt.container.filters[0].offset = length / (Math.pow(frame, 0.8));
+	}
+
+	frame++;
+	requestAnimationFrame(animate);
+}
 
 
 
@@ -111,7 +132,7 @@ function loadFilters() {
 			vignetting: 0.3,
 			vignettingAlpha: 1,
 			vignettingBlur: 0.3,
-			seed: 0,
+			seed: 1000,
 			time: 0
 		}),
 		new PIXI.filters.BulgePinchFilter([0.5, 0.5], 0, 0.2),
@@ -158,12 +179,7 @@ function loadFilters() {
 	];
 
 	setFilters();
-
-	setInterval(() => {
-		app.stage.filters[2].seed += 0.005;
-		app.stage.filters[2].time += 0.05;
-		crt.container.filters[0].refresh();
-	}, 1);
+	animateFilters = true;
 }
 
 function setFilters() {
@@ -177,5 +193,5 @@ function setFilters() {
 
 	app.stage.filters[3].radius = orientation ? window.innerHeight : window.innerWidth * 0.75;
 
-	crt.container.filters[0].offset = length / 750;
+	crt.container.filters[0].offset = length / 1;
 }
