@@ -117,14 +117,14 @@ function loadFilters() {
 			bloomScale: 0.8,
 			brightness: 0.8,
 			blur: 5,
-			quality: 4
+			quality: 3
 		}),
 		new PIXI.filters.AdvancedBloomFilter({
 			threshold: 0,
 			bloomScale: 0.3,
 			brightness: 0.8,
 			blur: 40,
-			quality: 4
+			quality: 3
 		}),
 	];
 
