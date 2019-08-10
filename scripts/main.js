@@ -15,6 +15,7 @@ PIXI.utils.sayHello(type);
 // create new app instance and resize it to fill the window
 let app = new PIXI.Application({resizeTo: window});
 app.renderer.backgroundColor = 0x000000;
+app.renderer.autoDensity = true;
 document.body.appendChild(app.view);
 
 
@@ -24,7 +25,6 @@ document.body.appendChild(app.view);
 // when the font is loaded this function is called
 function fontloaded() {
 	setStandards();
-	loadFilters();
 	// set standard variables
 
 	// create background
@@ -39,10 +39,12 @@ function fontloaded() {
 		parent: app.stage
 	});
 
+	loadFilters();
+
 	let poopy = PIXI.Sprite.from('img/hankyspanky.png');
 	poopy.width = crt.container.width;
 	poopy.height = crt.container.height;
-	crt.imgCont.addChild(poopy);
+	// crt.imgCont.addChild(poopy);
 	
 
 	// load the menu
@@ -128,11 +130,39 @@ function loadFilters() {
 		}),
 	];
 
+	crt.imgCont.filters = [
+		new PIXI.filters.GlitchFilter({
+			seed: 1,
+			slices: 1,
+			offset: 5,
+			direction: 90,
+			fillMode: 2,
+			red: [0, 0],
+			green: [0, 0],
+			blue: [0, 0]
+		}),
+	];
+
+	crt.container.filters = [
+		new PIXI.filters.GlitchFilter({
+			seed: 1,
+			slices: 1,
+			offset: 3,
+			direction: 90,
+			fillMode: 2,
+			red: [0, 0],
+			green: [0, 0],
+			blue: [0, 0]
+		}),
+	];
+
 	setFilters();
 
 	setInterval(() => {
 		app.stage.filters[2].seed += 0.005;
 		app.stage.filters[2].time += 0.05;
+		// crt.imgCont.filters[0].refresh();
+		crt.container.filters[0].refresh();
 	}, 1);
 }
 
@@ -146,4 +176,6 @@ function setFilters() {
 	app.stage.filters[2].noiseSize = orientation ? window.innerHeight / 300 : window.innerWidth / 500;
 
 	app.stage.filters[3].radius = orientation ? window.innerHeight : window.innerWidth * 0.75;
+
+	crt.container.filters[0].offset = length / 500;
 }

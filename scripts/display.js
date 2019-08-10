@@ -162,10 +162,10 @@ class Display {
 				items: [
 					{text: 'art',    action: x => this.clm(y => this.loadMenu('art'))},
 					{text: 'music',  action: x => this.clm(y => this.loadMenu('music'))},
-					{text: 'photos', action: 'photo'},
-					{text: 'videos', action: 'video'},
-					{text: 'webdev', action: 'web'},
-					{text: 'about',  action: 'about'},
+					{text: 'photos', action: x => this.clm(y => this.loadMenu('photos'))},
+					{text: 'videos', action: x => this.clm(y => this.loadMenu('videos'))},
+					{text: 'webdev', action: x => this.clm(y => this.loadMenu('webdev'))},
+					{text: 'about',  action: x => this.clm(y => this.loadMenu('about'))},
 				],
 
 				scheme: 'normal',
@@ -175,7 +175,7 @@ class Display {
 
 			art: {
 				text: [
-					{line: '       art        ', x: 11, y: 5,  data: {color: 0xff0000, bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '       art        ', x: 11, y: 5,  data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                  ', x: 11, y: 6,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '       deviantart ', x: 11, y: 7,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '       back       ', x: 11, y: 8,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -189,7 +189,7 @@ class Display {
 					{text: 'deviantart', action: x => location.href = '//www.deviantart.com/mjexe'},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
 				],
-	
+
 				scheme: 'normal',
 				pointerAnchor: {x: 16, y: 7},
 				directionAnchor: {x: 12, y: 11},
@@ -210,15 +210,101 @@ class Display {
 				],
 	
 				items: [
-					{text: 'bandcamp', action: x => location.href = '//www.deviantart.com/mjexe'},
-					{text: 'soundcloud', action: x => location.href = '//www.deviantart.com/mjexe'},
-					{text: 'spotify', action: x => location.href = '//www.deviantart.com/mjexe'},
+					{text: 'bandcamp',   action: x => location.href = '//mjex.bandcamp.com'},
+					{text: 'soundcloud', action: x => location.href = '//soundcloud.com/mjexe'},
+					{text: 'spotify',    action: x => location.href = '//open.spotify.com/artist/68wvgLB5yPfYTdrG7HLuk6?si=XGU6jM59Tt21sUh9phcI_w'},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
 				],
 	
 				scheme: 'normal',
 				pointerAnchor: {x: 16, y: 6},
 				directionAnchor: {x: 12, y: 12},
+			},
+
+			photos: {
+				text: [
+					{line: '     photos     ', x: 12, y: 5,  data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                ', x: 12, y: 6,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '     deviantart ', x: 12, y: 7,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '     back       ', x: 12, y: 8,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                ', x: 12, y: 9,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '________________', x: 12, y: 10, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  ▼             ', x: 12, y: 11, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{callback: x => setTimeout(() => this.createPointer('photos'), 500)},
+				],
+	
+				items: [
+					{text: 'deviantart',   action: x => location.href = '//www.deviantart.com/mjexe'},
+					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
+				],
+	
+				scheme: 'normal',
+				pointerAnchor: {x: 15, y: 7},
+				directionAnchor: {x: 13, y: 11},
+			},
+
+			videos: {
+				text: [
+					{line: '      videos      ', x: 11, y: 5,  data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                  ', x: 11, y: 6,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      youtube     ', x: 11, y: 7,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      back        ', x: 11, y: 8,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                  ', x: 11, y: 9,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '__________________', x: 11, y: 10, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  ▼               ', x: 11, y: 11, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{callback: x => setTimeout(() => this.createPointer('videos'), 500)},
+				],
+	
+				items: [
+					{text: 'bandcamp',   action: x => location.href = '//www.youtube.com/channel/UC-uJ-BtQ-5GE52UhBpZF8UQ'},
+					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
+				],
+	
+				scheme: 'normal',
+				pointerAnchor: {x: 15, y: 7},
+				directionAnchor: {x: 12, y: 11},
+			},
+
+			webdev: {
+				text: [
+					{line: '      webdev      ', x: 11, y: 5,  data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                  ', x: 11, y: 6,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      hyperverse  ', x: 11, y: 7,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      back        ', x: 11, y: 8,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                  ', x: 11, y: 9,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '__________________', x: 11, y: 10, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  ▼               ', x: 11, y: 11, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{callback: x => setTimeout(() => this.createPointer('webdev'), 500)},
+				],
+	
+				items: [
+					{text: 'bandcamp',   action: x => location.href = '//hyperve.rs/'},
+					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
+				],
+	
+				scheme: 'normal',
+				pointerAnchor: {x: 15, y: 7},
+				directionAnchor: {x: 12, y: 11},
+			},
+
+			about: {
+				text: [
+					{line: '       about        ', x: 10, y: 6,  data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                    ', x: 10, y: 7,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '   just some dude   ', x: 10, y: 8,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                    ', x: 10, y: 9,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '____________________', x: 10, y: 10, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  back              ', x: 10, y: 11, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{callback: x => setTimeout(() => this.createPointer('about'), 500)},
+				],
+	
+				items: [
+					{text: 'return',       action: x => this.clm(y => this.loadMenu('main'))},
+				],
+	
+				scheme: 'normal',
+				pointerAnchor: {x: 10, y: 11},
+				directionAnchor: {x: 0, y: -1},
 			},
 		}
 	}
@@ -324,15 +410,17 @@ class Display {
 		}
 
 		let arrowAnchor = this.menus[this.currentMenu].directionAnchor;
-		if(this.pointer.pos == 0) {
-			this.set({x: arrowAnchor.x, y: arrowAnchor.y, data: {char: ' '}});
-			this.set({x: arrowAnchor.x + 1, y: arrowAnchor.y, data: {char: '▼'}});
-		} else if(0 > this.pointer.pos || this.pointer.pos < this.pointer.range - 1) {
-			this.set({x: arrowAnchor.x, y: arrowAnchor.y, data: {char: '▲'}});
-			this.set({x: arrowAnchor.x + 1, y: arrowAnchor.y, data: {char: '▼'}});
-		} else if(this.pointer.pos == this.pointer.range - 1) {
-			this.set({x: arrowAnchor.x, y: arrowAnchor.y, data: {char: '▲'}});
-			this.set({x: arrowAnchor.x + 1, y: arrowAnchor.y, data: {char: ' '}});
+		if(arrowAnchor.y >= 0) {
+			if(this.pointer.pos == 0) {
+				this.set({x: arrowAnchor.x, y: arrowAnchor.y, data: {char: ' '}});
+				this.set({x: arrowAnchor.x + 1, y: arrowAnchor.y, data: {char: '▼'}});
+			} else if(0 > this.pointer.pos || this.pointer.pos < this.pointer.range - 1) {
+				this.set({x: arrowAnchor.x, y: arrowAnchor.y, data: {char: '▲'}});
+				this.set({x: arrowAnchor.x + 1, y: arrowAnchor.y, data: {char: '▼'}});
+			} else if(this.pointer.pos == this.pointer.range - 1) {
+				this.set({x: arrowAnchor.x, y: arrowAnchor.y, data: {char: '▲'}});
+				this.set({x: arrowAnchor.x + 1, y: arrowAnchor.y, data: {char: ' '}});
+			}
 		}
 	}
 
