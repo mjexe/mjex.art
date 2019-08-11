@@ -144,19 +144,20 @@ class Display {
 
 
 		this.menus = {
+			// ==========================================================================================================================
 			main: {
 				text: [
-					{line: '     mjex     ', x: 13, y: 3,  data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '              ', x: 13, y: 4,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '     art      ', x: 13, y: 5,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '     music    ', x: 13, y: 6,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '     photos   ', x: 13, y: 7,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '     videos   ', x: 13, y: 8,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '     webdev   ', x: 13, y: 9,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '     about    ', x: 13, y: 10, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '              ', x: 13, y: 11, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '______________', x: 13, y: 12, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  ▼           ', x: 13, y: 13, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '     mjex     ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '              ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '     art      ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '     music    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '     photos   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '     videos   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '     webdev   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '     about    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '              ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '______________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  ▼           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{callback: x => setTimeout(() => this.createPointer('main'), 500)},
 				],
 
@@ -170,43 +171,75 @@ class Display {
 				],
 
 				scheme: 'normal',
-				pointerAnchor: {x: 16, y: 5},
-				directionAnchor: {x: 14, y: 13},
+				pointerOffset: 3,
 			},
 
+
+
+			// ==========================================================================================================================
 			art: {
 				text: [
-					{line: '       art        ', x: 11, y: 5,  data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                  ', x: 11, y: 6,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       deviantart ', x: 11, y: 7,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       back       ', x: 11, y: 8,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                  ', x: 11, y: 9,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '__________________', x: 11, y: 10, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  ▼               ', x: 11, y: 11, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       art        ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       deviantart ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       twitch     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       about      ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       back       ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  ▼               ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{callback: x => setTimeout(() => this.createPointer('art'), 500)},
 				],
 	
 				items: [
 					{text: 'deviantart', action: x => location.href = '//www.deviantart.com/mjexe'},
+					{text: 'twitch',     action: x => location.href = '//www.twitch.tv/mjexe'},
+					{text: 'about',      action: x => this.clm(y => this.loadMenu('art-about'))},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
 				],
 
 				scheme: 'normal',
-				pointerAnchor: {x: 16, y: 7},
-				directionAnchor: {x: 12, y: 11},
+				pointerOffset: 5,
 			},
 
+			'art-about': {
+				text: [
+					{line: '        about art       ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                        ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: " i'm not very good at   ", data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' drawing so i stream my ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' practice sessions to   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' show how im figuring   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' it all out.            ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                        ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  back                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{callback: x => setTimeout(() => this.createPointer('art-about'), 500)},
+				],
+	
+				items: [
+					{text: 'return', action: x => this.clm(y => this.loadMenu('art'))},
+				],
+	
+				scheme: 'normal',
+				pointerAnchor: {x: 8, y: 13},
+				directionAnchor: {x: 0, y: -1},
+			},
+
+
+
+			// ==========================================================================================================================
 			music: {
 				text: [
-					{line: '       music      ', x: 11, y: 4,  data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                  ', x: 11, y: 5,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       bandcamp   ', x: 11, y: 6,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       soundcloud ', x: 11, y: 7,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       spotify    ', x: 11, y: 8,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       back       ', x: 11, y: 9,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                  ', x: 11, y: 10, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '__________________', x: 11, y: 11, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  ▼               ', x: 11, y: 12, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       music      ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       bandcamp   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       soundcloud ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       spotify    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       back       ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  ▼               ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{callback: x => setTimeout(() => this.createPointer('music'), 500)},
 				],
 	
@@ -218,41 +251,45 @@ class Display {
 				],
 	
 				scheme: 'normal',
-				pointerAnchor: {x: 16, y: 6},
-				directionAnchor: {x: 12, y: 12},
+				pointerOffset: 5,
 			},
 
+
+
+			// ==========================================================================================================================
 			photos: {
 				text: [
-					{line: '     photos     ', x: 12, y: 5,  data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                ', x: 12, y: 6,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '     deviantart ', x: 12, y: 7,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '     back       ', x: 12, y: 8,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                ', x: 12, y: 9,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '________________', x: 12, y: 10, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  ▼             ', x: 12, y: 11, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '     photos     ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '     deviantart ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '     back       ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  ▼             ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{callback: x => setTimeout(() => this.createPointer('photos'), 500)},
 				],
-	
+				
 				items: [
 					{text: 'deviantart', action: x => location.href = '//www.deviantart.com/mjexe'},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
 				],
 	
 				scheme: 'normal',
-				pointerAnchor: {x: 15, y: 7},
-				directionAnchor: {x: 13, y: 11},
+				pointerOffset: 3,
 			},
 
+
+
+			// ==========================================================================================================================
 			videos: {
 				text: [
-					{line: '      videos      ', x: 11, y: 5,  data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                  ', x: 11, y: 6,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      youtube     ', x: 11, y: 7,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      back        ', x: 11, y: 8,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                  ', x: 11, y: 9,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '__________________', x: 11, y: 10, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  ▼               ', x: 11, y: 11, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      videos      ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      youtube     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      back        ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  ▼               ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{callback: x => setTimeout(() => this.createPointer('videos'), 500)},
 				],
 	
@@ -262,19 +299,21 @@ class Display {
 				],
 	
 				scheme: 'normal',
-				pointerAnchor: {x: 15, y: 7},
-				directionAnchor: {x: 12, y: 11},
+				pointerOffset: 4,
 			},
 
+
+
+			// ==========================================================================================================================
 			webdev: {
 				text: [
-					{line: '      webdev      ', x: 11, y: 5,  data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                  ', x: 11, y: 6,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      hyperverse  ', x: 11, y: 7,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      back        ', x: 11, y: 8,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                  ', x: 11, y: 9,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '__________________', x: 11, y: 10, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  ▼               ', x: 11, y: 11, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      webdev      ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      hyperverse  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      back        ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  ▼               ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{callback: x => setTimeout(() => this.createPointer('webdev'), 500)},
 				],
 	
@@ -284,18 +323,20 @@ class Display {
 				],
 	
 				scheme: 'normal',
-				pointerAnchor: {x: 15, y: 7},
-				directionAnchor: {x: 12, y: 11},
+				pointerOffset: 4,
 			},
 
+
+			
+			// ==========================================================================================================================
 			about: {
 				text: [
-					{line: '       about        ', x: 10, y: 6,  data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                    ', x: 10, y: 7,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '   just some dude   ', x: 10, y: 8,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                    ', x: 10, y: 9,  data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '____________________', x: 10, y: 10, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  back              ', x: 10, y: 11, data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       about        ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '   just some dude   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '____________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  back              ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{callback: x => setTimeout(() => this.createPointer('about'), 500)},
 				],
 	
@@ -342,7 +383,7 @@ class Display {
 				let tempdata = {
 					char: data.line[i],
 					x: data.x + i,
-					y: data.y,
+					y: data[i].y,
 					data: data.data
 				};
 				
@@ -351,21 +392,40 @@ class Display {
 		}
 	}
 
-	multiset(payload) {payload.forEach((line) => this.setline(line))}
+	multiset(data) {
+		if(typeof data[0].x == 'undefined') data[0].x = Math.floor(this.cols / 2) - Math.floor(data[0].line.length / 2);
+		if(typeof data[0].y == 'undefined') data[0].y = Math.floor(this.rows / 2) - Math.floor(data.length / 2);
+		for(let line = 0; line < data.length; line++) {
+			if(typeof data[line].callback != 'undefined') {chcache.push(data[line])}
+			else {
+				for(let i = 0; i < data[line].line.length; i++) {
+					let tempdata = {
+						char: data[line].line[i],
+						x: typeof data[line].x == 'undefined' ? data[0].x + i : data[line].x + i,
+						y: typeof data[line].y == 'undefined' ? data[0].y + line : data[line].y,
+						data: data[line].data
+					};
+					
+					chcache.push(tempdata);
+				};
+			}
+		}
+	}
 
 	loadMenu(menu) {this.multiset(this.menus[menu].text); this.currentMenu = menu; location.hash = menu == 'main' ? '' : menu; document.title = 'mjex' + (menu == 'main' ? '' : ' - ' + menu)}
 
 	clm(callback) {
 		this.erasePointer();
-		this.menus[this.currentMenu].text.forEach((e) => {
+		let firstline = this.menus[this.currentMenu].text[0];
+		this.menus[this.currentMenu].text.forEach((e, index) => {
 			if(typeof e.callback == 'undefined') {
 				for(let i = 0; i < e.line.length; i++) {
 					chcache.push({
 						char: ' ',
-						x: e.x + i,
-						y: e.y,
+						x: typeof e.x == 'undefined' ? firstline.x + i : e.x + i,
+						y: typeof e.y == 'undefined' ? firstline.y + index : e.y,
 						data: {
-							color: 0xff0000,
+							color: schemes.normal[0],
 							bg: schemes.normal[1],
 							alpha: 0,
 							mask: false
@@ -380,7 +440,31 @@ class Display {
 
 	createPointer(menu) {
 		menu = menu || this.currentMenu;
-		this.pointer = new MenuPointer(this.menus[menu].pointerAnchor.x, this.menus[menu].pointerAnchor.y, this.menus[menu].items.length);
+		
+		let x, y, thismenu = this.menus[menu];
+		x = Math.floor(this.cols / 2) - Math.floor(thismenu.text[0].line.length / 2),
+		y = Math.floor(this.rows / 2) - Math.floor(thismenu.text.length / 2);
+		console.log(menu + ': coordinates')
+		console.log('top left: ' + x + ', ' + y);
+		console.log('btm left: ' + x + ', ' + (y + (thismenu.text.length - 2)));
+
+
+		if(typeof thismenu.pointerAnchor == 'undefined') {
+			thismenu.pointerAnchor = {
+				x: x + thismenu.pointerOffset,
+				y: y + 2
+			};
+		}
+
+		if(typeof thismenu.directionAnchor == 'undefined') {
+			thismenu.directionAnchor = {
+				x: x + 1,
+				y: y + (thismenu.text.length - 2)
+			};
+		}
+
+
+		this.pointer = new MenuPointer(thismenu.pointerAnchor.x, thismenu.pointerAnchor.y, thismenu.items.length);
 		this.pointerUpdate();
 	}
 
@@ -435,9 +519,10 @@ class Display {
 		return this.menus[menu].items[this.pointer.pos];
 	}
 
-	select(menu) {
+	select(item, menu) {
+		item = typeof item == 'undefined' ? this.pointer.pos : item;
 		menu = menu || this.currentMenu;
-		this.menus[menu].items[this.pointer.pos].action();
+		this.menus[menu].items[item].action();
 	}
 }
 
@@ -457,7 +542,8 @@ class MenuPointer {
 
 Mousetrap.bind('up', () => crt.movePointer('up'));
 Mousetrap.bind('down', () => crt.movePointer('down'));
-Mousetrap.bind('enter', () => crt.select());
+Mousetrap.bind('left', () => crt.select(crt.menus[crt.currentMenu].items.findIndex(item => item.text  == 'back')));
+Mousetrap.bind(['enter', 'right'], () => crt.select());
 
 let chcache = [];
 let ci = 0;
