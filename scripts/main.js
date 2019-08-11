@@ -8,6 +8,7 @@ let animateFilters = false;
 
 let img = {
 	'ferry-wheel': PIXI.Sprite.from('img/ferry-wheel.png'),
+	'no-parking': PIXI.Sprite.from('img/no-parking.png'),
 };
 // image loading
 
@@ -51,11 +52,6 @@ function init() {
 
 	loadFilters();
 	animate();
-
-	// poopy.width = crt.container.width;
-	// poopy.height = crt.container.height;
-	// crt.imgCont.addChild(poopy);
-	
 
 	// load the menu
 	setTimeout(() => crt.loadMenu(gethash()), 0);

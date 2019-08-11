@@ -204,16 +204,15 @@ class Display {
 
 			'art-about': {
 				text: [
-					{line: '        about art       ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                        ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: " i'm not very good at   ", data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' drawing so i stream my ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' practice sessions to   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' show how im figuring   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' it all out.            ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                        ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  back                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '          about art         ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                            ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' i make art because its fun ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: "                            ", data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' art live streams every     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' once in a while            ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                            ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '____________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  back                      ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{callback: x => setTimeout(() => this.createPointer(), 500)},
 				],
 	
@@ -222,7 +221,7 @@ class Display {
 				],
 	
 				scheme: 'normal',
-				pointerAnchor: {x: 8, y: 13},
+				pointerAnchor: {x: 6, y: 12},
 				directionAnchor: {x: 0, y: -1},
 			},
 
@@ -262,6 +261,7 @@ class Display {
 					{line: '       photos       ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '       ferry wheel  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       no parking   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '       profiles     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '       back         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -272,12 +272,13 @@ class Display {
 				
 				items: [
 					{text: 'ferry wheel', action: x => {}, img: img['ferry-wheel']},
+					{text: 'no parking',  action: x => {}, img: img['no-parking']},
 					{text: 'profiles',    action: x => this.clm(y => this.loadMenu('photos-profiles'))},
 					{text: 'back',        action: x => this.clm(y => this.loadMenu('main'))},
 				],
 	
 				scheme: 'normal',
-				pointerOffset: 3,
+				pointerOffset: 5,
 			},
 
 			'photos-profiles': {
@@ -534,20 +535,16 @@ class Display {
 			}
 		}
 
-		if(typeof thismenu.items[this.pointer.pos].img == 'undefined') {
-			this.imgCont.removeChild(this.currentImg);
-			this.currentImg = undefined;
-		} else {
-			this.currentImg = thismenu.items[this.pointer.pos].img;
-			this.currentImg.width = this.width;
-			this.currentImg.height = this.height + 10;
-			this.imgCont.addChild(this.currentImg);
+		thismenu.items.forEach((e) => this.imgCont.removeChild(e.img));
+		if(typeof thismenu.items[this.pointer.pos].img != 'undefined') {
+			this.imgCont.addChild(thismenu.items[this.pointer.pos].img);
+			thismenu.items[this.pointer.pos].img.width = this.width;
+			thismenu.items[this.pointer.pos].img.height = this.height;
 		}
 	}
 
 	erasePointer() {
-		this.imgCont.removeChild(this.currentImg);
-		this.currentImg = undefined;
+		this.menus[this.currentMenu].items.forEach((e) => this.imgCont.removeChild(e.img))
 		for(let i = 0; i < this.pointer.range; i++) this.set({x: this.pointer.anchor.x, y: this.pointer.anchor.y + i, data: {char: ' '}});;
 		this.pointer = undefined;
 	}
@@ -580,7 +577,7 @@ class MenuPointer {
 
 Mousetrap.bind('up', () => crt.movePointer('up'));
 Mousetrap.bind('down', () => crt.movePointer('down'));
-Mousetrap.bind('left', () => crt.select(crt.menus[crt.currentMenu].items.findIndex(item => item.text  == 'back')));
+Mousetrap.bind('left', () => crt.select(crt.menus[crt.currentMenu].items.findIndex(item => item.text  == 'back' || item.text  == 'return')));
 Mousetrap.bind(['enter', 'right'], () => crt.select());
 
 let chcache = [];
