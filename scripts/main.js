@@ -7,7 +7,7 @@ let animateFilters = false;
 
 
 let img = {
-	stinky: PIXI.Sprite.from('img/hankyspanky.png'),
+	'ferry-wheel': PIXI.Sprite.from('img/ferry-wheel.png'),
 };
 // image loading
 

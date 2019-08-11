@@ -145,7 +145,7 @@ class Display {
 
 		this.menus = {
 			// ==========================================================================================================================
-			main: {
+			'main': {
 				text: [
 					{line: '     mjex     ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '              ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -158,7 +158,7 @@ class Display {
 					{line: '              ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '______________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '  ▼           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer('main'), 500)},
+					{callback: x => setTimeout(() => this.createPointer(), 500)},
 				],
 
 				items: [
@@ -177,7 +177,7 @@ class Display {
 
 
 			// ==========================================================================================================================
-			art: {
+			'art': {
 				text: [
 					{line: '       art        ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -188,7 +188,7 @@ class Display {
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '  ▼               ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer('art'), 500)},
+					{callback: x => setTimeout(() => this.createPointer(), 500)},
 				],
 	
 				items: [
@@ -214,7 +214,7 @@ class Display {
 					{line: '                        ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '  back                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer('art-about'), 500)},
+					{callback: x => setTimeout(() => this.createPointer(), 500)},
 				],
 	
 				items: [
@@ -229,7 +229,7 @@ class Display {
 
 
 			// ==========================================================================================================================
-			music: {
+			'music': {
 				text: [
 					{line: '       music      ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -240,7 +240,7 @@ class Display {
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '  ▼               ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer('music'), 500)},
+					{callback: x => setTimeout(() => this.createPointer(), 500)},
 				],
 	
 				items: [
@@ -257,31 +257,56 @@ class Display {
 
 
 			// ==========================================================================================================================
-			photos: {
+			'photos': {
 				text: [
-					{line: '     photos     ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '     deviantart ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '     back       ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       photos       ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       ferry wheel  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       profiles     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       back         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '____________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '  ▼             ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer('photos'), 500)},
+					{callback: x => setTimeout(() => this.createPointer(), 500)},
 				],
 				
 				items: [
-					{text: 'deviantart', action: x => location.href = '//www.deviantart.com/mjexe'},
-					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
+					{text: 'ferry wheel', action: x => {}, img: img['ferry-wheel']},
+					{text: 'profiles',    action: x => this.clm(y => this.loadMenu('photos-profiles'))},
+					{text: 'back',        action: x => this.clm(y => this.loadMenu('main'))},
 				],
 	
 				scheme: 'normal',
 				pointerOffset: 3,
 			},
 
+			'photos-profiles': {
+				text: [
+					{line: '   photo profiles   ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       deviantart   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       instagram    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       back         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '____________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  ▼                 ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{callback: x => setTimeout(() => this.createPointer(), 500)},
+				],
+				
+				items: [
+					{text: 'deviantart', action: x => location.href = '//www.deviantart.com/mjexe'},
+					{text: 'instagram',  action: x => location.href = 'https://www.instagram.com/mjexe/'},
+					{text: 'back',       action: x => this.clm(y => this.loadMenu('photos'))},
+				],
+	
+				scheme: 'normal',
+				pointerOffset: 5,
+			},
+
 
 
 			// ==========================================================================================================================
-			videos: {
+			'videos': {
 				text: [
 					{line: '      videos      ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -290,7 +315,7 @@ class Display {
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '  ▼               ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer('videos'), 500)},
+					{callback: x => setTimeout(() => this.createPointer(), 500)},
 				],
 	
 				items: [
@@ -305,7 +330,7 @@ class Display {
 
 
 			// ==========================================================================================================================
-			webdev: {
+			'webdev': {
 				text: [
 					{line: '      webdev      ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -314,7 +339,7 @@ class Display {
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '  ▼               ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer('webdev'), 500)},
+					{callback: x => setTimeout(() => this.createPointer(), 500)},
 				],
 	
 				items: [
@@ -329,7 +354,7 @@ class Display {
 
 			
 			// ==========================================================================================================================
-			about: {
+			'about': {
 				text: [
 					{line: '       about        ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -337,7 +362,7 @@ class Display {
 					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '____________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '  back              ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer('about'), 500)},
+					{callback: x => setTimeout(() => this.createPointer(), 500)},
 				],
 	
 				items: [
@@ -440,8 +465,8 @@ class Display {
 
 	createPointer(menu) {
 		menu = menu || this.currentMenu;
-		
 		let x, y, thismenu = this.menus[menu];
+
 		x = Math.floor(this.cols / 2) - Math.floor(thismenu.text[0].line.length / 2),
 		y = Math.floor(this.rows / 2) - Math.floor(thismenu.text.length / 2);
 		console.log(menu + ': coordinates')
@@ -478,13 +503,14 @@ class Display {
 	}
 
 	pointerUpdate() {
+		let thismenu = this.menus[this.currentMenu];
 		for(let i = 0; i < this.pointer.range; i++) {
 			if(i == this.pointer.pos) {
-				if(this.menus[this.currentMenu].items[this.pointer.pos].text == 'back') {
+				if(thismenu.items[this.pointer.pos].text == 'back') {
 					this.set({x: this.pointer.anchor.x, y: this.pointer.anchor.y + i, data: {char: '◄'}});
-				} else if(this.menus[this.currentMenu].items[this.pointer.pos].text == 'next') {
+				} else if(thismenu.items[this.pointer.pos].text == 'next') {
 					this.set({x: this.pointer.anchor.x, y: this.pointer.anchor.y + i, data: {char: '»'}});
-				} else if(this.menus[this.currentMenu].items[this.pointer.pos].text == 'prev') {
+				} else if(thismenu.items[this.pointer.pos].text == 'prev') {
 					this.set({x: this.pointer.anchor.x, y: this.pointer.anchor.y + i, data: {char: '«'}});
 				} else {
 					this.set({x: this.pointer.anchor.x, y: this.pointer.anchor.y + i, data: {char: '►'}});
@@ -494,7 +520,7 @@ class Display {
 			}
 		}
 
-		let arrowAnchor = this.menus[this.currentMenu].directionAnchor;
+		let arrowAnchor = thismenu.directionAnchor;
 		if(arrowAnchor.y >= 0) {
 			if(this.pointer.pos == 0) {
 				this.set({x: arrowAnchor.x, y: arrowAnchor.y, data: {char: ' '}});
@@ -507,9 +533,21 @@ class Display {
 				this.set({x: arrowAnchor.x + 1, y: arrowAnchor.y, data: {char: ' '}});
 			}
 		}
+
+		if(typeof thismenu.items[this.pointer.pos].img == 'undefined') {
+			this.imgCont.removeChild(this.currentImg);
+			this.currentImg = undefined;
+		} else {
+			this.currentImg = thismenu.items[this.pointer.pos].img;
+			this.currentImg.width = this.width;
+			this.currentImg.height = this.height + 10;
+			this.imgCont.addChild(this.currentImg);
+		}
 	}
 
 	erasePointer() {
+		this.imgCont.removeChild(this.currentImg);
+		this.currentImg = undefined;
 		for(let i = 0; i < this.pointer.range; i++) this.set({x: this.pointer.anchor.x, y: this.pointer.anchor.y + i, data: {char: ' '}});;
 		this.pointer = undefined;
 	}
