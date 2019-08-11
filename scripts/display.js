@@ -204,15 +204,13 @@ class Display {
 
 			'art-about': {
 				text: [
-					{line: '          about art         ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                            ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' i make art because its fun ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: "                            ", data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' art live streams every     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' once in a while            ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                            ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '____________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  back                      ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '        about art        ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' art live streams every  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' once in a while         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '_________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  back                   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{callback: x => setTimeout(() => this.createPointer(), 500)},
 				],
 	
@@ -221,7 +219,7 @@ class Display {
 				],
 	
 				scheme: 'normal',
-				pointerAnchor: {x: 6, y: 12},
+				pointerAnchor: {x: 8, y: 11},
 				directionAnchor: {x: 0, y: -1},
 			},
 
