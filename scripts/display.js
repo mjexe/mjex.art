@@ -336,6 +336,7 @@ class Display {
 					{line: '      webdev      ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      hyperverse  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      old version ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      about       ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      back        ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -346,6 +347,7 @@ class Display {
 	
 				items: [
 					{text: 'hyperverse', action: x => location.href = '//hyperve.rs/'},
+					{text: 'old version', action: x => location.href = '/old'},
 					{text: 'about',      action: x => this.clm(y => this.loadMenu('webdev-about'))},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
 				],
