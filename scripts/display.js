@@ -260,6 +260,7 @@ class Display {
 					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '       ferry wheel  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '       no parking   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       reserved     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '       profiles     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '       back         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -271,6 +272,7 @@ class Display {
 				items: [
 					{text: 'ferry wheel', action: x => {}, img: img['ferry-wheel']},
 					{text: 'no parking',  action: x => {}, img: img['no-parking']},
+					{text: 'reserved',    action: x => {}, img: img['reserved']},
 					{text: 'profiles',    action: x => this.clm(y => this.loadMenu('photos-profiles'))},
 					{text: 'back',        action: x => this.clm(y => this.loadMenu('main'))},
 				],
@@ -334,6 +336,7 @@ class Display {
 					{line: '      webdev      ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      hyperverse  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      about       ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      back        ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -343,6 +346,7 @@ class Display {
 	
 				items: [
 					{text: 'hyperverse', action: x => location.href = '//hyperve.rs/'},
+					{text: 'about',      action: x => this.clm(y => this.loadMenu('webdev-about'))},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
 				],
 	
@@ -350,17 +354,45 @@ class Display {
 				pointerOffset: 4,
 			},
 
+			'webdev-about': {
+				text: [
+					{line: '        about webdev       ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' 4+ years of front end web ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' development experience    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '___________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  back                     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{callback: x => setTimeout(() => this.createPointer(), 500)},
+				],
+	
+				items: [
+					{text: 'return', action: x => this.clm(y => this.loadMenu('webdev'))},
+				],
+	
+				scheme: 'normal',
+				pointerAnchor: {x: 7, y: 11},
+				directionAnchor: {x: 0, y: -1},
+			},
+
 
 			
 			// ==========================================================================================================================
 			'about': {
 				text: [
-					{line: '       about        ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '   just some dude   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '____________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  back              ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '           about           ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' this is a portfolio for   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' the work i do so i can    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' show it easily in a sty-  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' lized container           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' yes i wrote this website  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' from scratch, can you     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: " tell i'm proud of it?     ", data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '___________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  back                     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{callback: x => setTimeout(() => this.createPointer(), 500)},
 				],
 	
@@ -369,7 +401,7 @@ class Display {
 				],
 	
 				scheme: 'normal',
-				pointerAnchor: {x: 10, y: 11},
+				pointerAnchor: {x: 7, y: 14},
 				directionAnchor: {x: 0, y: -1},
 			},
 		}
