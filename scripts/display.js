@@ -473,7 +473,7 @@ class Display {
 	loadMenu(menu) {this.multiset(this.menus[menu].text); this.currentMenu = menu; location.hash = menu == 'main' ? '' : menu; document.title = 'mjex' + (menu == 'main' ? '' : ' - ' + menu)}
 
 	clm(callback) {
-		this.erasePointer();
+		if(typeof this.pointer != 'undefined') this.erasePointer();
 		let firstline = this.menus[this.currentMenu].text[0];
 		this.menus[this.currentMenu].text.forEach((e, index) => {
 			if(typeof e.callback == 'undefined') {
