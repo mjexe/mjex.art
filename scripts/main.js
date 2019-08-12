@@ -1,7 +1,7 @@
 let width, height, ratio,
 	length, orientation,
 	crt, bg, frame = 0;
-let hammer;
+let touch;
 let animateFilters = false;
 // variable initialization
 
@@ -54,11 +54,18 @@ function init() {
 	loadFilters();
 	animate();
 
-	// hammer = new Hammer($('body'));
-	// hammer.on('pan', (ev) => {
-	// 	console.log(ev);
-	// })
+	Mousetrap.bind('up', () => {if(typeof crt.pointer != 'undefined') crt.movePointer('up')});
+	Mousetrap.bind('down', () => {if(typeof crt.pointer != 'undefined') crt.movePointer('down')});
+	Mousetrap.bind('left', () => {if(typeof crt.pointer != 'undefined') crt.select(crt.menus[crt.currentMenu].items.findIndex(item => item.text  == 'back' || item.text  == 'return'))});
+	Mousetrap.bind(['enter', 'right'], () => {if(typeof crt.pointer != 'undefined') crt.select()});
 
+	touch = new Hammer(document.body);
+	touch.on('swipeup', () => {if(typeof crt.pointer != 'undefined') crt.movePointer('up')});
+	touch.on('swipedown', () => {if(typeof crt.pointer != 'undefined') crt.movePointer('down')});
+	touch.on('swipeleft', () => {if(typeof crt.pointer != 'undefined') crt.select(crt.menus[crt.currentMenu].items.findIndex(item => item.text  == 'back' || item.text  == 'return'))});
+	touch.on('tap', () => {if(typeof crt.pointer != 'undefined') crt.select()});
+	touch.on('panstart', (e) => console.log(e.angle));
+	touch.on('panend', (e) => console.log(e.angle));
 
 	// load the menu
 	setTimeout(() => crt.loadMenu(gethash()), 0);

@@ -604,10 +604,6 @@ class MenuPointer {
 
 
 
-Mousetrap.bind('up', () => {if(typeof crt.pointer != 'undefined') crt.movePointer('up')});
-Mousetrap.bind('down', () => {if(typeof crt.pointer != 'undefined') crt.movePointer('down')});
-Mousetrap.bind('left', () => {if(typeof crt.pointer != 'undefined') crt.select(crt.menus[crt.currentMenu].items.findIndex(item => item.text  == 'back' || item.text  == 'return'))});
-Mousetrap.bind(['enter', 'right'], () => {if(typeof crt.pointer != 'undefined') crt.select()});
 
 
 
