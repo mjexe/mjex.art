@@ -1,7 +1,7 @@
 let width, height, ratio,
 	length, orientation,
 	crt, bg, frame = 0;
-
+let hammer;
 let animateFilters = false;
 // variable initialization
 
@@ -28,11 +28,11 @@ let app = new PIXI.Application({resizeTo: window});
 app.renderer.backgroundColor = 0x000000;
 app.renderer.autoDensity = true;
 document.body.appendChild(app.view);
+let mouse = app.renderer.plugins.interaction.mouse.global;
 
 
 
-
-init();
+$(() => init());
 
 // when the font is loaded this function is called
 function init() {
@@ -54,21 +54,15 @@ function init() {
 	loadFilters();
 	animate();
 
+	// hammer = new Hammer($('body'));
+	// hammer.on('pan', (ev) => {
+	// 	console.log(ev);
+	// })
+
+
 	// load the menu
 	setTimeout(() => crt.loadMenu(gethash()), 0);
 }
-
-// hash change listener
-$(window).on('hashchange', () => {
-	let hash = gethash();
-	if(crt.currentMenu != hash) crt.clm(y => crt.loadMenu(hash));
-});
-
-$(window).resize(() => {
-	setStandards();
-	resizeApp();
-	setFilters();
-});
 
 function animate() {
 	if(animateFilters) {
@@ -82,6 +76,21 @@ function animate() {
 }
 
 
+// hash change listener
+$(window).on('hashchange', () => {
+	let hash = gethash();
+	if(crt.currentMenu != hash) crt.clm(y => crt.loadMenu(hash));
+});
+
+$(window).resize(() => {
+	setStandards();
+	resizeApp();
+	setFilters();
+});
+
+
+
+
 
 
 // set global variables
@@ -90,6 +99,7 @@ function setStandards() {
 	height = window.innerHeight;
 	length = width / height > ratio ? width : height;
 	orientation = width / height > ratio;
+	mouse = app.renderer.plugins.interaction.mouse.global;
 }
 
 function resizeApp() {

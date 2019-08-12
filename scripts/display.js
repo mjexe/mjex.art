@@ -385,13 +385,9 @@ class Display {
 					{line: '           about           ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: ' this is a portfolio for   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' the work i do so i can    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' my projects so i can      ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: ' show it easily in a sty-  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: ' lized container           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' yes i wrote this website  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' from scratch, can you     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: " tell i'm proud of it?     ", data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '                           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '___________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '  back                     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -403,7 +399,7 @@ class Display {
 				],
 	
 				scheme: 'normal',
-				pointerAnchor: {x: 7, y: 14},
+				pointerAnchor: {x: 7, y: 12},
 				directionAnchor: {x: 0, y: -1},
 			},
 		}
@@ -607,10 +603,14 @@ class MenuPointer {
 
 
 
-Mousetrap.bind('up', () => crt.movePointer('up'));
-Mousetrap.bind('down', () => crt.movePointer('down'));
-Mousetrap.bind('left', () => crt.select(crt.menus[crt.currentMenu].items.findIndex(item => item.text  == 'back' || item.text  == 'return')));
-Mousetrap.bind(['enter', 'right'], () => crt.select());
+
+Mousetrap.bind('up', () => {if(typeof crt.pointer != 'undefined') crt.movePointer('up')});
+Mousetrap.bind('down', () => {if(typeof crt.pointer != 'undefined') crt.movePointer('down')});
+Mousetrap.bind('left', () => {if(typeof crt.pointer != 'undefined') crt.select(crt.menus[crt.currentMenu].items.findIndex(item => item.text  == 'back' || item.text  == 'return'))});
+Mousetrap.bind(['enter', 'right'], () => {if(typeof crt.pointer != 'undefined') crt.select()});
+
+
+
 
 let chcache = [];
 let ci = 0;
