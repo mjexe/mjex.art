@@ -57,12 +57,12 @@ function init() {
 
 
 	touch = new Hammer.Manager(document.body);
-	touch.add(new Hammer.Swipe({event: 'sw-up',  direction: Hammer.DIRECTION_UP,       threshold: 20, velocity: 1.5}));
-	touch.add(new Hammer.Swipe({event: 'sw-dn',  direction: Hammer.DIRECTION_DOWN,     threshold: 20, velocity: 1.5}));
-	touch.add(new Hammer.Swipe({event: 'sw-lf',  direction: Hammer.DIRECTION_LEFT,     threshold: 20, velocity: 1.5}));
-	touch.add(new Hammer.Swipe({event: 'sw-rt',  direction: Hammer.DIRECTION_RIGHT,    threshold: 20, velocity: 1.5}));
+	touch.add(new Hammer.Pan({direction: Hammer.DIRECTION_VERTICAL, threshold: 10}));
+	touch.add(new Hammer.Swipe({event: 'sw-up',  direction: Hammer.DIRECTION_UP,       threshold: 10, velocity: 0.1}));
+	touch.add(new Hammer.Swipe({event: 'sw-dn',  direction: Hammer.DIRECTION_DOWN,     threshold: 10, velocity: 0.1}));
+	touch.add(new Hammer.Swipe({event: 'sw-lf',  direction: Hammer.DIRECTION_LEFT,     threshold: 10, velocity: 0.1}));
+	touch.add(new Hammer.Swipe({event: 'sw-rt',  direction: Hammer.DIRECTION_RIGHT,    threshold: 10, velocity: 0.1}));
 	touch.add(new Hammer.Tap({event: 'tap'}));
-	touch.add(new Hammer.Pan({direction: Hammer.DIRECTION_VERTICAL}));
 
 	touch.on('sw-up',     () => up());
 	touch.on('sw-dn',     () => down());
@@ -82,10 +82,7 @@ function init() {
 	Mousetrap.bind(['enter', 'right', 'd', 'space'], () => select());
 
 	touch.on('panstart', (e) => pointerbase = typeof crt.pointer.pos == 'undefined' ? 0 : crt.pointer.pos);
-	touch.on('panmove', (e) => {
-		crt.pointerGoto(pointerbase + Math.floor(e.deltaY / crt.length));
-	});
-	touch.on('panend', (e) => console.log(e.angle));
+	touch.on('panmove', (e) => {if(typeof crt.pointer != 'undefined') crt.pointerGoto(pointerbase + Math.floor(e.deltaY / crt.length))});
 
 	// load the menu
 	setTimeout(() => crt.loadMenu(gethash()), 0);

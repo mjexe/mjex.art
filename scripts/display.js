@@ -611,7 +611,7 @@ class MenuPointer {
 
 function up()     {if(typeof crt.pointer != 'undefined') crt.movePointer('up')}
 function down()   {if(typeof crt.pointer != 'undefined') crt.movePointer('down')}
-function select() {if(typeof crt.pointer != 'undefined' && document.hasFocus()) crt.select()}
+function select() {if(typeof crt.pointer != 'undefined') crt.select()}
 function esc()    {if(typeof crt.pointer != 'undefined') crt.select(crt.menus[crt.currentMenu].items.findIndex(item => item.text  == 'back' || item.text  == 'return'))}
 
 
