@@ -81,6 +81,7 @@ function init() {
 	Mousetrap.bind(['left', 'a', 'escape'], () => esc());
 	Mousetrap.bind(['enter', 'right', 'd', 'space'], () => select());
 
+	// relative drag controls
 	touch.on('panstart', (e) => pointerbase = typeof crt.pointer.pos == 'undefined' ? 0 : crt.pointer.pos);
 	touch.on('panmove', (e) => {if(typeof crt.pointer != 'undefined') {if(crt.pointer.pos != pointerbase + Math.floor(e.deltaY / crt.length)) crt.pointerGoto(pointerbase + Math.floor(e.deltaY / crt.length))}});
 
