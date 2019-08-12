@@ -532,10 +532,10 @@ class Display {
 	}
 	
 	pointerGoto(pos) {
-		if(pos >= 0 && pos < this.pointer.range) {
-			this.pointer.pos = pos;
-			this.pointerUpdate();
-		}
+		if(pos < 0) this.pointer.pos = 0;
+		else if(pos > this.pointer.range) this.pointer.pos = this.pointer.range - 1;
+		else this.pointer.pos = pos;
+		this.pointerUpdate();
 	}
 
 	pointerUpdate() {
