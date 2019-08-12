@@ -54,16 +54,32 @@ function init() {
 	loadFilters();
 	animate();
 
-	Mousetrap.bind('up', () => {if(typeof crt.pointer != 'undefined') crt.movePointer('up')});
-	Mousetrap.bind('down', () => {if(typeof crt.pointer != 'undefined') crt.movePointer('down')});
-	Mousetrap.bind('left', () => {if(typeof crt.pointer != 'undefined') crt.select(crt.menus[crt.currentMenu].items.findIndex(item => item.text  == 'back' || item.text  == 'return'))});
-	Mousetrap.bind(['enter', 'right'], () => {if(typeof crt.pointer != 'undefined') crt.select()});
 
-	touch = new Hammer(document.body);
-	touch.on('swipeup', () => {if(typeof crt.pointer != 'undefined') crt.movePointer('up')});
-	touch.on('swipedown', () => {if(typeof crt.pointer != 'undefined') crt.movePointer('down')});
-	touch.on('swipeleft', () => {if(typeof crt.pointer != 'undefined') crt.select(crt.menus[crt.currentMenu].items.findIndex(item => item.text  == 'back' || item.text  == 'return'))});
-	touch.on('tap', () => {if(typeof crt.pointer != 'undefined') crt.select()});
+
+	touch = new Hammer.Manager(document.body);
+	touch.add(new Hammer.Swipe({event: 'sw-up',  direction: Hammer.DIRECTION_UP,       threshold: 20, velocity: 1.5}));
+	touch.add(new Hammer.Swipe({event: 'sw-dn',  direction: Hammer.DIRECTION_DOWN,     threshold: 20, velocity: 1.5}));
+	touch.add(new Hammer.Swipe({event: 'sw-lf',  direction: Hammer.DIRECTION_LEFT,     threshold: 20, velocity: 1.5}));
+	touch.add(new Hammer.Swipe({event: 'sw-rt',  direction: Hammer.DIRECTION_RIGHT,    threshold: 20, velocity: 1.5}));
+	touch.add(new Hammer.Tap({event: 'tap'}));
+
+	touch.on('sw-up',     () => up());
+	touch.on('sw-dn',     () => down());
+	touch.on('sw-lf',     () => esc());
+	touch.on('tap sw-rt', () => select());
+
+	// scroll wheel bindings
+	window.addEventListener('wheel', (e) => e.deltaY < 0 ? up() : down());
+
+	// disable the context menu and bind it with the escape function
+	$('canvas').contextmenu(() => {escape(); return false});
+
+	// keyboard bindings
+	Mousetrap.bind(['up', 'w'], () => up());
+	Mousetrap.bind(['down', 's'], () => down());
+	Mousetrap.bind(['left', 'a', 'escape'], () => esc());
+	Mousetrap.bind(['enter', 'right', 'd', 'space'], () => select());
+
 	touch.on('panstart', (e) => console.log(e.angle));
 	touch.on('panend', (e) => console.log(e.angle));
 
