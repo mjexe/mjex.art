@@ -1,7 +1,7 @@
 let width, height, ratio,
 	length, orientation,
 	crt, bg, frame = 0;
-let touch;
+let touch, pointerbase;
 let animateFilters = false;
 // variable initialization
 
@@ -62,6 +62,7 @@ function init() {
 	touch.add(new Hammer.Swipe({event: 'sw-lf',  direction: Hammer.DIRECTION_LEFT,     threshold: 20, velocity: 1.5}));
 	touch.add(new Hammer.Swipe({event: 'sw-rt',  direction: Hammer.DIRECTION_RIGHT,    threshold: 20, velocity: 1.5}));
 	touch.add(new Hammer.Tap({event: 'tap'}));
+	touch.add(new Hammer.Pan({direction: Hammer.DIRECTION_VERTICAL}));
 
 	touch.on('sw-up',     () => up());
 	touch.on('sw-dn',     () => down());
@@ -72,7 +73,7 @@ function init() {
 	window.addEventListener('wheel', (e) => e.deltaY < 0 ? up() : down());
 
 	// disable the context menu and bind it with the escape function
-	$('canvas').contextmenu(() => {escape(); return false});
+	$('canvas').contextmenu(() => {esc(); return false});
 
 	// keyboard bindings
 	Mousetrap.bind(['up', 'w'], () => up());
@@ -80,7 +81,10 @@ function init() {
 	Mousetrap.bind(['left', 'a', 'escape'], () => esc());
 	Mousetrap.bind(['enter', 'right', 'd', 'space'], () => select());
 
-	touch.on('panstart', (e) => console.log(e.angle));
+	touch.on('panstart', (e) => pointerbase = typeof crt.pointer.pos == 'undefined' ? 0 : crt.pointer.pos);
+	touch.on('panmove', (e) => {
+		crt.pointerGoto(pointerbase + Math.floor(e.deltaY / crt.length));
+	});
 	touch.on('panend', (e) => console.log(e.angle));
 
 	// load the menu

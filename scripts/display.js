@@ -530,6 +530,13 @@ class Display {
 
 		this.pointerUpdate();
 	}
+	
+	pointerGoto(pos) {
+		if(pos >= 0 && pos < this.pointer.range) {
+			this.pointer.pos = pos;
+			this.pointerUpdate();
+		}
+	}
 
 	pointerUpdate() {
 		let thismenu = this.menus[this.currentMenu];
