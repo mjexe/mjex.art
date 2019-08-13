@@ -83,7 +83,7 @@ function init() {
 
 	// relative drag controls
 	touch.on('panstart', (e) => pointerbase = typeof crt.pointer.pos == 'undefined' ? 0 : crt.pointer.pos);
-	touch.on('panmove panend', (e) => {if(typeof crt.pointer != 'undefined') {if(crt.pointer.pos != pointerbase + Math.floor(e.deltaY / crt.length)) crt.pointerGoto(pointerbase + Math.floor(e.deltaY / crt.length))}});
+	touch.on('panmove panend', (e) => {if(typeof crt.pointer != 'undefined') {if(crt.pointer.pos != pointerbase + Math.floor((e.deltaY + (crt.length / 2)) / crt.length)) crt.pointerGoto(pointerbase + Math.floor((e.deltaY + (crt.length / 2)) / crt.length))}});
 
 	// load the menu
 	setTimeout(() => crt.loadMenu(gethash()), 0);
