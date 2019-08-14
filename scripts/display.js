@@ -401,7 +401,7 @@ class Display {
 				],
 	
 				scheme: 'normal',
-				pointerAnchor: {x: 7, y: 12},
+				pointerAnchor: {x: 7, y: 13},
 				directionAnchor: {x: 0, y: -1},
 			},
 		}
