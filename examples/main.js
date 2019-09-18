@@ -1,0 +1,1 @@
+panel = new RadialMenu($('.container'));

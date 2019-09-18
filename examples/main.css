@@ -1,0 +1,26 @@
+body {
+	/* spatial stuff */
+	margin: 0;
+
+	/* color stuff */
+	background: black;
+}
+
+.container {
+	/* spatial stuff */
+	width: 100vw;
+	height: 100vh;
+
+	/* color stuff */
+	background: #2a2d35;
+}
+
+.container > .panel {
+	/* spatial stuff */
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+
+	/* mask stuff */
+	clip-path: polygon(50% 50%, 0 100%, 100% 100%);
+}
