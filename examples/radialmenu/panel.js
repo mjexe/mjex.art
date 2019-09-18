@@ -12,8 +12,6 @@ class RadialMenu {
 				]
 			});
 		}
-
-		console.log(this.container.children);
 	}
 }
 

@@ -1,4 +1,10 @@
-let mouseX = 0, mouseY = 0;
+let mouseX, mouseY,
+	width, height, center;
+// initialize vars
+
+setStandards();
+
+
 
 // gets mouse position
 $('body').mousemove((e) => {
@@ -6,6 +12,18 @@ $('body').mousemove((e) => {
 	mouseY = e.pageY;
 });
 
+$(window).resize(() => {
+	setStandards();
+});
+
+
+
+function setStandards() {
+	width = window.innerWidth;
+	height = window.innerHeight;
+
+	center = {x: width / 2, y: height / 2};
+}
 
 function rand(min, max, round) {
 	let num = Math.random() * (max - min) + min;
