@@ -5,7 +5,7 @@ class RadialMenu {
 
 		for(let i = 0; i < this.container.children.length; i++) {
 			this.panel[i] = new Panel(this.container.children[i], {
-				background: i == 0 ? '#440000' : '',
+				// background: i == 0 ? '#440000' : '',
 				points: [
 					{x: '50%', y: '50%'},
 					{x: rand(0, 100) + '% ', y: rand(0, 100) + '% '},
@@ -13,8 +13,8 @@ class RadialMenu {
 				]
 			});
 
-			let width = (PI_2 / this.container.children.length);
-			this.panel[i].setAngle(0, PI_2 / 3);
+			let w = (PI_2 / this.container.children.length);
+			this.panel[i].setAngle(w * i, w);
 			this.panel[i].apply();
 			console.log(toDegrees(width * i), toDegrees(width + (width * i)));
 		}
@@ -46,9 +46,9 @@ class Panel {
 		this.element.style.clipPath = path;
 	}
 
-	setAngle(angle, width) {
-		let angle1 = angle;
-		let angle2 = angle + width;
+	setAngle(angle, w) {
+		let angle1 = angle - (w / 2);
+		let angle2 = angle + (w / 2);
 		let length = width > height ? width * 2 : height * 2;
 
 		this.point[1].x = (((center.x + (length * Math.cos(angle1))) / width) * 100) + '%';
