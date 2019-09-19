@@ -5,7 +5,6 @@ class RadialMenu {
 
 		for(let i = 0; i < this.container.children.length; i++) {
 			this.panel[i] = new Panel(this.container.children[i], {
-				// background: i == 0 ? '#440000' : '',
 				points: [
 					{x: '50%', y: '50%'},
 					{x: rand(0, 100) + '% ', y: rand(0, 100) + '% '},
