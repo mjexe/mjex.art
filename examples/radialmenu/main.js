@@ -24,4 +24,4 @@ function animate() {
 }
 
 
-function calcLength(angle) {return center.y / Math.sin(angle)}
+function calcLength(angle) {return Math.abs(center.y / Math.sin(angle))}
