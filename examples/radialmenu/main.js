@@ -6,8 +6,7 @@ animate();
 
 
 function animate() {
-	let angle = angleTwoPoints(center.x, center.y, mouseX, mouseY);
-	// let angle = angleTwoPoints(center.x, center.y, mouseX, mouseY);
+	let angle = angle2p(center.x, center.y, mouseX, mouseY);
 	let angle1 = angle - (Math.PI / 8);
 	let angle2 = angle + (Math.PI / 8);
 
