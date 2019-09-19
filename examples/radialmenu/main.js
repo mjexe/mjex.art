@@ -6,7 +6,8 @@ animate();
 
 
 function animate() {
-	let angle = angle2p(center.x, center.y, mouseX, mouseY);
+	// let angle = angle2p(center.x, center.y, mouseX, mouseY);
+	let angle = toRadians(30);
 	let angle1 = angle - (Math.PI / 8);
 	let angle2 = angle + (Math.PI / 8);
 	let length = width > height ? width * 2 : height * 2;
@@ -23,6 +24,3 @@ function animate() {
 
 	requestAnimationFrame(() => animate());
 }
-
-
-function calcLength(angle) {return Math.abs(center.y / Math.sin(angle))}
