@@ -2,6 +2,12 @@ let mouseX, mouseY,
 	width, height, center;
 // initialize vars
 
+let TAU = Math.PI * 2,
+	PI  = Math.PI,
+	PI2 = Math.PI / 2,
+	PI4 = Math.PI / 4;
+// general math stuff
+
 setStandards();
 
 
@@ -34,5 +40,5 @@ function rand(min, max, round) {
 }
 
 function angle2p(x1, y1, x2, y2) {
-	return Math.atan2(y2 - y1, x2 - x1);
+	return Math.atan2(y2 - y1, x2 - x1) + PI;
 }

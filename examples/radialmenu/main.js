@@ -1,3 +1,5 @@
+let mouseangle = 0;
+
 let menu = new RadialMenu($('.container'));
 
 animate();
@@ -6,7 +8,9 @@ animate();
 
 
 function animate() {
-	// let angle = angle2p(center.x, center.y, mouseX, mouseY);
+	mouseangle = angle2p(mouseX, mouseY, center.x, center.y);
+	menu.update();
+	
 	// let angle = toRadians(30);
 	// let angle1 = angle - (Math.PI / 8);
 	// let angle2 = angle + (Math.PI / 8);
