@@ -6,16 +6,18 @@ body {
 
 .tv-list {
 	/* positioning */
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	width: max-content;
+	margin: 0 auto;
+
+	display: grid;
+	grid-template-columns: repeat(5, 200px);
+	gap: 12px;
 }
 
 .tv-list > .item {
 	/* positioning */
 	width: 200px;
 	height: 300px;
-	margin: 6px;
 
 	/* appearance */
 	background: hsl(135, 15%, 15%);
