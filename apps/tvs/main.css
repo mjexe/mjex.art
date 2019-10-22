@@ -168,7 +168,7 @@ body {
 
 #returnbutton.button {
 	/* appearance */
-	background: var(--button-bg);
+	background: var(--detail-button-bg);
 	padding: 1px 5px 0 0;
 	content: "RETURN";
 
@@ -182,12 +182,12 @@ body {
 
 .outer > .menu > .buttons > li:hover, #returnbutton.button:hover {
 	/* appearance */
-	background: var(--button-bg-hover);
+	background: var(--detail-button-bg-hover);
 }
 
 .outer > .menu > .buttons > li:active, #returnbutton.button:active {
 	/* appearance */
-	background: var(--button-bg-active);
+	background: var(--detail-button-bg-active);
 }
 
 
