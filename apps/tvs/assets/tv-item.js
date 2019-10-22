@@ -17,7 +17,7 @@ class List {
 		this.currentid = id;
 
 		let data = this.itemdata(id);
-		this.container.html('<div class="detail-view"></div>');
+		this.container.html('<div class="detail-view" style="opacity: 0"></div>');
 		this.detailview = this.container.find('.detail-view');
 		
 		this.detailview.append(
@@ -107,10 +107,7 @@ class List {
 			'<div class="bottom"></div>',
 		);
 
-		$('#' + data.id).on('click', () => {
-			this.generatedetails(data.id)
-			setItemWidth();
-		});
+		$('#' + data.id).on('click', () => detailAnim(data.id));
 	}
 
 	removeitem(id) {

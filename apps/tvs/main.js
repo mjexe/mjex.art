@@ -43,6 +43,32 @@ document.fonts.onloadingdone = () => {
 
 
 
+function detailAnim(id) {
+	$('.tv-list > .item').animate({opacity: 0}, 500, 'linear', () => {
+		$('.list-container').animate({height: '496px'}, 500, 'linear', () => {
+			$('.titlebar').animate({width: '826px'}, 500, 'linear');
+			$('.header, .footer, .list-container > .tv-list').animate({width: '626px'}, 500, 'linear', () => {
+				$('.list-container, .container').css({width: '', height: ''});
+				tvs.generatedetails(id);
+				setItemWidth();
+				
+				setTimeout(() => {
+					$('.detail-view').animate({opacity: 1}, 500, 'linear');
+				}, 250);
+			});
+		});
+	});
+}
+
+
+function goback() {
+	tvs.generatelist();
+	setItemWidth();
+}
+
+
+
+
 
 
 function nextimg() {
@@ -61,10 +87,6 @@ function previmg() {
 	setItemWidth();
 }
 
-function goback() {
-	tvs.generatelist();
-	setItemWidth();
-}
 
 
 

@@ -57,7 +57,7 @@ body {
 	color: var(--titlebar-color);
 
 	/* transitions */
-	transition: width 0.2s linear;
+	/* transition: width 0.2s linear; */
 }
 
 .giga-container > .titlebar > .left {
@@ -214,7 +214,7 @@ body {
 	color: var(--menu-color);
 
 	/* transitions */
-	transition: width 0.2s linear;
+	/* transition: width 0.2s linear; */
 }
 
 .container > .header > .transition {
@@ -293,7 +293,7 @@ body {
 	color: var(--menu-color);
 
 	/* transitions */
-	transition: width 0.2s linear;
+	/* transition: width 0.2s linear; */
 }
 
 .container > .footer > .transition {
@@ -376,7 +376,7 @@ body {
 	gap: 12px;
 
 	/* transitions */
-	transition: width 0.2s linear;
+	/* transition: width 0.2s linear; */
 }
 
 .tv-list > .item {
@@ -475,7 +475,7 @@ body {
 	grid-template-rows: max-content minmax(426px, max-content) max-content;
 
 	/* transitions */
-	transition: width 0.2s linear;
+	/* transition: width 0.2s linear; */
 }
 
 .detail-view > .view > .header {
@@ -641,7 +641,7 @@ body {
 	background-size: cover !important;
 
 	/* transitions */
-	transition: width 0.2s linear;
+	/* transition: width 0.2s linear; */
 }
 
 
