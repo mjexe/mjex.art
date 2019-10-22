@@ -21,6 +21,71 @@ tvs.additems([
 			'https://media.istockphoto.com/photos/hands-forming-a-heart-shape-with-sunset-silhouette-picture-id636379014?k=6&m=636379014&s=612x612&w=0&h=tnYrf_O_nvT15N4mmjorIRvZ7lK4w1q1c7RSfrVmqKA=',
 		],
 	},
+
+	{
+		id: 'DAB',
+		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
+		currentimg: 0,
+		images: [
+			'https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+			'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+			'https://images.unsplash.com/photo-1527555197883-98e27ca0c1ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+			'https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/10/18/14/Pixday1710-4.jpg?width=1000&height=614&fit=bounds&format=pjpg&auto=webp&quality=70&crop=16:9,offset-y0.5',
+			'https://media.istockphoto.com/photos/hands-forming-a-heart-shape-with-sunset-silhouette-picture-id636379014?k=6&m=636379014&s=612x612&w=0&h=tnYrf_O_nvT15N4mmjorIRvZ7lK4w1q1c7RSfrVmqKA=',
+		],
+	},
+
+	{
+		id: 'SUGMA',
+		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
+		currentimg: 0,
+		images: [
+			'https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+			'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+			'https://images.unsplash.com/photo-1527555197883-98e27ca0c1ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+			'https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/10/18/14/Pixday1710-4.jpg?width=1000&height=614&fit=bounds&format=pjpg&auto=webp&quality=70&crop=16:9,offset-y0.5',
+			'https://media.istockphoto.com/photos/hands-forming-a-heart-shape-with-sunset-silhouette-picture-id636379014?k=6&m=636379014&s=612x612&w=0&h=tnYrf_O_nvT15N4mmjorIRvZ7lK4w1q1c7RSfrVmqKA=',
+		],
+	},
+
+	{
+		id: 'BALLS',
+		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
+		currentimg: 0,
+		images: [
+			'https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+			'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+			'https://images.unsplash.com/photo-1527555197883-98e27ca0c1ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+			'https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/10/18/14/Pixday1710-4.jpg?width=1000&height=614&fit=bounds&format=pjpg&auto=webp&quality=70&crop=16:9,offset-y0.5',
+			'https://media.istockphoto.com/photos/hands-forming-a-heart-shape-with-sunset-silhouette-picture-id636379014?k=6&m=636379014&s=612x612&w=0&h=tnYrf_O_nvT15N4mmjorIRvZ7lK4w1q1c7RSfrVmqKA=',
+		],
+	},
+
+	{
+		id: 'WHATS',
+		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
+		currentimg: 0,
+		images: [
+			'https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+			'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+			'https://images.unsplash.com/photo-1527555197883-98e27ca0c1ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+			'https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/10/18/14/Pixday1710-4.jpg?width=1000&height=614&fit=bounds&format=pjpg&auto=webp&quality=70&crop=16:9,offset-y0.5',
+			'https://media.istockphoto.com/photos/hands-forming-a-heart-shape-with-sunset-silhouette-picture-id636379014?k=6&m=636379014&s=612x612&w=0&h=tnYrf_O_nvT15N4mmjorIRvZ7lK4w1q1c7RSfrVmqKA=',
+		],
+	},
+
+	{
+		id: 'UPDOG',
+		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
+		currentimg: 0,
+		images: [
+			'https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+			'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+			'https://images.unsplash.com/photo-1527555197883-98e27ca0c1ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+			'https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/10/18/14/Pixday1710-4.jpg?width=1000&height=614&fit=bounds&format=pjpg&auto=webp&quality=70&crop=16:9,offset-y0.5',
+			'https://media.istockphoto.com/photos/hands-forming-a-heart-shape-with-sunset-silhouette-picture-id636379014?k=6&m=636379014&s=612x612&w=0&h=tnYrf_O_nvT15N4mmjorIRvZ7lK4w1q1c7RSfrVmqKA=',
+		],
+	},
 ]);
 
 
@@ -44,22 +109,31 @@ document.fonts.onloadingdone = () => {
 
 
 function detailAnim(id) {
-	$('.tv-list > .item').animate({opacity: 0}, 500, 'linear', () => {
-		$('.list-container').animate({height: '496px'}, 500, 'linear', () => {
-			$('.titlebar').animate({width: '826px'}, 500, 'linear');
-			$('.header, .footer, .list-container > .tv-list').animate({width: '626px'}, 500, 'linear', () => {
+	$('div[onclick^=javascript]').attr('onclick', '');
+	$('.tv-list > .item').animate({opacity: 0}, 500, 'linear')
+	setTimeout(() => {
+		console.log('ligma');
+		$('.list-container').animate({height: '497px'}, 500, 'linear', () => {
+			if(hordiv > 3) $(
+				'.container > .header,' +
+				'.container > .footer,' +
+				'.list-container > .tv-list'
+			).animate({width: '626px'}, 500, 'linear');
+
+			$('.titlebar').animate({width: '826px'}, 500, 'linear', () => {
 				$('.list-container, .container').css({width: '', height: ''});
 				tvs.generatedetails(id, 0);
 				setItemWidth();
 
 				setTimeout(() => {
 					$('.detail-view').animate({opacity: 1}, 500, 'linear', () => {
+
 						$('.detail-view').css('opacity', 1);
 					});
 				}, 250);
 			});
 		});
-	});
+	}, 500);
 }
 
 
@@ -108,7 +182,7 @@ function resize() {
 
 function setItemWidth() {
 	div = Math.floor(((width - 224) / 212));
-	hordiv = div >= 2 ? div : 2;
+	hordiv = div >= 3 ? div : 3;
 	itemwidth = (212 * hordiv);
 	// verdiv = tvs.list[0].children.length / hordiv;
 

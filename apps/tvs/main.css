@@ -55,9 +55,6 @@ body {
 	/* text */
 	font-size: 37px;
 	color: var(--titlebar-color);
-
-	/* transitions */
-	/* transition: width 0.2s linear; */
 }
 
 .giga-container > .titlebar > .left {
@@ -198,13 +195,12 @@ body {
 	/* positioning */
 	display: grid;
 	grid-template-rows: 1fr minmax(289px, max-content) 1fr;
-	gap: 53px;
+	gap: 5px;
 }
 
 .container > .header {
 	/* positioning */
-	height: 30px;
-	margin-bottom: 12px;
+	height: 90px;
 
 	display: grid;
 	grid-template-columns: 40px 1fr max-content minmax(0px, 200px);
@@ -212,9 +208,6 @@ body {
 	/* text */
 	font-size: 37px;
 	color: var(--menu-color);
-
-	/* transitions */
-	/* transition: width 0.2s linear; */
 }
 
 .container > .header > .transition {
@@ -243,7 +236,7 @@ body {
 
 .container > .header > .left {
 	/* positioning */
-	height: inherit;
+	height: 30px;
 	
 	/* appearance */
 	background: var(--menu-bg);
@@ -251,7 +244,7 @@ body {
 
 .container > .header > .mid {
 	/* positioning */
-	height: inherit;
+	height: 30px;
 	
 	/* appearance */
 	background: var(--menu-bg);
@@ -260,6 +253,7 @@ body {
 .container > .header > .title {
 	/* positioning */
 	width: max-content;
+	height: 30px;
 	margin: 0 5px 0 5px;
 	
 	transform: translate(0, -14px);
@@ -270,7 +264,7 @@ body {
 
 .container > .header > .right {
 	/* positioning */
-	height: inherit;
+	height: 30px;
 
 	/* appearance */
 	background: var(--menu-bg);
@@ -282,8 +276,7 @@ body {
 
 .container > .footer {
 	/* positioning */
-	height: 30px;
-	margin-top: 12px;
+	height: 90px;
 
 	display: grid;
 	grid-template-columns: 40px 1fr max-content minmax(0px, 200px);
@@ -291,16 +284,13 @@ body {
 	/* text */
 	font-size: 37px;
 	color: var(--menu-color);
-
-	/* transitions */
-	/* transition: width 0.2s linear; */
 }
 
 .container > .footer > .transition {
 	/* positioning */
 	position: relative;
 	height: 90px;
-	transform: translate(0, -60px);
+	/* transform: translate(0, -60px); */
 	
 	/* appearance */
 	background: var(--menu-bg);
@@ -323,7 +313,8 @@ body {
 
 .container > .footer > .left {
 	/* positioning */
-	height: inherit;
+	height: 30px;
+	margin-top: 60px;
 	
 	/* appearance */
 	background: var(--menu-bg);
@@ -331,7 +322,8 @@ body {
 
 .container > .footer > .mid {
 	/* positioning */
-	height: inherit;
+	height: 30px;
+	margin-top: 60px;
 	
 	/* appearance */
 	background: var(--menu-bg);
@@ -340,7 +332,8 @@ body {
 .container > .footer > .title {
 	/* positioning */
 	width: max-content;
-	margin: 0 5px 0 5px;
+	height: 30px;
+	margin: 60px 5px 0 5px;
 	
 	transform: translate(0, -14px);
 
@@ -350,7 +343,8 @@ body {
 
 .container > .footer > .right {
 	/* positioning */
-	height: inherit;
+	height: 30px;
+	margin-top: 60px;
 
 	/* appearance */
 	background: var(--menu-bg);
@@ -374,9 +368,6 @@ body {
 	display: grid;
 	grid-template-columns: repeat(5, 200px);
 	gap: 12px;
-
-	/* transitions */
-	/* transition: width 0.2s linear; */
 }
 
 .tv-list > .item {
@@ -417,6 +408,8 @@ body {
 	font-size: 12pt;
 	text-align: right;
 
+	/* interactivity */
+	user-select: none;
 }
 
 .item > .content {
@@ -473,9 +466,6 @@ body {
 
 	display: grid;
 	grid-template-rows: max-content minmax(426px, max-content) max-content;
-
-	/* transitions */
-	/* transition: width 0.2s linear; */
 }
 
 .detail-view > .view > .header {
@@ -639,9 +629,6 @@ body {
 
 	/* appearance */
 	background-size: cover !important;
-
-	/* transitions */
-	/* transition: width 0.2s linear; */
 }
 
 

@@ -96,8 +96,9 @@ class List {
 		array.forEach((e) => this.additem(e));
 	}
 
-	renderitem(data) {
-		this.list.append('<div class="item" id="' + data.id + '"></div>');
+	renderitem(data, opacity) {
+		opacity = typeof opacity == 'undefined' ? 1 : opacity;
+		this.list.append('<div class="item" id="' + data.id + '" style="opacity="' + opacity + '"></div>');
 		$('#' + data.id).append(
 			'<div class="top"></div>',
 			'<div class="header">' + data.id + '</div>',
@@ -108,7 +109,7 @@ class List {
 			'<div class="bottom"></div>',
 		);
 
-		$('#' + data.id).on('click', () => detailAnim(data.id));
+		$('#' + data.id).attr('onclick', 'javascript:detailAnim(\'' + data.id + '\')');
 	}
 
 	removeitem(id) {
