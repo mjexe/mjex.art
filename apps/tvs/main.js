@@ -28,7 +28,7 @@ tvs.additems([
 $(() => {
 	setStandards();
 	setItemWidth();
-	tvs.generatelist();
+	// tvs.generatelist();
 	
 	
 	// $('.container > .footer').css('transform', 'translate(0, ' + (301 * verdiv * -1) + ')')
@@ -38,7 +38,7 @@ $(window).resize(() => resize());
 
 document.fonts.onloadingdone = () => {
 	$('.giga-container')[0].style.opacity = 1;
-	// tvs.generatedetails('HAHA');
+	tvs.generatedetails('HAHA');
 	setItemWidth();
 };
 
@@ -70,6 +70,6 @@ function setItemWidth() {
 		$('.tv-list')[0].style.gridTemplateColumns = 'repeat(' + hordiv + ', 200px)';
 		$('.tv-list')[0].style.width = (itemwidth - 22) + 'px';
 	}
-	
+
 	$('.giga-container > .titlebar')[0].style.width = (itemwidth + 190) + 'px';
 }
