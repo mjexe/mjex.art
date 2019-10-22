@@ -2,7 +2,13 @@
 	--titlebar-bg: hsl(50, 100%, 75%);
 
 	--menu-bg: hsl(35, 100%, 50%);
-	--menu-bg-hover: hsl(20, 100%, 50%);
+	--menu-color: hsl(35, 100%, 50%);
+
+	--button-bg: hsl(40, 100%, 65%);
+	--button-bg-hover: hsl(20, 100%, 50%);
+
+	--detail-bg: hsl(300, 35%, 60%);
+	--detail-color: hsl(40, 100%, 65%);
 }
 
 
@@ -26,7 +32,10 @@ body {
 
 	display: grid;
 	grid-template-rows: 30px max-content;
-	gap: 12px;
+	gap: 24px;
+
+	/* appearance */
+	opacity: 0;
 }
 
 .giga-container > .titlebar {
@@ -39,7 +48,7 @@ body {
 
 	/* text */
 	font-size: 37px;
-	color: hsl(30, 100%, 50%);
+	color: var(--menu-color);
 }
 
 .giga-container > .titlebar > .left {
@@ -65,6 +74,9 @@ body {
 	
 	/* positioning */
 	transform: translate(0, -14px);
+
+	/* interactivity */
+	user-select: none;
 }
 
 .giga-container > .titlebar > .right {
@@ -128,12 +140,12 @@ body {
 
 .menu > .buttons > li {
 	/* positioning */
-	height: 50px;
+	height: 40px;
 	box-sizing: border-box;
-	padding: 24px 6px 0 0;
+	padding: 14px 6px 0 0;
 
 	/* appearance */
-	background: var(--menu-bg);
+	background: var(--button-bg);
 
 	list-style: none;
 
@@ -147,7 +159,7 @@ body {
 
 .menu > .buttons > li:hover {
 	/* appearance */
-	background: var(--menu-bg-hover);
+	background: var(--button-bg-hover);
 }
 
 
@@ -157,10 +169,8 @@ body {
 .container {
 	/* positioning */
 	display: grid;
-	grid-template-rows: 1fr max-content 1fr;
+	grid-template-rows: 1fr minmax(289px, max-content) 1fr;
 	gap: 53px;
-
-	opacity: 0;
 }
 
 .container > .header {
@@ -173,7 +183,7 @@ body {
 
 	/* text */
 	font-size: 37px;
-	color: hsl(30, 100%, 50%);
+	color: var(--menu-color);
 }
 
 .container > .header > .transition {
@@ -222,6 +232,9 @@ body {
 	margin: 0 5px 0 5px;
 	
 	transform: translate(0, -14px);
+
+	/* interactivity */
+	user-select: none;
 }
 
 .container > .header > .right {
@@ -248,7 +261,7 @@ body {
 
 	/* text */
 	font-size: 37px;
-	color: hsl(30, 100%, 50%);
+	color: var(--menu-color);
 }
 
 .container > .footer > .transition {
@@ -298,6 +311,9 @@ body {
 	margin: 0 5px 0 5px;
 	
 	transform: translate(0, -14px);
+
+	/* interactivity */
+	user-select: none;
 }
 
 .container > .footer > .right {
@@ -331,7 +347,10 @@ body {
 .tv-list > .item {
 	/* positioning */
 	width: 200px;
-	/* height: 300px; */
+
+	display: grid;
+	grid-template-rows: repeat(8, max-content);
+	gap: 5px;
 
 	/* appearance */
 	/* background: hsl(35, 100%, 50%); */
@@ -342,7 +361,6 @@ body {
 	/* positioning */
 	width: inherit;
 	height: 10px;
-	margin-bottom: 5px;
 
 	/* appearance */
 	background: hsl(50, 100%, 50%);
@@ -354,8 +372,6 @@ body {
 	width: inherit;
 	height: 24px;
 
-	margin-bottom: 5px;
-
 	box-sizing: border-box;
 	padding-right: 3px;
 
@@ -365,29 +381,26 @@ body {
 	/* text */
 	font-size: 12pt;
 	text-align: right;
+
 }
 
 .item > .content {
 	/* positioning */
 	width: inherit;
 	height: 200px;
-	margin-bottom: 5px;
 
 	/* appearance */
-	background: hsl(28, 100%, 50%);
-}
+	/* background: hsl(28, 100%, 50%); */
+	background-size: 200px 200px;
 
-.item > .content > img {
-	width: inherit;
-	height: inherit;
+	/* interactivity */
+	user-select: none;
 }
 
 .item > .spacer {
 	/* positioning */
 	width: inherit;
 	height: 5px;
-
-	margin-bottom: 5px;
 }
 
 .item > .spacer.\31 {background: hsl(27,  100%, 50%)}
@@ -402,5 +415,106 @@ body {
 	/* appearance */
 	background: hsl(280, 100%, 50%);
 	border-radius: 0 0 10px 10px;
+}
+
+
+
+
+
+.detail-view {
+	/* positioning */
+	margin-left: 5px;
+
+	display: grid;
+	grid-template-columns: max-content;
+
+	/* text */
+	font-size: 49px;
+}
+
+
+.detail-view > .header {
+	/* positioning */
+	width: inherit;
+	height: 40px;
+
+	display: grid;
+	grid-template-columns: 30px max-content 1fr 80px 100px;
+}
+
+.detail-view > .header > .left {
+	/* positioning */
+	height: inherit;
+
+	/* appearance */
+	background: var(--detail-bg);
+	/* border-radius: 40px 0 0 40px; */
+}
+
+.detail-view > .header > .title {
+	/* positioning */
+	margin: 0 5px 0 5px;
+	transform: translate(0, -18px);
+
+	/* text */
+	color: var(--detail-color);
+}
+
+.detail-view > .header > .spacer {
+		/* positioning */
+		height: inherit;
+	
+		/* appearance */
+		background: var(--detail-bg);
+}
+
+.detail-view > .header > .transition {
+	/* positioning */
+	position: relative;
+	height: 85px;
+	margin-left: 5px;
+
+	/* appearance */
+	background: var(--detail-bg);
+}
+
+.detail-view > .header > .transition::before {
+	/* positioning */
+	position: absolute;
+	top: 40px;
+	left: 0;
+
+	width: 80px;
+	height: 45px;
+
+	/* appearance */
+	content: "";
+	background: black;
+	border-top-right-radius: 28px;
+}
+
+.detail-view > .header > .transition::after {
+	/* positioning */
+	position: absolute;
+	top: 27px;
+	left: -60px;
+
+	width: 80px;
+	height: 45px;
+
+	/* appearance */
+	content: "DETAIL";
+
+	/* text */
+	color: var(--detail-color);
+}
+
+.detail-view > .header > .right {
+	/* positioning */
+	height: 85px;
+
+	/* appearance */
+	background: var(--detail-bg);
+	border-top-right-radius: 85px;
 }
 
