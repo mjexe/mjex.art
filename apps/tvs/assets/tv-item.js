@@ -15,6 +15,44 @@ class List {
 		let data = this.itemdata(id);
 		this.container.html('<div class="detail-view"></div>');
 		this.detailview = this.container.find('.detail-view');
+		
+		this.detailview.append(
+			'<div class="view">' +
+				'<div class="header">' +
+					'<div class="left"></div>' +
+					'<div class="title">' + data.id + '</div>' +
+					'<div class="spacer"></div>' +
+					'<div class="transition"></div>' +
+				'</div>' +
+	
+				'<div class="content">' +
+					'<div class="image" style="background: url(\'' + data.images[data.currentimg] + '\')"></div>' +
+				'</div>' +
+	
+				'<div class="footer">' +
+					'<div class="left"></div>' +
+					'<div class="spacer"></div>' +
+					'<div class="title">DETAIL VIEW</div>' +
+					'<div class="transition"></div>' +
+				'</div>' +
+			'</div>' +
+	
+			'<div class="menu">' +
+				'<div class="top"></div>' +
+	
+				'<ul class="buttons">' +
+					'<li>COPY ID</li>' +
+					'<li>NEXT IMAGE</li>' +
+					'<li>PREV IMAGE</li>' +
+				'</ul>' +
+				
+				'<div class="spacer"></div>' +
+				'<div class="bottom"></div>' +
+			'</div>' +
+		'</div>'
+		);
+
+		this.detailview.find('.view')[0].style.width = (itemwidth - 140) + 'px';
 	}
 
 	additem(data) {this.items.push(data)}
@@ -28,7 +66,7 @@ class List {
 		$('#' + data.id).append(
 			'<div class="top"></div>',
 			'<div class="header">' + data.id + '</div>',
-			'<div class="content" style="background: url(\'' + data.img + '"></div>',
+			'<div class="content" style="background: url(\'' + data.thumbnail + '"></div>',
 			'<div class=""></div>',
 			'<div class="spacer 1"></div>',
 			'<div class="spacer 2"></div>',
