@@ -101,7 +101,6 @@ class List {
 			'<div class="top"></div>',
 			'<div class="header">' + data.id + '</div>',
 			'<div class="content" style="background: url(\'' + data.thumbnail + '"></div>',
-			'<div class=""></div>',
 			'<div class="spacer 1"></div>',
 			'<div class="spacer 2"></div>',
 			'<div class="spacer 3"></div>',
