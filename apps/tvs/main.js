@@ -49,11 +49,13 @@ function detailAnim(id) {
 			$('.titlebar').animate({width: '826px'}, 500, 'linear');
 			$('.header, .footer, .list-container > .tv-list').animate({width: '626px'}, 500, 'linear', () => {
 				$('.list-container, .container').css({width: '', height: ''});
-				tvs.generatedetails(id);
+				tvs.generatedetails(id, 0);
 				setItemWidth();
-				
+
 				setTimeout(() => {
-					$('.detail-view').animate({opacity: 1}, 500, 'linear');
+					$('.detail-view').animate({opacity: 1}, 500, 'linear', () => {
+						$('.detail-view').css('opacity', 1);
+					});
 				}, 250);
 			});
 		});

@@ -13,11 +13,12 @@ class List {
 		$('#returnbutton').text('');
 	}
 
-	generatedetails(id) {
+	generatedetails(id, opacity) {
+		opacity = typeof opacity == 'undefined' ? 1 : opacity;
 		this.currentid = id;
 
 		let data = this.itemdata(id);
-		this.container.html('<div class="detail-view" style="opacity: 0"></div>');
+		this.container.html('<div class="detail-view" style="opacity: ' + opacity + '"></div>');
 		this.detailview = this.container.find('.detail-view');
 		
 		this.detailview.append(
