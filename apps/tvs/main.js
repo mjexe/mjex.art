@@ -28,8 +28,8 @@ tvs.additems([
 $(() => {
 	setStandards();
 	setItemWidth();
-	// tvs.generatelist();
-	
+	tvs.generatelist();
+	setItemWidth();
 	
 	// $('.container > .footer').css('transform', 'translate(0, ' + (301 * verdiv * -1) + ')')
 });
@@ -38,9 +38,36 @@ $(window).resize(() => resize());
 
 document.fonts.onloadingdone = () => {
 	$('.giga-container')[0].style.opacity = 1;
-	tvs.generatedetails('HAHA');
-	setItemWidth();
 };
+
+
+
+
+
+
+function nextimg() {
+	let index = tvs.getindex(tvs.currentid);
+	let imgnum = tvs.items[index].currentimg;
+	if(imgnum < (tvs.items[index].images.length - 1)) tvs.items[index].currentimg++;
+	tvs.generatedetails(tvs.currentid);
+	setItemWidth();
+}
+
+function previmg() {
+	let index = tvs.getindex(tvs.currentid);
+	let imgnum = tvs.items[index].currentimg;
+	if(imgnum > 0) tvs.items[index].currentimg--;
+	tvs.generatedetails(tvs.currentid);
+	setItemWidth();
+}
+
+function goback() {
+	tvs.generatelist();
+	setItemWidth();
+}
+
+
+
 
 
 
@@ -62,6 +89,9 @@ function setItemWidth() {
 	// verdiv = tvs.list[0].children.length / hordiv;
 
 	if($('.detail-view').length > 0) {
+		hordiv = 3;
+		itemwidth = (212 * hordiv);
+		
 		$('.detail-view > .view')[0].style.width = (itemwidth - 140) + 'px';
 		$('.detail-view > .view > .content > .image')[0].style.width = (itemwidth - 220) + 'px';
 	}
@@ -71,5 +101,7 @@ function setItemWidth() {
 		$('.tv-list')[0].style.width = (itemwidth - 22) + 'px';
 	}
 
+		$('.container > .header')[0].style.width = (itemwidth - 10) + 'px';
+	$('.container > .footer')[0].style.width = (itemwidth - 10) + 'px';
 	$('.giga-container > .titlebar')[0].style.width = (itemwidth + 190) + 'px';
 }

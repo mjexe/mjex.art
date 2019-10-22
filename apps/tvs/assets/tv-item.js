@@ -9,9 +9,13 @@ class List {
 		this.list = this.container.find('.tv-list');
 		this.items.forEach((e, i) => this.renderitem(e));
 		this.list[0].style.gridTemplateColumns = 'repeat(' + hordiv + ', 200px)';
+		$('#returnbutton').removeClass('button');
+		$('#returnbutton').text('');
 	}
 
 	generatedetails(id) {
+		this.currentid = id;
+
 		let data = this.itemdata(id);
 		this.container.html('<div class="detail-view"></div>');
 		this.detailview = this.container.find('.detail-view');
@@ -20,7 +24,7 @@ class List {
 			'<div class="view">' +
 				'<div class="header">' +
 					'<div class="left"></div>' +
-					'<div class="title">' + data.id + '</div>' +
+					'<div class="title" id="currentid">' + data.id + '</div>' +
 					'<div class="spacer"></div>' +
 					'<div class="transition"></div>' +
 				'</div>' +
@@ -41,9 +45,9 @@ class List {
 				'<div class="top"></div>' +
 	
 				'<ul class="buttons">' +
-					'<li>COPY ID</li>' +
-					'<li>NEXT IMAGE</li>' +
-					'<li>PREV IMAGE</li>' +
+					'<li id="copyid" data-clipboard-target="#currentid">COPY ID</li>' +
+					'<li onclick="javascript:nextimg()">NEXT IMAGE</li>' +
+					'<li onclick="javascript:previmg()">PREV IMAGE</li>' +
 				'</ul>' +
 				
 				'<div class="spacer"></div>' +
@@ -52,8 +56,38 @@ class List {
 		'</div>'
 		);
 
+
+		$('#returnbutton').addClass('button');
+		$('#returnbutton').text('RETURN');
+		$('#returnbutton').on('click', () => goback());
+
+		let clipboard = new ClipboardJS('#copyid');
+		clipboard.on('success', (e) => {
+			window.getSelection().empty();
+			$('#copyid').text('COPIED');
+			$('#copyid').css('background', 'hsl(91, 46%, 58%)');
+
+			setTimeout(() => {
+				$('#copyid').text('COPY ID');
+				$('#copyid').css('background', '');
+			}, 2000);
+		});
+
+		clipboard.on('error', (e) => {
+			window.getSelection().empty();
+			$('#copyid').text('FAILED');
+			$('#copyid').css('background', 'hsl(0, 100%, 50%)');
+
+			setTimeout(() => {
+				$('#copyid').text('COPY ID');
+				$('#copyid').css('background', '');
+			}, 2000);
+		});
+
 		this.detailview.find('.view')[0].style.width = (itemwidth - 140) + 'px';
 	}
+
+
 
 	additem(data) {this.items.push(data)}
 
@@ -73,6 +107,11 @@ class List {
 			'<div class="spacer 3"></div>',
 			'<div class="bottom"></div>',
 		);
+
+		$('#' + data.id).on('click', () => {
+			this.generatedetails(data.id)
+			setItemWidth();
+		});
 	}
 
 	removeitem(id) {
