@@ -110,6 +110,7 @@ document.fonts.onloadingdone = () => {
 
 
 function detailAnim(id) {
+	$('.list-container').css('overflow', 'hidden');
 	div = Math.floor(((width - 224) / 212));
 	hordiv = div >= 3 ? div : 3;
 	itemwidth = (212 * hordiv);
@@ -143,10 +144,12 @@ function detailAnim(id) {
 			'.container > .footer,' +
 			'.list-container > .tv-list',
 		width: '636px',
+		duration: hordiv > 3 ? 500 : 0,
 	})
 	.add({
 		targets: '.titlebar',
 		width: '836px',
+		duration: hordiv > 3 ? 500 : 0,
 		complete: () => {
 			tvs.generatedetails(id, 0);
 			setItemWidth();
@@ -179,6 +182,7 @@ function goback() {
 	hordiv = div >= 3 ? div : 3;
 	itemwidth = (212 * hordiv);
 
+
 	let anim = anime.timeline({
 		easing: 'linear',
 		duration: 500,
@@ -203,10 +207,12 @@ function goback() {
 			'.container > .footer,' +
 			'.list-container > .tv-list',
 		width: itemwidth + 'px',
-	}, 1000)
+		duration: hordiv > 3 ? 500 : 0,
+	})
 	.add({
 		targets: '.titlebar',
 		width: (itemwidth + 200) + 'px',
+		duration: hordiv > 3 ? 500 : 0,
 		complete: () => {
 			tvs.generatelist(0);
 			$('.tv-list > .item').attr('onclick', '');
@@ -228,11 +234,12 @@ function goback() {
 						direction: 'reverse',
 					}
 				),
-				complete: () => tvs.generatelist(1)
+				complete: () => {
+					tvs.generatelist(1);
+				}
 			}, 250);
 		}
-	}, 1000)
-
+	}, '-=500')
 }
 
 
@@ -271,6 +278,7 @@ function setStandards() {
 function resize() {
 	setStandards();
 	setItemWidth();
+	console.log('updog')
 }
 
 function setItemWidth() {
@@ -279,13 +287,15 @@ function setItemWidth() {
 	itemwidth = (212 * hordiv);
 	// verdiv = tvs.list[0].children.length / hordiv;
 
+	
 	if($('.detail-view').length > 0) {
 		hordiv = 3;
 		itemwidth = (212 * hordiv);
 		$('.detail-view > .view')[0].style.width = (itemwidth - 130) + 'px';
 	}
-
+	
 	if($('.tv-list').length > 0) {
+		$('.list-container').css('height', (301 * Math.ceil(tvs.items.length / hordiv)) - 12);
 		$('.tv-list')[0].style.gridTemplateColumns = 'repeat(' + hordiv + ', 200px)';
 		$('.tv-list')[0].style.width = (itemwidth - 22) + 'px';
 	}
