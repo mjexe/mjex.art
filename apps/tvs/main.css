@@ -225,6 +225,7 @@ body {
 	/* positioning */
 	position: relative;
 	height: 90px;
+	transform: scaleX(1.06);
 	
 	/* appearance */
 	background: var(--menu-bg);
@@ -236,8 +237,10 @@ body {
 	top: 30px;
 	left: 0px;
 	
-	height: 60px;
-	width: 40px;
+	height: 61px;
+	width: 41px;
+
+	transform: translateX(1px);
 	
 	/* appearance */
 	background: black;
@@ -301,6 +304,7 @@ body {
 	/* positioning */
 	position: relative;
 	height: 90px;
+	transform: scaleX(1.06);
 	/* transform: translate(0, -60px); */
 	
 	/* appearance */
@@ -313,8 +317,10 @@ body {
 	top: 0px;
 	left: 0px;
 	
-	height: 60px;
-	width: 40px;
+	height: 61px;
+	width: 41px;
+
+	transform: translate(1px, -1px);
 	
 	/* appearance */
 	background: black;
