@@ -214,12 +214,12 @@ function goback() {
 
 			let subanim = anime.timeline({
 				easing: 'linear',
-				duration: 500,
 			});
 
 			subanim
 			.add({
 				targets: '.tv-list > .item',
+				duration: 350,
 				opacity: 1,
 				delay: anime.stagger(
 					75, {
