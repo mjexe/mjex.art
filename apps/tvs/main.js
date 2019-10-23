@@ -128,7 +128,7 @@ function detailAnim(id) {
 			75, {
 				grid: [hordiv, Math.ceil(tvs.items.length / hordiv)],
 				from: tvs.getindex(id),
-				direction: 'reverse',
+				direction: 'normal',
 			}
 		),
 		opacity: 0,
@@ -225,7 +225,7 @@ function goback() {
 					75, {
 						grid: [hordiv, Math.ceil(tvs.items.length / hordiv)],
 						from: tvs.getindex(tvs.currentid),
-						direction: 'normal',
+						direction: 'reverse',
 					}
 				),
 				complete: () => tvs.generatelist(1)
