@@ -4,13 +4,12 @@ class List {
 		this.items = [];
 	}
 
-	generatelist() {
+	generatelist(opacity) {
+		opacity = typeof opacity == 'undefined' ? 1 : opacity;
 		this.container.html('<div class="tv-list"></div>');
 		this.list = this.container.find('.tv-list');
-		this.items.forEach((e, i) => this.renderitem(e));
+		this.items.forEach((e, i) => this.renderitem(e, opacity));
 		this.list[0].style.gridTemplateColumns = 'repeat(' + hordiv + ', 200px)';
-		$('#returnbutton').removeClass('button');
-		$('#returnbutton').text('');
 	}
 
 	generatedetails(id, opacity) {
@@ -57,11 +56,7 @@ class List {
 		'</div>'
 		);
 
-
-		$('#returnbutton').addClass('button');
-		$('#returnbutton').text('RETURN');
-		$('#returnbutton').on('click', () => goback());
-
+		
 		let clipboard = new ClipboardJS('#copyid');
 		clipboard.on('success', (e) => {
 			window.getSelection().empty();
@@ -98,7 +93,7 @@ class List {
 
 	renderitem(data, opacity) {
 		opacity = typeof opacity == 'undefined' ? 1 : opacity;
-		this.list.append('<div class="item" id="' + data.id + '" style="opacity="' + opacity + '"></div>');
+		this.list.append('<div class="item" id="' + data.id + '" style="opacity: ' + opacity + '"></div>');
 		$('#' + data.id).append(
 			'<div class="top"></div>',
 			'<div class="header">' + data.id + '</div>',

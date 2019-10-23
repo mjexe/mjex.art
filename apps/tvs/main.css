@@ -163,6 +163,17 @@ body {
 	user-select: none;
 }
 
+.outer > .menu > .buttons > li:hover {
+	/* appearance */
+	background: var(--button-bg-hover);
+}
+
+.outer > .menu > .buttons > li:active {
+	/* appearance */
+	background: var(--button-bg-active);
+}
+
+
 #returnbutton.button {
 	/* appearance */
 	background: var(--detail-button-bg);
@@ -177,12 +188,12 @@ body {
 	user-select: none;
 }
 
-.outer > .menu > .buttons > li:hover, #returnbutton.button:hover {
+#returnbutton.button:hover {
 	/* appearance */
 	background: var(--detail-button-bg-hover);
 }
 
-.outer > .menu > .buttons > li:active, #returnbutton.button:active {
+#returnbutton.button:active {
 	/* appearance */
 	background: var(--detail-button-bg-active);
 }
@@ -360,6 +371,9 @@ body {
 
 
 
+.list-container {overflow: hidden}
+
+
 .tv-list {
 	/* positioning */
 	width: max-content;
@@ -465,7 +479,7 @@ body {
 	width: inherit;
 
 	display: grid;
-	grid-template-rows: max-content minmax(426px, max-content) max-content;
+	grid-template-rows: max-content 436px max-content;
 }
 
 .detail-view > .view > .header {
@@ -625,6 +639,7 @@ body {
 
 .detail-view > .view > .content > .image {
 	/* positioning */
+	width: 426px;
 	height: inherit;
 
 	/* appearance */

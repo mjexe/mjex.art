@@ -108,38 +108,131 @@ document.fonts.onloadingdone = () => {
 
 
 
+
 function detailAnim(id) {
+	div = Math.floor(((width - 224) / 212));
+	hordiv = div >= 3 ? div : 3;
+	itemwidth = (212 * hordiv);
 	$('div[onclick^=javascript]').attr('onclick', '');
-	$('.tv-list > .item').animate({opacity: 0}, 500, 'linear')
-	setTimeout(() => {
-		console.log('ligma');
-		$('.list-container').animate({height: '497px'}, 500, 'linear', () => {
-			if(hordiv > 3) $(
-				'.container > .header,' +
-				'.container > .footer,' +
-				'.list-container > .tv-list'
-			).animate({width: '626px'}, 500, 'linear');
 
-			$('.titlebar').animate({width: '826px'}, 500, 'linear', () => {
-				$('.list-container, .container').css({width: '', height: ''});
-				tvs.generatedetails(id, 0);
-				setItemWidth();
+	let anim = anime.timeline({
+		easing: 'linear',
+		duration: 500,
+	});
 
-				setTimeout(() => {
-					$('.detail-view').animate({opacity: 1}, 500, 'linear', () => {
+	anim
+	.add({
+		targets: '.tv-list > .item',
+		duration: 350,
+		delay: anime.stagger(
+			75, {
+				grid: [hordiv, Math.ceil(tvs.items.length / hordiv)],
+				from: tvs.getindex(id),
+				direction: 'reverse',
+			}
+		),
+		opacity: 0,
+	})
+	.add({
+		targets: '.list-container',
+		height: '507px',
+	})
+	.add({
+		targets:
+			'.container > .header,' +
+			'.container > .footer,' +
+			'.list-container > .tv-list',
+		width: '636px',
+	})
+	.add({
+		targets: '.titlebar',
+		width: '836px',
+		complete: () => {
+			tvs.generatedetails(id, 0);
+			setItemWidth();
 
-						$('.detail-view').css('opacity', 1);
-					});
-				}, 250);
+			let subanim = anime.timeline({
+				easing: 'linear',
+				duration: 500,
 			});
-		});
-	}, 500);
+
+			subanim
+			.add({
+				targets: '.detail-view',
+				opacity: 1,
+				complete: () => {
+					$('.detail-view').css('opacity', 1);
+					$('#returnbutton').addClass('button');
+					$('#returnbutton').text('RETURN');
+					$('#returnbutton').attr('onclick', 'javascript:goback()');
+				}
+			}, 250);
+		},
+	}, '-=500');
 }
 
 
+
 function goback() {
-	tvs.generatelist();
-	setItemWidth();
+	$('#returnbutton').attr('onclick', '');
+	div = Math.floor(((width - 224) / 212));
+	hordiv = div >= 3 ? div : 3;
+	itemwidth = (212 * hordiv);
+
+	let anim = anime.timeline({
+		easing: 'linear',
+		duration: 500,
+	});
+
+	anim
+	.add({
+		targets: '.detail-view',
+		opacity: 0,
+		begin: () => {
+			$('#returnbutton').removeClass('button');
+			$('#returnbutton').text('');
+		}
+	})
+	.add({
+		targets: '.list-container',
+		height: (301 * Math.ceil(tvs.items.length / hordiv)) - 12,
+	})
+	.add({
+		targets:
+			'.container > .header,' +
+			'.container > .footer,' +
+			'.list-container > .tv-list',
+		width: itemwidth + 'px',
+	}, 1000)
+	.add({
+		targets: '.titlebar',
+		width: (itemwidth + 200) + 'px',
+		complete: () => {
+			tvs.generatelist(0);
+			$('.tv-list > .item').attr('onclick', '');
+			setItemWidth();
+
+			let subanim = anime.timeline({
+				easing: 'linear',
+				duration: 500,
+			});
+
+			subanim
+			.add({
+				targets: '.tv-list > .item',
+				opacity: 1,
+				delay: anime.stagger(
+					75, {
+						grid: [hordiv, Math.ceil(tvs.items.length / hordiv)],
+						from: tvs.getindex(tvs.currentid),
+						direction: 'normal',
+					}
+				),
+				complete: () => tvs.generatelist(1)
+			}, 250);
+		}
+	}, 1000)
+
 }
 
 
@@ -189,9 +282,7 @@ function setItemWidth() {
 	if($('.detail-view').length > 0) {
 		hordiv = 3;
 		itemwidth = (212 * hordiv);
-		
-		$('.detail-view > .view')[0].style.width = (itemwidth - 140) + 'px';
-		$('.detail-view > .view > .content > .image')[0].style.width = (itemwidth - 220) + 'px';
+		$('.detail-view > .view')[0].style.width = (itemwidth - 130) + 'px';
 	}
 
 	if($('.tv-list').length > 0) {
@@ -199,7 +290,7 @@ function setItemWidth() {
 		$('.tv-list')[0].style.width = (itemwidth - 22) + 'px';
 	}
 
-		$('.container > .header')[0].style.width = (itemwidth - 10) + 'px';
-	$('.container > .footer')[0].style.width = (itemwidth - 10) + 'px';
-	$('.giga-container > .titlebar')[0].style.width = (itemwidth + 190) + 'px';
+		$('.container > .header')[0].style.width = itemwidth + 'px';
+	$('.container > .footer')[0].style.width = itemwidth + 'px';
+	$('.giga-container > .titlebar')[0].style.width = (itemwidth + 200) + 'px';
 }
