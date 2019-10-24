@@ -86,6 +86,32 @@ tvs.additems([
 			'https://media.istockphoto.com/photos/hands-forming-a-heart-shape-with-sunset-silhouette-picture-id636379014?k=6&m=636379014&s=612x612&w=0&h=tnYrf_O_nvT15N4mmjorIRvZ7lK4w1q1c7RSfrVmqKA=',
 		],
 	},
+
+	{
+		id: 'LIGMA',
+		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
+		currentimg: 0,
+		images: [
+			'https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+			'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+			'https://images.unsplash.com/photo-1527555197883-98e27ca0c1ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+			'https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/10/18/14/Pixday1710-4.jpg?width=1000&height=614&fit=bounds&format=pjpg&auto=webp&quality=70&crop=16:9,offset-y0.5',
+			'https://media.istockphoto.com/photos/hands-forming-a-heart-shape-with-sunset-silhouette-picture-id636379014?k=6&m=636379014&s=612x612&w=0&h=tnYrf_O_nvT15N4mmjorIRvZ7lK4w1q1c7RSfrVmqKA=',
+		],
+	},
+
+	{
+		id: 'CHOKEMA',
+		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
+		currentimg: 0,
+		images: [
+			'https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+			'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+			'https://images.unsplash.com/photo-1527555197883-98e27ca0c1ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+			'https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/10/18/14/Pixday1710-4.jpg?width=1000&height=614&fit=bounds&format=pjpg&auto=webp&quality=70&crop=16:9,offset-y0.5',
+			'https://media.istockphoto.com/photos/hands-forming-a-heart-shape-with-sunset-silhouette-picture-id636379014?k=6&m=636379014&s=612x612&w=0&h=tnYrf_O_nvT15N4mmjorIRvZ7lK4w1q1c7RSfrVmqKA=',
+		],
+	},
 ]);
 
 
@@ -95,8 +121,6 @@ $(() => {
 	setItemWidth();
 	tvs.generatelist();
 	setItemWidth();
-	
-	// $('.container > .footer').css('transform', 'translate(0, ' + (301 * verdiv * -1) + ')')
 });
 
 $(window).resize(() => resize());
@@ -126,7 +150,7 @@ function detailAnim(id) {
 		targets: '.tv-list > .item',
 		duration: 350,
 		delay: anime.stagger(
-			75, {
+			100, {
 				grid: [hordiv, Math.ceil(tvs.items.length / hordiv)],
 				from: tvs.getindex(id),
 				direction: 'normal',
@@ -149,7 +173,7 @@ function detailAnim(id) {
 	.add({
 		targets: '.titlebar',
 		width: '836px',
-		duration: hordiv > 3 ? 500 : 0,
+		duration: 500,
 		complete: () => {
 			tvs.generatedetails(id, 0);
 			setItemWidth();
@@ -165,9 +189,11 @@ function detailAnim(id) {
 				opacity: 1,
 				complete: () => {
 					$('.detail-view').css('opacity', 1);
-					$('#returnbutton').addClass('button');
-					$('#returnbutton').text('RETURN');
-					$('#returnbutton').attr('onclick', 'javascript:goback()');
+					setTimeout(() => {
+						$('#returnbutton').addClass('button');
+						$('#returnbutton').text('RETURN');
+						$('#returnbutton').attr('onclick', 'javascript:goback()');
+					}, 500);
 				}
 			}, 250);
 		},
@@ -207,7 +233,7 @@ function goback() {
 			'.container > .footer,' +
 			'.list-container > .tv-list',
 		width: itemwidth + 'px',
-		duration: hordiv > 3 ? 500 : 0,
+		duration: 500,
 	})
 	.add({
 		targets: '.titlebar',
