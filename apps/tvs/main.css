@@ -528,6 +528,7 @@ body {
 .detail-view > .view > .header > .transition {
 	/* positioning */
 	position: relative;
+	width: 76px;
 	height: 148px;
 	margin-left: 5px;
 
@@ -542,7 +543,7 @@ body {
 	left: -5px;
 
 	width: 80px;
-	height: 102px;
+	height: 103px;
 
 	/* appearance */
 	content: "";
@@ -599,9 +600,10 @@ body {
 
 .detail-view > .view > .footer > .transition {
 	/* positioning */
-	transform: translate(0, -51px);
+	transform: translate(0, -50px);
 	position: relative;
-	height: 76px;
+	width: 76px;
+	height: 75px;
 	margin-left: 5px;
 
 	/* appearance */
@@ -611,7 +613,7 @@ body {
 .detail-view > .view > .footer > .transition::before {
 	/* positioning */
 	position: absolute;
-	top: 0;
+	top: -1px;
 	left: -5px;
 
 	width: 80px;

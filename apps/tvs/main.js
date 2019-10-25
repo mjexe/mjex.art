@@ -10,7 +10,7 @@ let tvs = new List({container: '.list-container'});
 
 tvs.additems([
 	{
-		id: 'HAHA',
+		id: 'yh sys',
 		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
 		currentimg: 0,
 		images: [
@@ -23,7 +23,7 @@ tvs.additems([
 	},
 
 	{
-		id: 'DAB',
+		id: 'gs6usrth',
 		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
 		currentimg: 0,
 		images: [
@@ -36,7 +36,7 @@ tvs.additems([
 	},
 
 	{
-		id: 'SUGMA',
+		id: 'agadfgadf',
 		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
 		currentimg: 0,
 		images: [
@@ -49,7 +49,7 @@ tvs.additems([
 	},
 
 	{
-		id: 'BALLS',
+		id: 'asdfasfe',
 		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
 		currentimg: 0,
 		images: [
@@ -62,7 +62,7 @@ tvs.additems([
 	},
 
 	{
-		id: 'WHATS',
+		id: 'asdfefe',
 		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
 		currentimg: 0,
 		images: [
@@ -75,7 +75,7 @@ tvs.additems([
 	},
 
 	{
-		id: 'UPDOG',
+		id: 'k777t',
 		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
 		currentimg: 0,
 		images: [
@@ -88,7 +88,7 @@ tvs.additems([
 	},
 
 	{
-		id: 'LIGMA',
+		id: 'gsfews',
 		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
 		currentimg: 0,
 		images: [
@@ -101,7 +101,7 @@ tvs.additems([
 	},
 
 	{
-		id: 'CHOKEMA',
+		id: 'r5tgrgs',
 		thumbnail: 'https://i.pinimg.com/236x/09/70/97/09709757a8f52c76abc7c81edaf9446e.jpg',
 		currentimg: 0,
 		images: [
@@ -193,7 +193,7 @@ function detailAnim(id) {
 						$('#returnbutton').addClass('button');
 						$('#returnbutton').text('RETURN');
 						$('#returnbutton').attr('onclick', 'javascript:goback()');
-					}, 500);
+					}, 0);
 				}
 			}, 250);
 		},
