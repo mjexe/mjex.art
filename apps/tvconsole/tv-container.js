@@ -6,79 +6,21 @@ let width,
 //initializing standards
 
 
-let tvs = new List({container: '.list-container'});
-let test;
+let tvs;
 
 /**
  * socket.io stuff
  */
 
 // const socket = io('http://localhost:3000');
-const socket = io('http://mjex.art:3000');
+// socket.emit('request items');
 
-socket.on('send all items', (data) => {
-	tvs.items = data.items;
-	tvs.generatelist();
-	setItemWidth();
-	$('.giga-container')[0].style.opacity = 1;
-});
-
-socket.on('refresh items', (data) => {
-	tvs.items = data.items;
-
-	if($('.detail-view').length > 0) {
-		let index = tvs.getindex(tvs.currentid);
-		let data  = tvs.items[index];
-
-		$('.detail-view .detail[name="dimensions"').html(data.dimensions);
-		$('.detail-view .detail[name="color"').html(data.color);
-		$('.detail-view .detail[name="style"').html(data.style);
-		$('.detail-view .description').html(data.description);
-
-		$('.detail-view .stock')[0].textContent = data.stock ? 'AVAILABLE' : 'TAKEN';
-		$('.detail-view .stock')[0].style.color = 'var(--' + ($('.detail-view .stock')[0].textContent == 'AVAILABLE' ? 'stock-available' : 'stock-none') + ')';
-	}
-
-	if($('.tv-list').length > 0) {
-		tvs.generatelist();
-		setItemWidth();
-	}
-});
 
 /**
  * not socket io stuff
  */
 
-
-
-$(() => {
-	setStandards();
-	socket.emit('request items');
-
-	if (Modernizr.cssscrollbar) {
-		let scrollbarStyle = document.createElement('style');
-		document.head.appendChild(scrollbarStyle);
-		
-		scrollbarStyle.sheet.insertRule('.detail-view > .view > .content > .info > .description::-webkit-scrollbar {width: 3px}');
-		scrollbarStyle.sheet.insertRule(
-			'.detail-view > .view > .content > .info > .description {' +
-				'transform: translateX(8px);' +
-				'padding-right: 5px;' +
-			'}'
-		);
-
-		scrollbarStyle.sheet.insertRule(
-			'.detail-view > .view > .content > .info > .description::-webkit-scrollbar-thumb {' +
-				'background: var(--detail-bg);' +
-				'border-radius: 3px;' +
-			'}'
-		);
-	}
-});
-
-document.fonts.onloadingdone = () => {};
 $(window).resize(() => resize());
-
 
 
 
@@ -214,7 +156,6 @@ function goback() {
 				),
 				complete: () => {
 					tvs.generatelist(1);
-					tvs.items[tvs.getindex(tvs.currentid)].currentimg = 0;
 				}
 			}, 0);
 		}
@@ -230,7 +171,8 @@ function nextimg() {
 	let index = tvs.getindex(tvs.currentid);
 	let imgnum = tvs.items[index].currentimg;
 	if(imgnum < (tvs.items[index].images.length - 1)) tvs.items[index].currentimg++;
-	tvs.generatedetails(tvs.currentid);
+	$('.detail-view .image').css('background', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
+	$('.detail-view .img-url')[0].value = tvs.items[index].images[tvs.items[index].currentimg];
 	setItemWidth();
 }
 
@@ -238,7 +180,8 @@ function previmg() {
 	let index = tvs.getindex(tvs.currentid);
 	let imgnum = tvs.items[index].currentimg;
 	if(imgnum > 0) tvs.items[index].currentimg--;
-	tvs.generatedetails(tvs.currentid);
+	$('.detail-view .image').css('background', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
+	$('.detail-view .img-url')[0].value = tvs.items[index].images[tvs.items[index].currentimg];
 	setItemWidth();
 }
 

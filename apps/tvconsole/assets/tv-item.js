@@ -34,63 +34,58 @@ class List {
 					'<div class="image" style="background: url(\'' + data.images[data.currentimg] + '\')"></div>' +
 					'<div class="info">' +
 						'<div class="title">SPECIFICATIONS</div>' +
-						'<div class="detail" name="dimensions">' + data.dimensions + '</div>' +
-						'<div class="detail" name="color">' + data.color + '</div>' +
-						'<div class="detail" name="style">' + data.style + '</div>' +
-						'<div class="description">' + data.description + '</div>' +
+						'<div class="detail"><input placeholder="DIMENSIONS"></input></div>' +
+						'<div class="detail"><input placeholder="COLOR"></input></div>' +
+						'<div class="detail"><input placeholder="STYLE"></input></div>' +
+						'<textarea class="description" placeholder="DESCRIPTION"></textarea>' +
 						'<div class="stock" style="color: var(--' + (data.stock ? 'stock-available' : 'stock-none') + ')">' + (data.stock ? 'AVAILABLE' : 'TAKEN') + '</div>' +
 					'</div>' +
 				'</div>' +
 	
 				'<div class="footer">' +
 					'<div class="left"></div>' +
-					'<div class="spacer"></div>' +
-					'<div class="title">DETAIL VIEW</div>' +
-					'<div class="spacer"></div>' +
-					'<div class="transition"></div>' +
+						'<input class="img-url" placeholder="IMAGE URL"></input>' +
+
+						'<div class="img-controls">' +
+							'<div class="button green"></div>' +
+							'<div class="button blue"></div>' +
+							'<div class="button red"></div>' +
+						'</div>' +
+
+						'<div class="spacer"></div>' +
+						'<div class="transition"></div>' +
+					'</div>' +
 				'</div>' +
-			'</div>' +
-	
-			'<div class="menu">' +
-				'<div class="top"></div>' +
-	
-				'<ul class="buttons">' +
-					'<li id="copyid" data-clipboard-target="#currentid">COPY ID</li>' +
-					'<li onclick="javascript:nextimg()">NEXT IMAGE</li>' +
-					'<li onclick="javascript:previmg()">PREV IMAGE</li>' +
-				'</ul>' +
-				
-				'<div class="spacer"></div>' +
-				'<div class="bottom"></div>' +
-			'</div>' +
-		'</div>'
+		
+				'<div class="menu">' +
+					'<div class="top"></div>' +
+		
+					'<ul class="buttons">' +
+						'<li class="blue" onclick="javascript:nextimg()">NEXT IMAGE</li>' +
+						'<li class="blue" onclick="javascript:previmg()">PREV IMAGE</li>' +
+						'<li class="red">DELETE</li>' +
+						'<li class="green" onclick="javascript:saveItems()">SAVE ITEM</li>' +
+					'</ul>' +
+					
+					'<div class="spacer"></div>' +
+					'<div class="bottom"></div>' +
+				'</div>' +
+			'</div>'
 		);
 
-		
-		let clipboard = new ClipboardJS('#copyid');
-		clipboard.on('success', (e) => {
-			window.getSelection().empty();
-			$('#copyid').text('COPIED');
-			$('#copyid').css('background', 'hsl(91, 46%, 58%)');
+		$('.detail-view input[placeholder="DIMENSIONS"')[0].value     = data.dimensions;
+		$('.detail-view input[placeholder="COLOR"')[0].value          = data.color;
+		$('.detail-view input[placeholder="STYLE"')[0].value          = data.style;
+		$('.detail-view textarea[placeholder="DESCRIPTION"')[0].value = data.description;
+		$('.detail-view .img-url')[0].value                           = data.images[data.currentimg];
 
-			setTimeout(() => {
-				$('#copyid').text('COPY ID');
-				$('#copyid').css('background', '');
-			}, 2000);
-		});
-
-		clipboard.on('error', (e) => {
-			window.getSelection().empty();
-			$('#copyid').text('FAILED');
-			$('#copyid').css('background', 'hsl(0, 100%, 50%)');
-
-			setTimeout(() => {
-				$('#copyid').text('COPY ID');
-				$('#copyid').css('background', '');
-			}, 2000);
-		});
-
-		this.detailview.find('.view')[0].style.width = (itemwidth - 140) + 'px';
+		$('.detail-view .stock').on('click', (e) => {
+			e = e.target;
+			if(e.textContent == 'AVAILABLE') e.textContent = 'TAKEN';
+			else e.textContent = 'AVAILABLE';
+			e.style.color = 'var(--' + (e.textContent == 'AVAILABLE' ? 'stock-available' : 'stock-none') + ')';
+		})
+		// this.detailview.find('.view')[0].style.width = (itemwidth - 140) + 'px';
 	}
 
 

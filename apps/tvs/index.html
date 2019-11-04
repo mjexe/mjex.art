@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-132345912-4"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-132345912-4');
+	</script>
+	
 	<meta charset='utf-8'>
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
-
 	<title>TV HEAD MANUFACTURING</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Oswald:500&display=swap" rel="stylesheet">
@@ -15,7 +23,7 @@
 		<div class="titlebar">
 			<div class="left"></div>
 			<div class="spacer"></div>
-			<div class="title">TV HEAD DESIGNS</div>
+			<div class="title">TV HEAD MANUFACTURING</div>
 			<div class="right"></div>
 		</div>
 
@@ -24,9 +32,9 @@
 				<div class="top"></div>
 	
 				<ul class="buttons">
-					<li>HOMEPAGE</li>
-					<li>ETSY LISTING</li>
-					<li>REFRESH SESSION</li>
+					<a href="/"><li>HOMEPAGE</li></a>
+					<a href=""><li>ETSY LISTING</li></a>
+					<!-- <a href="/"><li>ABOUT</li></a> -->
 				</ul>
 				
 				<div class="spacer"></div>
@@ -57,8 +65,10 @@
 
 	<!-- scripts -->
 	<script type="text/javascript" src="assets/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/socket.io.slim.js"></script>
 	<script type="text/javascript" src="assets/anime.min.js"></script>
 	<script type="text/javascript" src="assets/clipboard.min.js"></script>
+	<script type="text/javascript" src="assets/modernizr.js"></script>
 	
 	<!-- my scripts -->
 	<script type="text/javascript" src="assets/tv-item.js"></script>
