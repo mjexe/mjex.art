@@ -1,5 +1,5 @@
 // const socket = io('http://localhost:3000');
-const socket = io('http://mjex.art:3000');
+const socket = io('https://mjex.art:3000');
 
 socket.on('console login accepted', (data) => {
 	console.log('accepted: ', data.session);
