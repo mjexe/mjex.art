@@ -45,15 +45,21 @@ socket.on('refresh items', (data) => {
 		let index = tvs.getindex(tvs.currentid);
 		let data  = tvs.items[index];
 
-		$('.detail-view .detail[name="dimensions"').html(data.dimensions);
-		$('.detail-view .detail[name="color"').html(data.color);
-		$('.detail-view .detail[name="style"').html(data.style);
-		$('.detail-view .description').html(data.description);
+		let setstuff = () => {
+			$('.detail-view .detail[name="dimensions"').html(data.dimensions);
+			$('.detail-view .detail[name="color"').html(data.color);
+			$('.detail-view .detail[name="style"').html(data.style);
+			$('.detail-view .description').html(data.description);
+	
+			$('.detail-view .stock')[0].textContent = data.stock ? 'AVAILABLE' : 'TAKEN';
+			$('.detail-view .stock')[0].style.color = 'var(--' + ($('.detail-view .stock')[0].textContent == 'AVAILABLE' ? 'stock-available' : 'stock-none') + ')';
+	
+			$('.detail-view .image').css('background-image', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
+		}
 
-		$('.detail-view .stock')[0].textContent = data.stock ? 'AVAILABLE' : 'TAKEN';
-		$('.detail-view .stock')[0].style.color = 'var(--' + ($('.detail-view .stock')[0].textContent == 'AVAILABLE' ? 'stock-available' : 'stock-none') + ')';
+		if(!data.visible) goback(true);
+		else setstuff();
 
-		$('.detail-view .image').css('background-image', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
 	}
 
 	if($('.tv-list').length > 0) {
@@ -176,8 +182,8 @@ function detailAnim(id) {
 
 
 
-function goback(callback) {
-	socket.emit('request item refresh');
+function goback(disablerefresh) {
+	if(!disablerefresh) socket.emit('request item refresh');
 	$('#returnbutton').attr('onclick', '');
 	div = Math.floor(((width - 224) / 212));
 	hordiv = div >= 4 ? div : 4;
@@ -201,9 +207,6 @@ function goback(callback) {
 	.add({
 		targets: '.list-container',
 		height: (301 * Math.ceil(tvs.items.length / hordiv)) - 12,
-		complete: () => {
-			if(typeof callback != 'undefined') callback();
-		}
 	})
 	.add({
 		targets:

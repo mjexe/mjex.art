@@ -65,7 +65,7 @@ class List {
 						'<li class="blue" onclick="javascript:previmg()">PREV IMAGE</li>' +
 						'<li class="red" onclick="javascript:deleteItem()">DELETE</li>' +
 						'<li class="green" onclick="javascript:saveItems()">SAVE ITEM</li>' +
-						'<li class="blue visible" onclick="javascript:toggleVisibility()">MAKE ' + (data.visible ? 'INVISIBLE' : 'VISIBLE') + '</li>' +
+						'<li class="blue visible">' + (data.visible ? 'MAKE INVISIBLE' : 'MAKE VISIBLE') + '</li>' +
 					'</ul>' +
 					
 					'<div class="spacer"></div>' +
@@ -85,8 +85,13 @@ class List {
 			if(e.textContent == 'AVAILABLE') e.textContent = 'TAKEN';
 			else e.textContent = 'AVAILABLE';
 			e.style.color = 'var(--' + (e.textContent == 'AVAILABLE' ? 'stock-available' : 'stock-none') + ')';
-		})
-		// this.detailview.find('.view')[0].style.width = (itemwidth - 140) + 'px';
+		});
+
+		$('.detail-view .visible').on('click', (e) => {
+			e = e.target;
+			if(e.textContent == 'MAKE VISIBLE') e.textContent = 'MAKE INVISIBLE';
+			else e.textContent = 'MAKE VISIBLE';
+		});
 	}
 
 
@@ -99,7 +104,7 @@ class List {
 		opacity = typeof opacity == 'undefined' ? 1 : opacity;
 		this.list.append('<div class="item" id="' + data.id + '" style="opacity: ' + opacity + '"></div>');
 		$('#' + data.id).append(
-			'<div class="top" style="display: ' + (data.visible ? 'block' : 'none') + '"></div>',
+			'<div class="top" style="opacity: ' + (data.visible ? '1' : '0') + '"></div>',
 			'<div class="header">' + data.id + '</div>',
 			'<div class="content" style="background-image: url(\'' + data.images[0] + '"></div>',
 			'<div class="spacer 1"></div>',

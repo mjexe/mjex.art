@@ -8,7 +8,7 @@ class List {
 		opacity = typeof opacity == 'undefined' ? 1 : opacity;
 		this.container.html('<div class="tv-list"></div>');
 		this.list = this.container.find('.tv-list');
-		this.items.forEach((e, i) => this.renderitem(e, opacity));
+		this.items.forEach((e, i) => {if(e.visible) this.renderitem(e, opacity)});
 		this.list[0].style.gridTemplateColumns = 'repeat(' + hordiv + ', 200px)';
 	}
 

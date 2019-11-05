@@ -261,6 +261,10 @@ socket.on('refresh items', (data) => {
 
 
 
+function toggleVisibility() {
+
+}
+
 function setImage() {
 	let index = tvs.getindex(tvs.currentid);
 	let data  = tvs.items[index];
@@ -347,7 +351,7 @@ function saveItems() {
 	tvs.items[index].style       = $('.detail-view input[placeholder="STYLE"')[0].value;
 	tvs.items[index].description = $('.detail-view textarea[placeholder="DESCRIPTION"')[0].value;
 	tvs.items[index].stock       = $('.detail-view .stock')[0].textContent == 'AVAILABLE';
-	tvs.items[index].visible     = $('.detail-view .stock')[0].textContent == 'AVAILABLE';
+	tvs.items[index].visible     = $('.detail-view .visible')[0].textContent == 'MAKE INVISIBLE';
 
 	let currentimg = data.currentimg;
 	tvs.items[index].currentimg = 0;
