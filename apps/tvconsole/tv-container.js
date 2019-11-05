@@ -96,7 +96,7 @@ function detailAnim(id) {
 
 
 
-function goback() {
+function goback(callback) {
 	$('#returnbutton').attr('onclick', '');
 	div = Math.floor(((width - 224) / 212));
 	hordiv = div >= 4 ? div : 4;
@@ -115,11 +115,15 @@ function goback() {
 		begin: () => {
 			$('#returnbutton').removeClass('button');
 			$('#returnbutton').text('');
-		}
+		},
 	})
 	.add({
 		targets: '.list-container',
 		height: (301 * Math.ceil(tvs.items.length / hordiv)) - 12,
+		complete: () => {
+			if(typeof callback != 'undefined') callback();
+			socket.emit('request item refresh');
+		},
 	})
 	.add({
 		targets:
@@ -171,7 +175,7 @@ function nextimg() {
 	let index = tvs.getindex(tvs.currentid);
 	let imgnum = tvs.items[index].currentimg;
 	if(imgnum < (tvs.items[index].images.length - 1)) tvs.items[index].currentimg++;
-	$('.detail-view .image').css('background', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
+	$('.detail-view .image').css('background-image', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
 	$('.detail-view .img-url')[0].value = tvs.items[index].images[tvs.items[index].currentimg];
 	setItemWidth();
 }
@@ -180,7 +184,7 @@ function previmg() {
 	let index = tvs.getindex(tvs.currentid);
 	let imgnum = tvs.items[index].currentimg;
 	if(imgnum > 0) tvs.items[index].currentimg--;
-	$('.detail-view .image').css('background', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
+	$('.detail-view .image').css('background-image', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
 	$('.detail-view .img-url')[0].value = tvs.items[index].images[tvs.items[index].currentimg];
 	setItemWidth();
 }
@@ -200,7 +204,6 @@ function setStandards() {
 function resize() {
 	setStandards();
 	setItemWidth();
-	console.log('updog')
 }
 
 function setItemWidth() {

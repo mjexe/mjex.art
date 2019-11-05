@@ -2,6 +2,14 @@
 	--red:   hsl(0, 54%, 60%);
 	--green: hsl(110, 35%, 60%);
 	--blue:  hsl(230, 72%, 70%);
+	
+	--red-dark:   hsl(0, 54%, 55%);
+	--green-dark: hsl(110, 35%, 55%);
+	--blue-dark:  hsl(230, 72%, 65%);
+
+	--red-darker:   hsl(0, 54%, 50%);
+	--green-darker: hsl(110, 35%, 50%);
+	--blue-darker:  hsl(230, 72%, 60%);
 
 	--login-header-bg: hsl(230, 72%, 70%);
 	--login-header-alt-bg: hsl(346, 42%, 70%);
@@ -917,8 +925,14 @@ body {
 	cursor: pointer;
 }
 
-.detail-view > .view > .footer > .img-controls > .button:hover {opacity: 0.9}
-.detail-view > .view > .footer > .img-controls > .button:active {opacity: 0.8}
+.detail-view > .view > .footer > .img-controls > .button.red:hover {background: var(--red-dark)}
+.detail-view > .view > .footer > .img-controls > .button.red:active {background: var(--red-darker)}
+
+.detail-view > .view > .footer > .img-controls > .button.green:hover {background: var(--green-dark)}
+.detail-view > .view > .footer > .img-controls > .button.green:active {background: var(--green-darker)}
+
+.detail-view > .view > .footer > .img-controls > .button.blue:hover {background: var(--blue-dark)}
+.detail-view > .view > .footer > .img-controls > .button.blue:active {background: var(--blue-darker)}
 
 
 .detail-view > .view > .footer > .spacer {
@@ -981,7 +995,7 @@ body {
 	height: inherit;
 
 	/* appearance */
-	background-size: cover !important;
+	background-size: 426px 426px;
 }
 
 

@@ -13,18 +13,33 @@ let test;
  * socket.io stuff
  */
 
-// const socket = io('http://localhost:3000');
-const socket = io('https://mjex.art:3000');
+const socket = io('http://localhost:3000');
+// const socket = io('https://mjex.art:3000');
 
 socket.on('send all items', (data) => {
 	tvs.items = data.items;
 	tvs.generatelist();
 	setItemWidth();
-	$('.giga-container')[0].style.opacity = 1;
+
+
+	let anim = anime.timeline({
+		easing: 'linear',
+		duration: 1000,
+	});
+
+	anim
+	.add({
+		targets: '.giga-container',
+		opacity: 1,
+	}, 0);
 });
 
+
 socket.on('refresh items', (data) => {
+	let currentimg = tvs.items[tvs.getindex(tvs.currentid) < 0 ? 0 : tvs.getindex(tvs.currentid)].currentimg;
 	tvs.items = data.items;
+	tvs.currentid = tvs.getindex(tvs.currentid) < 0 ? tvs.items[0].id : tvs.currentid;
+	tvs.items[tvs.getindex(tvs.currentid)].currentimg = currentimg;
 
 	if($('.detail-view').length > 0) {
 		let index = tvs.getindex(tvs.currentid);
@@ -37,6 +52,8 @@ socket.on('refresh items', (data) => {
 
 		$('.detail-view .stock')[0].textContent = data.stock ? 'AVAILABLE' : 'TAKEN';
 		$('.detail-view .stock')[0].style.color = 'var(--' + ($('.detail-view .stock')[0].textContent == 'AVAILABLE' ? 'stock-available' : 'stock-none') + ')';
+
+		$('.detail-view .image').css('background-image', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
 	}
 
 	if($('.tv-list').length > 0) {
@@ -44,6 +61,11 @@ socket.on('refresh items', (data) => {
 		setItemWidth();
 	}
 });
+
+
+socket.on('item deleted', (data) => {
+	if(data.item.id == tvs.currentid) goback();
+})
 
 /**
  * not socket io stuff
@@ -154,7 +176,8 @@ function detailAnim(id) {
 
 
 
-function goback() {
+function goback(callback) {
+	socket.emit('request item refresh');
 	$('#returnbutton').attr('onclick', '');
 	div = Math.floor(((width - 224) / 212));
 	hordiv = div >= 4 ? div : 4;
@@ -178,6 +201,9 @@ function goback() {
 	.add({
 		targets: '.list-container',
 		height: (301 * Math.ceil(tvs.items.length / hordiv)) - 12,
+		complete: () => {
+			if(typeof callback != 'undefined') callback();
+		}
 	})
 	.add({
 		targets:
@@ -257,7 +283,6 @@ function setStandards() {
 function resize() {
 	setStandards();
 	setItemWidth();
-	console.log('updog')
 }
 
 function setItemWidth() {

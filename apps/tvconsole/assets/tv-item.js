@@ -31,7 +31,7 @@ class List {
 				'</div>' +
 	
 				'<div class="content">' +
-					'<div class="image" style="background: url(\'' + data.images[data.currentimg] + '\')"></div>' +
+					'<div class="image" style="background-image: url(\'' + data.images[data.currentimg] + '\')"></div>' +
 					'<div class="info">' +
 						'<div class="title">SPECIFICATIONS</div>' +
 						'<div class="detail"><input placeholder="DIMENSIONS"></input></div>' +
@@ -47,9 +47,9 @@ class List {
 						'<input class="img-url" placeholder="IMAGE URL"></input>' +
 
 						'<div class="img-controls">' +
-							'<div class="button green"></div>' +
-							'<div class="button blue"></div>' +
-							'<div class="button red"></div>' +
+							'<div class="button green" onclick="javascript:setImage()"></div>' +
+							'<div class="button blue" onclick="javascript:newImage()"></div>' +
+							'<div class="button red" onclick="javascript:removeImage()"></div>' +
 						'</div>' +
 
 						'<div class="spacer"></div>' +
@@ -63,8 +63,9 @@ class List {
 					'<ul class="buttons">' +
 						'<li class="blue" onclick="javascript:nextimg()">NEXT IMAGE</li>' +
 						'<li class="blue" onclick="javascript:previmg()">PREV IMAGE</li>' +
-						'<li class="red">DELETE</li>' +
+						'<li class="red" onclick="javascript:deleteItem()">DELETE</li>' +
 						'<li class="green" onclick="javascript:saveItems()">SAVE ITEM</li>' +
+						'<li class="blue visible" onclick="javascript:toggleVisibility()">MAKE ' + (data.visible ? 'INVISIBLE' : 'VISIBLE') + '</li>' +
 					'</ul>' +
 					
 					'<div class="spacer"></div>' +
@@ -98,9 +99,9 @@ class List {
 		opacity = typeof opacity == 'undefined' ? 1 : opacity;
 		this.list.append('<div class="item" id="' + data.id + '" style="opacity: ' + opacity + '"></div>');
 		$('#' + data.id).append(
-			'<div class="top"></div>',
+			'<div class="top" style="display: ' + (data.visible ? 'block' : 'none') + '"></div>',
 			'<div class="header">' + data.id + '</div>',
-			'<div class="content" style="background: url(\'' + data.thumbnail + '"></div>',
+			'<div class="content" style="background-image: url(\'' + data.images[0] + '"></div>',
 			'<div class="spacer 1"></div>',
 			'<div class="spacer 2"></div>',
 			'<div class="spacer 3"></div>',

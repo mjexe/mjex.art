@@ -1,5 +1,5 @@
-// const socket = io('http://localhost:3000');
-const socket = io('https://mjex.art:3000');
+const socket = io('http://localhost:3000');
+// const socket = io('https://mjex.art:3000');
 
 socket.on('console login accepted', (data) => {
 	console.log('accepted: ', data.session);
@@ -56,7 +56,7 @@ socket.on('console session validated', (data) => {
 					'<div class="top"></div>' +
 		
 					'<ul class="buttons">' +
-						'<li>ADD ITEM</li>' +
+						'<li onclick="javascript:addItem()">ADD ITEM</li>' +
 						'<li>REFRESH SESSION</li>' +
 					'</ul>' +
 					
@@ -230,7 +230,10 @@ socket.on('console send items', (data) => {
 
 
 socket.on('refresh items', (data) => {
+	let currentimg = tvs.items[tvs.getindex(tvs.currentid) < 0 ? 0 : tvs.getindex(tvs.currentid)].currentimg;
 	tvs.items = data.items;
+	tvs.currentid = tvs.getindex(tvs.currentid) < 0 ? tvs.items[0].id : tvs.currentid;
+	tvs.items[tvs.getindex(tvs.currentid)].currentimg = currentimg;
 
 	if($('.detail-view').length > 0) {
 		let index = tvs.getindex(tvs.currentid);
@@ -243,6 +246,9 @@ socket.on('refresh items', (data) => {
 
 		$('.detail-view .stock')[0].textContent = data.stock ? 'AVAILABLE' : 'TAKEN';
 		$('.detail-view .stock')[0].style.color = 'var(--' + ($('.detail-view .stock')[0].textContent == 'AVAILABLE' ? 'stock-available' : 'stock-none') + ')';
+
+		$('.detail-view .image').css('background-image', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
+	
 	}
 
 	if($('.tv-list').length > 0) {
@@ -254,6 +260,84 @@ socket.on('refresh items', (data) => {
 
 
 
+
+function setImage() {
+	let index = tvs.getindex(tvs.currentid);
+	let data  = tvs.items[index];
+
+	tvs.items[index].images[data.currentimg] = $('.detail-view .img-url')[0].value;
+	$('.detail-view .image').css('background-image', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
+}
+
+
+function newImage() {
+	let index = tvs.getindex(tvs.currentid);
+	let data  = tvs.items[index];
+
+	tvs.items[index].images.push('');
+	tvs.items[index].currentimg = tvs.items[index].images.length - 1;
+
+	$('.detail-view .image').css('background-image', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
+	$('.detail-view .img-url')[0].value = tvs.items[index].images[tvs.items[index].currentimg];
+	setItemWidth();
+}
+
+
+function removeImage() {
+	let index = tvs.getindex(tvs.currentid);
+	let data  = tvs.items[index];
+
+	let confirmation = new Confirmation($('.detail-view .button.red'), () => {
+		tvs.items[index].images.splice(data.currentimg, 1);
+		if(data.currentimg > (tvs.items[index].images.length - 1)) tvs.items[index].currentimg = tvs.items[index].images.length - 1;
+
+		$('.detail-view .image').css('background-image', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
+		$('.detail-view .img-url')[0].value = tvs.items[index].images[tvs.items[index].currentimg];
+		setItemWidth();
+	});
+}
+
+
+
+function addItem() {
+	if($('.detail-view').length == 0) {
+		let newID = makeID(5);
+		tvs.items.push({
+			id: newID,
+			dimensions: '',
+			color: '',
+			style: '',
+			stock: true,
+			description: '',
+			currentimg: 0,
+			images: [''],
+		});
+
+		detailAnim(newID);
+	}
+}
+
+function deleteItem() {
+	let confirmation = new Confirmation($('.detail-view li[onclick="javascript:deleteItem()"]'), () => {
+		let index = tvs.getindex(tvs.currentid);
+		let deleted = tvs.items.splice(index, 1)[0];
+
+		socket.emit('console delete item', {
+			session: Cookies.get('SESSION'),
+			item: deleted,
+		})
+
+		goback(() => {
+			socket.emit('console edit item', {
+				session: Cookies.get('SESSION'),
+				items: tvs.items,
+			});
+		});
+
+	})
+}
+
+
 function saveItems() {
 	let index = tvs.getindex(tvs.currentid);
 	let data  = tvs.items[index];
@@ -263,13 +347,17 @@ function saveItems() {
 	tvs.items[index].style       = $('.detail-view input[placeholder="STYLE"')[0].value;
 	tvs.items[index].description = $('.detail-view textarea[placeholder="DESCRIPTION"')[0].value;
 	tvs.items[index].stock       = $('.detail-view .stock')[0].textContent == 'AVAILABLE';
+	tvs.items[index].visible     = $('.detail-view .stock')[0].textContent == 'AVAILABLE';
 
-	// $('.detail-view .img-url')[0].value;
-
+	let currentimg = data.currentimg;
+	tvs.items[index].currentimg = 0;
+	
 	socket.emit('console edit item', {
 		session: Cookies.get('SESSION'),
 		items: tvs.items,
 	});
+
+	tvs.items[index].currentimg = currentimg;
 }
 
 
@@ -283,9 +371,11 @@ function makeID(length) {
 	}
 
 	let result = genid(length);
-	while(tvs.items.some((e) => {return e.id == result})) result = genid(length);
+	// while(tvs.items.some((e) => {return e.id == result})) result = genid(length);
 	return result;
 }
+
+
 
 
 

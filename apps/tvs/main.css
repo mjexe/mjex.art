@@ -662,7 +662,7 @@ body {
 	height: inherit;
 
 	/* appearance */
-	background-size: cover !important;
+	background-size: 426px 426px;
 }
 
 

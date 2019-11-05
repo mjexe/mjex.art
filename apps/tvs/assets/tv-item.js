@@ -31,7 +31,7 @@ class List {
 				'</div>' +
 	
 				'<div class="content">' +
-					'<div class="image" style="background: url(\'' + data.images[data.currentimg] + '\')"></div>' +
+					'<div class="image" style="background-image: url(\'' + data.images[data.currentimg] + '\')"></div>' +
 					'<div class="info">' +
 						'<div class="title">SPECIFICATIONS</div>' +
 						'<div class="detail" name="dimensions">' + data.dimensions + '</div>' +
@@ -105,7 +105,7 @@ class List {
 		$('#' + data.id).append(
 			'<div class="top"></div>',
 			'<div class="header">' + data.id + '</div>',
-			'<div class="content" style="background: url(\'' + data.thumbnail + '"></div>',
+			'<div class="content" style="background-image: url(\'' + data.images[0] + '"></div>',
 			'<div class="spacer 1"></div>',
 			'<div class="spacer 2"></div>',
 			'<div class="spacer 3"></div>',
