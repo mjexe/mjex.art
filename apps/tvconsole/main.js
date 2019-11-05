@@ -312,6 +312,7 @@ function addItem() {
 			color: '',
 			style: '',
 			stock: true,
+			visible: true,
 			description: '',
 			currentimg: 0,
 			images: [''],
