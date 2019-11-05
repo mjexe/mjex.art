@@ -13,8 +13,8 @@ let test;
  * socket.io stuff
  */
 
-const socket = io('http://localhost:3000');
-// const socket = io('https://mjex.art:3000');
+// const socket = io('http://localhost:3000');
+const socket = io('https://mjex.art:3000');
 
 socket.on('send all items', (data) => {
 	tvs.items = data.items;
