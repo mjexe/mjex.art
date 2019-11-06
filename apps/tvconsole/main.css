@@ -1086,6 +1086,7 @@ body {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	padding-right: 5px;
 
 	/* appearance */
 	background: none;
