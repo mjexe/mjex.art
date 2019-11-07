@@ -174,7 +174,9 @@ function goback(callback) {
 function nextimg() {
 	let index = tvs.getindex(tvs.currentid);
 	let imgnum = tvs.items[index].currentimg;
+	if(imgnum == tvs.items[index].images.length - 1) tvs.items[index].currentimg = 0;
 	if(imgnum < (tvs.items[index].images.length - 1)) tvs.items[index].currentimg++;
+
 	$('.detail-view .image').css('background-image', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
 	$('.detail-view .img-url')[0].value = tvs.items[index].images[tvs.items[index].currentimg];
 	setItemWidth();
@@ -183,7 +185,9 @@ function nextimg() {
 function previmg() {
 	let index = tvs.getindex(tvs.currentid);
 	let imgnum = tvs.items[index].currentimg;
+	if(imgnum == 0) tvs.items[index].currentimg = tvs.items[index].images.length - 1;
 	if(imgnum > 0) tvs.items[index].currentimg--;
+
 	$('.detail-view .image').css('background-image', 'url(' + tvs.items[index].images[tvs.items[index].currentimg] + ')');
 	$('.detail-view .img-url')[0].value = tvs.items[index].images[tvs.items[index].currentimg];
 	setItemWidth();
