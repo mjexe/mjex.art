@@ -113,7 +113,7 @@ class List {
 			'<div class="bottom"></div>',
 		);
 
-		$('#' + data.id).attr('onclick', 'javascript:detailAnim(\'' + data.id + '\')');
+		$('#' + data.id).attr('onclick', 'javascript:sethash(\'' + data.id + '\')');
 	}
 
 	removeitem(id) {
