@@ -231,7 +231,7 @@ socket.on('console send items', (data) => {
 
 	anim
 	.add({
-		targets: '.giga-container',
+		targets: '.capsule',
 		opacity: 1,
 	}, 0);
 });
