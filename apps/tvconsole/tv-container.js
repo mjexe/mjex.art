@@ -27,145 +27,177 @@ $(window).resize(() => resize());
 
 
 
-function detailAnim(id) {
-	$('.list-container').css('overflow', 'hidden');
-	div = Math.floor(((width - 224) / 212));
-	hordiv = div >= 4 ? div : 4;
-	itemwidth = (212 * hordiv);
-	$('div[onclick^=javascript]').attr('onclick', '');
-
-	let anim = anime.timeline({
-		easing: 'linear',
-		duration: 500,
-	});
-
-	anim
-	.add({
-		targets: '.tv-list > .item',
-		duration: 350,
-		delay: anime.stagger(
-			100, {
-				grid: [hordiv, Math.ceil(tvs.items.length / hordiv)],
-				from: tvs.getindex(id),
-				direction: 'normal',
-			}
-		),
-		opacity: 0,
-	})
-	.add({
-		targets: '.list-container',
-		height: '507px',
-	})
-	.add({
-		targets:
-			'.container > .header,' +
-			'.container > .footer,' +
-			'.list-container > .tv-list',
-		width: hordiv > 4 ? '848px' : 'initial',
-		duration: hordiv > 4 ? 500 : 0,
-	})
-	.add({
-		targets: '.titlebar',
-		width: '1048px',
-		duration: 500,
-		complete: () => {
-			tvs.generatedetails(id, 0);
-			setItemWidth();
-
-			let subanim = anime.timeline({
-				easing: 'linear',
-				duration: 500,
-			});
-
-			subanim
-			.add({
-				targets: '.detail-view',
-				opacity: 1,
-				complete: () => {
-					$('.detail-view').css('opacity', 1);
-					setTimeout(() => {
-						$('#returnbutton').addClass('button');
-						$('#returnbutton').text('RETURN');
-						$('#returnbutton').attr('onclick', 'javascript:goback()');
-					}, 0);
-				}
-			}, 250);
-		},
-	}, '-=500');
+function sethash(string) {
+	if(typeof string == 'undefined') string = '';
+	window.location.hash = string;
 }
 
+window.addEventListener('hashchange', () => {
+	if(typeof this.animating == 'undefined') this.animating = '';
+	if(typeof this.callback == 'undefined') this.callback = () => {};
+	let hash = window.location.hash.substring(1);
 
-
-function goback(callback) {
-	$('#returnbutton').attr('onclick', '');
-	div = Math.floor(((width - 224) / 212));
-	hordiv = div >= 4 ? div : 4;
-	itemwidth = (212 * hordiv);
-
-
-	let anim = anime.timeline({
-		easing: 'linear',
-		duration: 500,
-	});
-
-	anim
-	.add({
-		targets: '.detail-view',
-		opacity: 0,
-		begin: () => {
-			$('#returnbutton').removeClass('button');
-			$('#returnbutton').text('');
-		},
-	})
-	.add({
-		targets: '.list-container',
-		height: (301 * Math.ceil(tvs.items.length / hordiv)) - 12,
-		complete: () => {
-			if(typeof callback != 'undefined') callback();
-			socket.emit('request item refresh');
-		},
-	})
-	.add({
-		targets:
-			'.container > .header,' +
-			'.container > .footer,' +
-			'.list-container > .tv-list',
-		width: itemwidth + 'px',
-		duration: 500,
-	})
-	.add({
-		targets: '.titlebar',
-		width: (itemwidth + 200) + 'px',
-		duration: hordiv > 3 ? 500 : 0,
-		complete: () => {
-			tvs.generatelist(0);
-			$('.tv-list > .item').attr('onclick', '');
-			setItemWidth();
-
-			let subanim = anime.timeline({
-				easing: 'linear',
-			});
-
-			subanim
-			.add({
-				targets: '.tv-list > .item',
-				duration: 350,
-				opacity: 1,
-				delay: anime.stagger(
-					75, {
-						grid: [hordiv, Math.ceil(tvs.items.length / hordiv)],
-						from: tvs.getindex(tvs.currentid),
-						direction: 'reverse',
+	let anim = () => {
+		if(this.animating == '') {
+			if(tvs.items.some((e) => {return e.id == hash})) {
+				tvs.items[tvs.getindex(hash)].currentimg = 0;
+				if($('.detail-view').length > 0) {
+					tvs.generatedetails(hash);
+					setItemWidth();
+				} else {
+					this.animating = 'detail';
+					$('.list-container').css('overflow', 'hidden');
+					div = Math.floor(((width - 224) / 212));
+					hordiv = div >= 4 ? div : 4;
+					itemwidth = (212 * hordiv);
+					$('div[onclick^=javascript]').attr('onclick', '');
+				
+					let anim = anime.timeline({
+						easing: 'linear',
+						duration: 500,
+					});
+				
+					anim
+					.add({
+						targets: '.tv-list > .item',
+						duration: 350,
+						delay: anime.stagger(
+							100, {
+								grid: [hordiv, Math.ceil(tvs.items.length / hordiv)],
+								from: tvs.getindex(hash),
+								direction: 'normal',
+							}
+						),
+						opacity: 0,
+					})
+					.add({
+						targets: '.list-container',
+						height: '507px',
+					})
+					.add({
+						targets:
+							'.container > .header,' +
+							'.container > .footer,' +
+							'.list-container > .tv-list',
+						width: hordiv > 4 ? '848px' : 'initial',
+						duration: hordiv > 4 ? 500 : 0,
+					})
+					.add({
+						targets: '.titlebar',
+						width: '1048px',
+						duration: 500,
+						complete: () => {
+							tvs.generatedetails(hash, 0);
+							setItemWidth();
+							this.animating = 'detail-visible';
+				
+							let subanim = anime.timeline({
+								easing: 'linear',
+								duration: 500,
+							});
+				
+							subanim
+							.add({
+								targets: '.detail-view',
+								opacity: 1,
+								complete: () => {
+									$('.detail-view').css('opacity', 1);
+									setTimeout(() => {
+										$('#returnbutton').addClass('button');
+										$('#returnbutton').text('RETURN');
+										$('#returnbutton').attr('onclick', 'javascript:window.location.hash = ""');
+										this.animating = '';
+										this.callback(this.callback = () => {});
+									}, 0);
+								}
+							}, 250);
+						},
+					}, '-=500');
+				}
+			} else {
+				this.animating = 'main';
+				// if(!disablerefresh) socket.emit('request item refresh');
+				$('#returnbutton').attr('onclick', '');
+				div = Math.floor(((width - 224) / 212));
+				hordiv = div >= 4 ? div : 4;
+				itemwidth = (212 * hordiv);
+			
+			
+				let anim = anime.timeline({
+					easing: 'linear',
+					duration: 500,
+				});
+			
+				anim
+				.add({
+					targets: '.detail-view',
+					opacity: 0,
+					begin: () => {
+						$('#returnbutton').removeClass('button');
+						$('#returnbutton').text('');
 					}
-				),
-				complete: () => {
-					tvs.generatelist(1);
+				})
+				.add({
+					targets: '.list-container',
+					height: (301 * Math.ceil(tvs.items.length / hordiv)) - 12,
+				})
+				.add({
+					targets:
+						'.container > .header,' +
+						'.container > .footer,' +
+						'.list-container > .tv-list',
+					width: itemwidth + 'px',
+					duration: 500,
+				})
+				.add({
+					targets: '.titlebar',
+					width: (itemwidth + 200) + 'px',
+					duration: hordiv > 3 ? 500 : 0,
+					complete: () => {
+						tvs.generatelist(0);
+						$('.tv-list > .item').attr('onclick', '');
+						setItemWidth();
+			
+						let subanim = anime.timeline({
+							easing: 'linear',
+						});
+			
+						subanim
+						.add({
+							targets: '.tv-list > .item',
+							duration: 350,
+							opacity: 1,
+							delay: anime.stagger(
+								75, {
+									grid: [hordiv, Math.ceil(tvs.items.length / hordiv)],
+									from: tvs.getindex(tvs.currentid),
+									direction: 'reverse',
+								}
+							),
+							complete: () => {
+								tvs.generatelist(1);
+								tvs.items[tvs.getindex(tvs.currentid)].currentimg = 0;
+								this.animating = '';
+								this.callback(this.callback = () => {});
+							}
+						}, 0);
+					}
+				}, '-=500');
+			}
+		} else {
+			if(this.animating == 'detail-visible') {
+				if(tvs.items.some((e) => {return e.id == hash})) {
+					tvs.generatedetails(hash, 0);
+					setItemWidth();
 				}
-			}, 0);
+			} else {
+				this.callback = (cb) => {anim(); cb()}
+			}
 		}
-	}, '-=500')
-}
+	}
 
+	anim();
+}, false);
 
 
 

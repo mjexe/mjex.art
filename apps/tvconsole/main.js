@@ -211,21 +211,29 @@ document.fonts.onloadingdone = () => {};
 
 
 socket.on('console send items', (data) => {
+	let hash = window.location.hash.substring(1);
 	tvs.items = data.items;
-	tvs.generatelist();
+
+	if(tvs.items.some((e) => {return e.id == hash})) {
+		tvs.generatedetails(hash);
+		$('#returnbutton').addClass('button');
+		$('#returnbutton').text('RETURN');
+		$('#returnbutton').attr('onclick', 'javascript:window.location.hash = ""');
+	} else {
+		tvs.generatelist();
+	}
+
 	setItemWidth();
-
-
 	let anim = anime.timeline({
-		easing: 'linear',
-		duration: 1000,
+	easing: 'linear',
+	duration: 1000,
 	});
 
 	anim
 	.add({
-		targets: '.capsule',
+		targets: '.giga-container',
 		opacity: 1,
-	});
+	}, 0);
 });
 
 
