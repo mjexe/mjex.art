@@ -258,7 +258,9 @@ function goback(disablerefresh) {
 function nextimg() {
 	let index = tvs.getindex(tvs.currentid);
 	let imgnum = tvs.items[index].currentimg;
+	if(imgnum == tvs.items[index].images.length - 1) tvs.items[index].currentimg = 0;
 	if(imgnum < (tvs.items[index].images.length - 1)) tvs.items[index].currentimg++;
+
 	tvs.generatedetails(tvs.currentid);
 	setItemWidth();
 }
@@ -266,7 +268,9 @@ function nextimg() {
 function previmg() {
 	let index = tvs.getindex(tvs.currentid);
 	let imgnum = tvs.items[index].currentimg;
+	if(imgnum == 0) tvs.items[index].currentimg = tvs.items[index].images.length - 1;
 	if(imgnum > 0) tvs.items[index].currentimg--;
+
 	tvs.generatedetails(tvs.currentid);
 	setItemWidth();
 }
