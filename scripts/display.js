@@ -228,7 +228,7 @@ class Display {
 
 
 			// ==========================================================================================================================
-			'art': {
+			'real': {
 				text: [
 					{line: '       real       ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
