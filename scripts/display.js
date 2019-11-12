@@ -233,6 +233,7 @@ class Display {
 					{line: '       real       ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '       tv heads   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       back   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '  ▼               ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -241,6 +242,7 @@ class Display {
 	
 				items: [
 					{text: 'real', action: x => location.href = 'https://www.etsy.com/listing/745658601/custom-tv-object-head-cosplay'},
+					{text: 'back', action: x => this.clm(y => this.loadMenu('main'))},
 				],
 
 				scheme: 'normal',
