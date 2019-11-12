@@ -150,6 +150,7 @@ class Display {
 					{line: '     mjex     ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '              ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '     art      ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '     real     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '     music    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '     photos   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '     videos   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -163,6 +164,7 @@ class Display {
 
 				items: [
 					{text: 'art',    action: x => this.clm(y => this.loadMenu('art'))},
+					{text: 'real',   action: x => this.clm(y => this.loadMenu('real'))},
 					{text: 'music',  action: x => this.clm(y => this.loadMenu('music'))},
 					{text: 'photos', action: x => this.clm(y => this.loadMenu('photos'))},
 					{text: 'videos', action: x => this.clm(y => this.loadMenu('videos'))},
@@ -196,6 +198,49 @@ class Display {
 					{text: 'twitch',     action: x => location.href = '//www.twitch.tv/mjexe'},
 					{text: 'about',      action: x => this.clm(y => this.loadMenu('art-about'))},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
+				],
+
+				scheme: 'normal',
+				pointerOffset: 5,
+			},
+
+			'art-about': {
+				text: [
+					{line: '        about art        ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' art live streams every  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' once in a while         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '_________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  back                   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{callback: x => setTimeout(() => this.createPointer(), 500)},
+				],
+	
+				items: [
+					{text: 'return', action: x => this.clm(y => this.loadMenu('art'))},
+				],
+	
+				scheme: 'normal',
+				pointerAnchor: {x: 8, y: 11},
+				directionAnchor: {x: 0, y: -1},
+			},
+
+
+
+			// ==========================================================================================================================
+			'art': {
+				text: [
+					{line: '       real       ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       tv heads   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '  ▼               ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{callback: x => setTimeout(() => this.createPointer(), 500)},
+				],
+	
+				items: [
+					{text: 'real', action: x => location.href = 'https://www.etsy.com/listing/745658601/custom-tv-object-head-cosplay'},
 				],
 
 				scheme: 'normal',
