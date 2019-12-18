@@ -434,7 +434,7 @@ class Display {
 					{line: '           about           ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: ' max lessard\'s portfolio  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' of weird projects © 2019  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' of weird projects         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '                           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '___________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '  back                     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
