@@ -446,7 +446,7 @@ class Display {
 				],
 	
 				scheme: 'normal',
-				pointerAnchor: {x: 7, y: 12},
+				pointerAnchor: {x: 7, y: 11},
 				directionAnchor: {x: 0, y: -1},
 			},
 		}
