@@ -249,13 +249,16 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-transform: translateY(-60px);
-          transform: translateY(-60px);
-  height: 300px;
+  -webkit-transform: translateY(-100px);
+          transform: translateY(-100px);
+  height: 500px;
+  background: #071231;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-clip-path: polygon(0% 0%, 0% 90%, 50% 100%, 100% 90%, 100% 0%);
+          clip-path: polygon(0% 0%, 0% 90%, 50% 100%, 100% 90%, 100% 0%);
 }
 
 .container .tickets .top {
@@ -286,5 +289,55 @@ body {
 .container .tickets .button:hover {
   background: white;
   color: #071231;
+}
+
+.container .sponsors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 400px;
+  position: relative;
+  -webkit-transform: translateY(-200px);
+          transform: translateY(-200px);
+  padding-top: 80px;
+  z-index: -3;
+  background: linear-gradient(45deg, #3440ac, #6b76dd);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-clip-path: polygon(0% 0%, 0% 90%, 50% 100%, 100% 90%, 100% 0%);
+          clip-path: polygon(0% 0%, 0% 90%, 50% 100%, 100% 90%, 100% 0%);
+}
+
+.container .sponsors .top {
+  font-weight: 700;
+  font-size: 24pt;
+}
+
+.container .about {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container .about .top {
+  -webkit-transform: translateY(-80px);
+          transform: translateY(-80px);
+  font-family: 'Ultra', serif;
+  font-size: 24px;
+  color: white;
 }
 /*# sourceMappingURL=main.css.map */
