@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- font import -->
+	<link href="https://fonts.googleapis.com/css?family=Heebo:300,700,900|Oswald:400,700|Teko:300,700&display=swap" rel="stylesheet" rel="stylesheet">
+
+	<!-- metadata -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Example Event Website</title>
+
+	<!-- stylesheets -->
+	<link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="nav">
+				<div class="logo">Sample Event</div>
+
+				<div class="spacer"></div>
+
+				<ul class="links">
+					<li class="active"><a href="#1">Home<br><img></a></li>
+					<li><a href="#lineup">Lineup<br><img></a></li>
+					<li><a href="#tickets">Tickets<br><img></a></li>
+					<li><a href="#sponsors">Sponsors<br><img></a></li>
+					<li><a href="#info">Info<br><img></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="landing-video">
+			<div class="video-overlay">
+				<div class="main-text">JANUARY <span>21-23, 2020</span></div>
+			</div>
+			<video autoplay muted loop id="landingVid"">
+				<source src="assets/videos/concert.webm" type="video/webm">
+			</video>
+		</div>
+
+		<div class="spacer"></div>
+
+		<div class="lineup" id="lineup">
+			<div class="top">2020 LINEUP</div>
+
+			<ul class="artists">
+				<li>Willy Livingston</li>
+				<li>Silver Law</li>
+				<li>Chad Howard</li>
+				<li>Groef</li>
+				<li>Hubert East</li>
+				<li>Oliver Perry</li>
+				<li>Jason Cameron</li>
+				<li>Wings</li>
+				<li>Addison Mack</li>
+				<li>Billie Angel</li>
+				<li>Raylee Storm</li>
+			</ul>
+		</div>
+
+		<div class="tickets" id="tickets">
+			<div class="top">Tickets</div>
+			<div class="button" style="cursor: pointer">Buy Tickets 🡢</div>
+		</div>
+	</div>
+
+
+	<!-- scripts -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/scripts/jquery.fittext.js"></script>
+	<script type="text/javascript" src="assets/scripts/anime.min.js"></script>
+	<script type="text/javascript" src="assets/scripts/main.js"></script>
+</body>
+</html>

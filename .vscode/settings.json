@@ -1,3 +1,10 @@
 {
-	"cSpell.enabled": false
+	"cSpell.enabled": false,
+	"liveServer.settings.useWebExt": true
+
+	"liveServer.settings.proxy": {
+        "enable": true,
+        "baseUri": "/",
+        "proxyUri": "http://mjex.local:80/"
+    },
 }
