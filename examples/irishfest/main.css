@@ -1,0 +1,69 @@
+.section {
+  text-align: center;
+  -webkit-clip-path: polygon(0% 0%, 0% 95%, 50% 99.5%, 100% 95%, 100% 0%);
+          clip-path: polygon(0% 0%, 0% 95%, 50% 99.5%, 100% 95%, 100% 0%);
+}
+
+.video {
+  overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-clip-path: polygon(0% 0%, 0% 95%, 50% 99.5%, 100% 95%, 100% 0%);
+          clip-path: polygon(0% 0%, 0% 95%, 50% 99.5%, 100% 95%, 100% 0%);
+}
+
+.video .video-overlay {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: #000000a0;
+}
+
+.video .video-overlay .main-text {
+  font-family: 'Heebo', sans-serif;
+  font-size: 5vw;
+  font-weight: 900;
+  text-align: center;
+  color: white;
+}
+
+.video .video-overlay .main-text span {
+  font-weight: 300;
+}
+
+.video video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-aspect-ratio: 16 / 9) {
+  .video video {
+    height: 100vh;
+  }
+}
+
+@media screen and (min-aspect-ratio: 16 / 9) {
+  .video video {
+    width: 100vw;
+  }
+}
+/*# sourceMappingURL=main.css.map */
