@@ -71,7 +71,7 @@ body {
 			font-size: 16pt;
 
 
-			@media only screen and (max-width: 500px) {
+			@media only screen and (max-width: 700px) {
 				grid-template-columns: 1fr;
 				.spacer {display: none !important}
 				.links {display: none !important}
@@ -86,7 +86,7 @@ body {
 
 				// text
 				font-family: 'Teko', sans-serif;
-				font-size: 30pt;
+				font-size: 50pt;
 				color: white;
 			}
 
@@ -118,7 +118,7 @@ body {
 					padding: 0 10px;
 
 					// text stuff
-					font-size: 14pt;
+					font-size: 20pt;
 					text-align: center;
 					color: $offwhite;
 
@@ -144,7 +144,7 @@ body {
 						// positioning
 						width: 0;
 						height: 2px;
-						transform: translateY(-18px);
+						transform: translateY(-20px);
 
 						// styling
 						background: $offwhite;
@@ -191,13 +191,13 @@ body {
 			color: white;
 
 
-			@media only screen and (max-width: 500px) {
+			@media only screen and (max-width: 700px) {
 				grid-template-rows: 1fr 1fr;	
 				gap: 0;
 				font-size: 12vw;
 			}
 
-			@media only screen and (min-width: 500px) {
+			@media only screen and (min-width: 701px) {
 				grid-template-columns: max-content max-content;
 			}
 
