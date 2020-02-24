@@ -9,7 +9,7 @@ $(() => {
 
 		navigation: 'true',
 		navigationPosition: 'right',
-		scrollingSpeed: 0,
+		// scrollingSpeed: 0,
 
 		lazyLoading: false,
 	});
