@@ -294,7 +294,7 @@ body {
 	.container {
 		// layout
 		display: grid;
-		grid-template-rows: 1fr 2fr;
+		grid-template-rows: 1fr 4fr;
 	
 		// positioning
 		height: 100vh;
@@ -322,10 +322,11 @@ body {
 			display: grid;
 			grid-template-rows: max-content 1fr;
 
+			// text
+			font-family: 'Comfortaa', sans-serif;
 
-			.header {}
-	
-	
+
+
 			.header {
 				// layout
 				display: flex;
@@ -341,49 +342,96 @@ body {
 
 
 			.band-container {
-				// layout
-				display: flex;
-				justify-content: center;
-				align-items: center;
+				// // layout
+				// display: flex;
+				// justify-content: center;
+				// align-items: center;
 
 				// text
+				font-family: 'Source Sans Pro', sans-serif;
+
 
 
 				.bands {
 					// layout
 					display: grid;
+					grid-template-columns: 1fr 1fr;
 
 
-					.item {
+					.stage-section-container {
 						// layout
-						display: grid;
-						grid-template-areas:
-							"a b"
-							"a c";
-						gap: 8px;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						flex-direction: column;
 
-						
-						.image {
-							// layout
-							grid-area: a;
-						}
-	
-	
-						.title {
-							// layout
-							grid-area: b;
 
+						.header {
 							// text
 							font-size: 20pt;
 						}
 
 
-						.description {
+						.stage-section {
 							// layout
-							grid-area: c;
+							display: grid;
+							grid-template-columns: 30vw;
+							gap: 16px;
 
-							// text
-							font-size: 16pt;
+
+							.item {
+								// layout
+								display: grid;
+								grid-template-areas:
+									"a b"
+									"a c";
+								grid-template-columns: min-content 1fr;
+								grid-template-rows: 1fr min-content;
+								gap: 8px;
+								overflow: hidden;
+		
+								// position
+								// padding: 10px;
+								border-radius: 6px;
+								
+								// styling
+								background: #51be5e;
+								box-shadow: 0 3px 0 #00000040;
+		
+								// text
+								text-align: left;
+		
+								
+								.image {
+									// layout
+									grid-area: a;
+									width: min-content
+								}
+			
+			
+								.title {
+									// layout
+									grid-area: b;
+
+									// position
+									padding: 2px 0 0 0;
+
+									// text
+									font-size: 30pt;
+								}
+		
+		
+								.description {
+									// layout
+									grid-area: c;
+
+									// position
+									padding: 10px 0;
+		
+									// text
+									font-size: 16pt;
+								}
+							}
 						}
 					}
 				}
