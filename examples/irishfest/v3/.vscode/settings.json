@@ -1,4 +1,15 @@
 {
 	"liveServer.settings.port": 5502,
-	"workbench.colorTheme": "Dobri Next -A04- Cobalt"
+	"workbench.colorTheme": "Dobri Next -A04- Cobalt",
+
+	// Mainly for static files
+	"liveServer.settings.useWebExt": true,
+
+	// This means that you change your real URL (current PHP url) 
+	// to another URL (which Live Sever starts).
+	"liveServer.settings.proxy": {
+		"enable": true,
+		"baseUri": "/",
+		"proxyUri": "http://irishfest.local/"
+	}
 }
