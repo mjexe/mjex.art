@@ -342,7 +342,7 @@ class Display {
 				],
 				
 				items: [
-					{text: 'deviantart', action: x => location.href = '//www.deviantart.com/mjexe'},
+					{text: 'deviantart', action: x => location.href = '//www.deviantart.com/mjexart'},
 					{text: 'instagram',  action: x => location.href = 'https://www.instagram.com/mjexe/'},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('photos'))},
 				],
