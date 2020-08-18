@@ -265,6 +265,11 @@ socket.on('refresh items', (data) => {
 	}
 });
 
+socket.on('item deleted', (data) => {
+	// console.log(data);
+});
+
+
 
 
 
@@ -333,7 +338,7 @@ function addItem() {
 function deleteItem() {
 	let confirmation = new Confirmation($('.detail-view li[onclick="javascript:deleteItem()"]'), () => {
 		let index = tvs.getindex(tvs.currentid);
-		let deleted = tvs.items.splice(index, 1)[0];
+		// let deleted = tvs.items.splice(index, 1)[0];
 
 		socket.emit('console delete item', {
 			session: Cookies.get('SESSION'),
