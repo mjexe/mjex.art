@@ -23,6 +23,12 @@ body {
   width: 300px;
   top: 0;
   left: -260px;
+  -webkit-transition: left 0.2s;
+  transition: left 0.2s;
+}
+
+.container .menu-container:hover {
+  left: 0;
 }
 
 .container .menu-container .menu-button {
