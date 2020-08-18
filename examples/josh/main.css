@@ -37,9 +37,9 @@ body {
   position: absolute;
   top: 50%;
   right: 0;
-  height: 40px;
+  height: 41px;
   padding: 0 50px;
-  margin-right: -77px;
+  margin-right: -78px;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
   font-family: 'Red Rose', cursive;
@@ -58,6 +58,7 @@ body {
 .container .slide-container {
   width: 100vw;
   height: 95vh;
+  overflow-x: hidden;
   overflow-y: hidden;
 }
 
