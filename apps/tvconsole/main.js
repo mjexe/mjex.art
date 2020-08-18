@@ -337,16 +337,10 @@ function deleteItem() {
 
 		socket.emit('console delete item', {
 			session: Cookies.get('SESSION'),
-			item: deleted,
-		})
-
-		goback(() => {
-			socket.emit('console edit item', {
-				session: Cookies.get('SESSION'),
-				items: tvs.items,
-			});
+			item: index,
 		});
 
+		window.location.hash = "";
 	})
 }
 

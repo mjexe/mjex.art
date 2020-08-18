@@ -1,0 +1,45 @@
+body {
+  background: #f2f2f2;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.container .slide-container {
+  width: 100vw;
+  height: 95vh;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.container .slide-container .slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 10px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: inherit;
+}
+
+.container .slide-container .slide .item {
+  background: #bfbfbf;
+  width: 1200px;
+  height: 100%;
+}
+/*# sourceMappingURL=main.css.map */
