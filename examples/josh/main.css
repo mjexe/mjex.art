@@ -56,8 +56,9 @@ body {
 }
 
 .container .slide-container {
-  width: 100vw;
+  width: calc(100vw - 80px);
   height: 95vh;
+  margin-left: 40px;
   overflow-x: hidden;
   overflow-y: hidden;
 }
