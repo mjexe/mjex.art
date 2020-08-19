@@ -19,7 +19,7 @@ slideContainer.addEventListener('wheel', (e) => {
 	anime({
 		targets: '.slide-container',
 		duration: 1000,
-		easing: 'easeInOutCirc',
+		easing: 'easeInOutQuad',
 		scrollLeft: slide.children[scrollpos].offsetLeft,
-	})
+	});
 });
