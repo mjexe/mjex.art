@@ -305,10 +305,9 @@ class Display {
 				text: [
 					{line: '       photos       ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       ferry wheel  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       no parking   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       reserved     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       profiles     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       portfolio    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       instagram    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '       deviantart   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '       back         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '____________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -317,34 +316,10 @@ class Display {
 				],
 				
 				items: [
-					{text: 'ferry wheel', action: x => {}, img: img['ferry-wheel']},
-					{text: 'no parking',  action: x => {}, img: img['no-parking']},
-					{text: 'reserved',    action: x => {}, img: img['reserved']},
-					{text: 'profiles',    action: x => this.clm(y => this.loadMenu('photos-profiles'))},
-					{text: 'back',        action: x => this.clm(y => this.loadMenu('main'))},
-				],
-	
-				scheme: 'normal',
-				pointerOffset: 5,
-			},
-
-			'photos-profiles': {
-				text: [
-					{line: '   photo profiles   ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       deviantart   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       instagram    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       back         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '____________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  ▼                 ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer(), 500)},
-				],
-				
-				items: [
-					{text: 'deviantart', action: x => location.href = '//www.deviantart.com/mjexart'},
+					{text: 'portfolio',  action: x => location.href = 'https://conewave.art/'},
 					{text: 'instagram',  action: x => location.href = 'https://www.instagram.com/mjexart/'},
-					{text: 'back',       action: x => this.clm(y => this.loadMenu('photos'))},
+					{text: 'deviantart', action: x => location.href = 'https://www.deviantart.com/mjexart'},
+					{text: 'back',        action: x => this.clm(y => this.loadMenu('main'))},
 				],
 	
 				scheme: 'normal',
