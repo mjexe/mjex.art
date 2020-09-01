@@ -7,9 +7,9 @@ let animateFilters = false;
 
 
 let img = {
-	'ferry-wheel': PIXI.Sprite.from('img/ferry-wheel.png'),
-	'no-parking': PIXI.Sprite.from('img/no-parking.png'),
-	'reserved': PIXI.Sprite.from('img/reserved.png'),
+	// 'ferry-wheel': PIXI.Sprite.from('img/ferry-wheel.png'),
+	// 'no-parking': PIXI.Sprite.from('img/no-parking.png'),
+	// 'reserved': PIXI.Sprite.from('img/reserved.png'),
 };
 // image loading
 
