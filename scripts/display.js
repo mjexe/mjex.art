@@ -163,7 +163,7 @@ class Display {
 				],
 
 				items: [
-					{text: 'past work', action: x => location.href = '//mjex.work/'},
+					{text: 'past work', action: x => window.open('//mjex.work/')},
 					{text: 'real',      action: x => this.clm(y => this.loadMenu('real'))},
 					{text: 'music',     action: x => this.clm(y => this.loadMenu('music'))},
 					{text: 'photos',    action: x => this.clm(y => this.loadMenu('photos'))},
