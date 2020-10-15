@@ -149,12 +149,10 @@ class Display {
 				text: [
 					{line: '      mjex      ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      past work ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      real      ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      music     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      photos    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      videos    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      webdev    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      portfolio ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      youtube   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      socials   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      contact   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      about     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '                ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -163,12 +161,10 @@ class Display {
 				],
 
 				items: [
-					{text: 'past work', action: x => window.open('//mjex.work/')},
-					{text: 'real',      action: x => this.clm(y => this.loadMenu('real'))},
-					{text: 'music',     action: x => this.clm(y => this.loadMenu('music'))},
-					{text: 'photos',    action: x => this.clm(y => this.loadMenu('photos'))},
-					{text: 'videos',    action: x => this.clm(y => this.loadMenu('videos'))},
-					{text: 'webdev',    action: x => this.clm(y => this.loadMenu('webdev'))},
+					{text: 'portfolio', action: x => window.open('//mjex.work/')},
+					{text: 'youtube',   action: x => window.open('//www.youtube.com/channel/UC-uJ-BtQ-5GE52UhBpZF8UQ')},
+					{text: 'socials',   action: x => this.clm(y => this.loadMenu('socials'))},
+					{text: 'contact',   action: x => location.href = 'https://mjex.work/contact'},
 					{text: 'about',     action: x => this.clm(y => this.loadMenu('about'))},
 				],
 
@@ -179,187 +175,13 @@ class Display {
 
 
 			// ==========================================================================================================================
-			'art': {
+			'socials': {
 				text: [
-					{line: '       art        ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '      socials     ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       deviantart ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       twitch     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       about      ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       back       ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  ▼               ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer(), 500)},
-				],
-	
-				items: [
-					{text: 'deviantart', action: x => location.href = '//www.deviantart.com/mjexe'},
-					{text: 'twitch',     action: x => location.href = '//www.twitch.tv/mjexe'},
-					{text: 'about',      action: x => this.clm(y => this.loadMenu('art-about'))},
-					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
-				],
-
-				scheme: 'normal',
-				pointerOffset: 5,
-			},
-
-			'art-about': {
-				text: [
-					{line: '        about art        ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' art live streams every  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' once in a while         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '_________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  back                   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer(), 500)},
-				],
-	
-				items: [
-					{text: 'return', action: x => this.clm(y => this.loadMenu('art'))},
-				],
-	
-				scheme: 'normal',
-				pointerAnchor: {x: 8, y: 11},
-				directionAnchor: {x: 0, y: -1},
-			},
-
-
-
-			// ==========================================================================================================================
-			'real': {
-				text: [
-					{line: '       real       ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       tv heads   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       back   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  ▼               ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer(), 500)},
-				],
-	
-				items: [
-					{text: 'real', action: x => location.href = 'https://www.etsy.com/listing/745658601/custom-tv-object-head-cosplay'},
-					{text: 'back', action: x => this.clm(y => this.loadMenu('main'))},
-				],
-
-				scheme: 'normal',
-				pointerOffset: 5,
-			},
-
-			'art-about': {
-				text: [
-					{line: '        about art        ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' art live streams every  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' once in a while         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '_________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  back                   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer(), 500)},
-				],
-	
-				items: [
-					{text: 'return', action: x => this.clm(y => this.loadMenu('art'))},
-				],
-	
-				scheme: 'normal',
-				pointerAnchor: {x: 8, y: 11},
-				directionAnchor: {x: 0, y: -1},
-			},
-
-
-
-			// ==========================================================================================================================
-			'music': {
-				text: [
-					{line: '       music      ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       bandcamp   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       soundcloud ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       spotify    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       back       ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  ▼               ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer(), 500)},
-				],
-	
-				items: [
-					{text: 'bandcamp',   action: x => location.href = '//mjex.bandcamp.com'},
-					{text: 'soundcloud', action: x => location.href = '//soundcloud.com/mjexe'},
-					{text: 'spotify',    action: x => location.href = '//open.spotify.com/artist/68wvgLB5yPfYTdrG7HLuk6?si=XGU6jM59Tt21sUh9phcI_w'},
-					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
-				],
-	
-				scheme: 'normal',
-				pointerOffset: 5,
-			},
-
-
-
-			// ==========================================================================================================================
-			'photos': {
-				text: [
-					{line: '       photos       ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       portfolio    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       instagram    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       deviantart   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '       back         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '____________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  ▼             ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer(), 500)},
-				],
-				
-				items: [
-					{text: 'portfolio',  action: x => location.href = 'https://conewave.art/'},
-					{text: 'instagram',  action: x => location.href = 'https://www.instagram.com/mjexart/'},
-					{text: 'deviantart', action: x => location.href = 'https://www.deviantart.com/mjexart'},
-					{text: 'back',        action: x => this.clm(y => this.loadMenu('main'))},
-				],
-	
-				scheme: 'normal',
-				pointerOffset: 5,
-			},
-
-
-
-			// ==========================================================================================================================
-			'videos': {
-				text: [
-					{line: '      videos      ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      youtube     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      back        ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  ▼               ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer(), 500)},
-				],
-	
-				items: [
-					{text: 'hyperverse', action: x => location.href = '//www.youtube.com/channel/UC-uJ-BtQ-5GE52UhBpZF8UQ'},
-					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
-				],
-	
-				scheme: 'normal',
-				pointerOffset: 4,
-			},
-
-
-
-			// ==========================================================================================================================
-			'webdev': {
-				text: [
-					{line: '      webdev      ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      examples    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      hyperverse  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      old version ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      instagram   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      deviantart  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      twitch      ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      about       ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      back        ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -369,36 +191,15 @@ class Display {
 				],
 	
 				items: [
-					{text: 'examples', action: x => location.href = '/examples'},
-					{text: 'hyperverse', action: x => location.href = '//hyperve.rs/'},
-					{text: 'old version', action: x => location.href = '/old'},
-					{text: 'about',      action: x => this.clm(y => this.loadMenu('webdev-about'))},
+					{text: 'instagram',  action: x => window.open('https://www.instagram.com/mjexart/')},
+					{text: 'deviantart', action: x => window.open('https://www.deviantart.com/mjexart')},
+					{text: 'twitch',     action: x => window.open('//www.twitch.tv/mjexe')},
+					{text: 'about',      action: x => this.clm(y => this.loadMenu('art-about'))},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
 				],
-	
-				scheme: 'normal',
-				pointerOffset: 4,
-			},
 
-			'webdev-about': {
-				text: [
-					{line: '        about webdev       ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
-					{line: '                           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' 5+ years of front end web ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: ' development experience    ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '                           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '___________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '  back                     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{callback: x => setTimeout(() => this.createPointer(), 500)},
-				],
-	
-				items: [
-					{text: 'return', action: x => this.clm(y => this.loadMenu('webdev'))},
-				],
-	
 				scheme: 'normal',
-				pointerAnchor: {x: 7, y: 11},
-				directionAnchor: {x: 0, y: -1},
+				pointerOffset: 5,
 			},
 
 
