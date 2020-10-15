@@ -199,7 +199,7 @@ class Display {
 				],
 
 				scheme: 'normal',
-				pointerOffset: 5,
+				pointerOffset: 4,
 			},
 
 
