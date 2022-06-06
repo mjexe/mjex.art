@@ -149,10 +149,8 @@ class Display {
 				text: [
 					{line: '      mjex      ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      portfolio ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      youtube   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      socials   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      contact   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      about     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '                ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -161,10 +159,8 @@ class Display {
 				],
 
 				items: [
-					{text: 'portfolio', action: x => window.open('//mjex.work/')},
 					{text: 'youtube',   action: x => window.open('//www.youtube.com/channel/UC-uJ-BtQ-5GE52UhBpZF8UQ')},
 					{text: 'socials',   action: x => this.clm(y => this.loadMenu('socials'))},
-					{text: 'contact',   action: x => location.href = 'https://mjex.work/contact'},
 					{text: 'about',     action: x => this.clm(y => this.loadMenu('about'))},
 				],
 
