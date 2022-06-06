@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 let colors = {
 	lightgray: 0xc0c0c0,
 	lightblue: 0x000099,
