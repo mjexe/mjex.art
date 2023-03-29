@@ -191,8 +191,8 @@ class Display {
 				items: [
 					{text: 'instagram',  action: x => window.open('https://www.instagram.com/mjexart/')},
 					{text: 'twitter',  action: x => window.open('https://www.twitter.com/mjexart/')},
-					{text: 'deviantart', action: x => window.open('https://www.deviantart.com/mjexart')},
 					{text: 'twitch',     action: x => window.open('//www.twitch.tv/mjexe')},
+					{text: 'deviantart', action: x => window.open('https://www.deviantart.com/mjexart')},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
 				],
 
