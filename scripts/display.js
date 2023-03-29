@@ -175,7 +175,7 @@ class Display {
 			// ==========================================================================================================================
 			'socials': {
 				text: [
-					{line: '      accounts    ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '     accounts     ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      instagram   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      deviantart  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
