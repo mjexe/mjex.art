@@ -162,7 +162,7 @@ class Display {
 				items: [
 					{text: 'youtube',   action: x => window.open('//www.youtube.com/@mjexart')},
 					{text: 'itch.io',   action: x => window.open('//mjex.itch.io')},
-					{text: 'accounts',   action: x => this.clm(y => this.loadMenu('socials'))},
+					{text: 'accounts',   action: x => this.clm(y => this.loadMenu('accounts'))},
 					{text: 'about',     action: x => this.clm(y => this.loadMenu('about'))},
 				],
 
@@ -173,14 +173,14 @@ class Display {
 
 
 			// ==========================================================================================================================
-			'socials': {
+			'accounts': {
 				text: [
 					{line: '     accounts     ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      instagram   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      twitter     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      deviantart  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      twitch      ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      about       ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      back        ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '__________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -190,9 +190,9 @@ class Display {
 	
 				items: [
 					{text: 'instagram',  action: x => window.open('https://www.instagram.com/mjexart/')},
+					{text: 'twitter',  action: x => window.open('https://www.twitter.com/mjexart/')},
 					{text: 'deviantart', action: x => window.open('https://www.deviantart.com/mjexart')},
 					{text: 'twitch',     action: x => window.open('//www.twitch.tv/mjexe')},
-					{text: 'about',      action: x => this.clm(y => this.loadMenu('art-about'))},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
 				],
 
