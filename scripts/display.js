@@ -179,6 +179,7 @@ class Display {
 					{line: '      instagram   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      twitter     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      twitch      ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      github      ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      youtube     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      itch.io     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      back        ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -190,7 +191,8 @@ class Display {
 				items: [
 					{text: 'instagram',  action: x => window.open('https://www.instagram.com/mjexart/')},
 					{text: 'twitter',  action: x => window.open('https://www.twitter.com/mjexart/')},
-					{text: 'twitch',     action: x => window.open('//www.twitch.tv/mjexe')},
+					{text: 'twitch',     action: x => window.open('//www.twitch.tv/mjexart')},
+					{text: 'github',     action: x => window.open('//github.com/mjexe')},
 					{text: 'youtube',   action: x => window.open('//www.youtube.com/@mjexart')},
 					{text: 'itch.io',   action: x => window.open('//mjex.itch.io')},
 					{text: 'back',       action: x => this.clm(y => this.loadMenu('main'))},
