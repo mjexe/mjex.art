@@ -228,7 +228,7 @@ class Display {
 				],
 	
 				scheme: 'normal',
-				pointerAnchor: {x: 7, y: 16},
+				pointerAnchor: {x: 7, y: 15},
 				directionAnchor: {x: 0, y: -1},
 			},
 		}
