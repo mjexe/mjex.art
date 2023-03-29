@@ -150,7 +150,8 @@ class Display {
 					{line: '      mjex      ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      youtube   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
-					{line: '      socials   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      itch.io   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: '      accounts  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      about     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '                ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -159,8 +160,9 @@ class Display {
 				],
 
 				items: [
-					{text: 'youtube',   action: x => window.open('//www.youtube.com/channel/UC-uJ-BtQ-5GE52UhBpZF8UQ')},
-					{text: 'socials',   action: x => this.clm(y => this.loadMenu('socials'))},
+					{text: 'youtube',   action: x => window.open('//www.youtube.com/@mjexart')},
+					{text: 'itch.io',   action: x => window.open('//mjex.itch.io')},
+					{text: 'accounts',   action: x => this.clm(y => this.loadMenu('socials'))},
 					{text: 'about',     action: x => this.clm(y => this.loadMenu('about'))},
 				],
 
@@ -173,7 +175,7 @@ class Display {
 			// ==========================================================================================================================
 			'socials': {
 				text: [
-					{line: '      socials     ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
+					{line: '      accounts    ', data: {color: schemes.normal[0], bg: schemes.normal[0], alpha: 100, mask: true}},
 					{line: '                  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      instagram   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '      deviantart  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
@@ -208,6 +210,8 @@ class Display {
 					{line: ' max lessard\'s portfolio  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: ' of weird projects         ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '                           ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' believe it or not i made  ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
+					{line: ' this site from scratch.   ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '___________________________', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{line: '  back                     ', data: {color: schemes.normal[0], bg: schemes.normal[1], alpha: 0, mask: false}},
 					{callback: x => setTimeout(() => this.createPointer(), 500)},
@@ -218,7 +222,7 @@ class Display {
 				],
 	
 				scheme: 'normal',
-				pointerAnchor: {x: 7, y: 11},
+				pointerAnchor: {x: 7, y: 12},
 				directionAnchor: {x: 0, y: -1},
 			},
 		}
