@@ -176,7 +176,7 @@ let canvas,
 
 
 function preload() {
-	font = loadFont('/fonts/highway-gothic.ttf');
+	font = loadFont('fonts/highway-gothic.ttf');
 }
 
 function setup() {
