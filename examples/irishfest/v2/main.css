@@ -10,53 +10,38 @@ body {
   overflow: hidden;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   -webkit-clip-path: polygon(0% 0%, 0% 95%, 50% 99.5%, 100% 95%, 100% 0%);
           clip-path: polygon(0% 0%, 0% 95%, 50% 99.5%, 100% 95%, 100% 0%);
 }
-
 .video .header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  justify-content: center;
+  align-content: center;
   position: absolute;
   top: 20px;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   width: 100%;
   height: 100px;
   text-align: center;
   z-index: 1;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
-  font-family: 'Teko', sans-serif;
+  font-family: "Teko", sans-serif;
   font-size: 30pt;
   color: white;
 }
-
 .video .header .nav {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: max-content 1fr max-content;
-      grid-template-columns: -webkit-max-content 1fr -webkit-max-content;
-      grid-template-columns: max-content 1fr max-content;
+  grid-template-columns: max-content 1fr max-content;
   width: 75vw;
   font-size: 16pt;
 }
-
 @media only screen and (max-width: 700px) {
   .video .header .nav {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
   .video .header .nav .spacer {
     display: none !important;
@@ -65,179 +50,124 @@ body {
     display: none !important;
   }
 }
-
 .video .header .nav .logo {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-family: 'Teko', sans-serif;
+  justify-content: center;
+  align-items: center;
+  font-family: "Teko", sans-serif;
   font-size: 50pt;
   color: white;
 }
-
 .video .header .nav .links {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (max-content)[5];
-      grid-template-columns: repeat(5, -webkit-max-content);
-      grid-template-columns: repeat(5, max-content);
+  grid-template-columns: repeat(5, max-content);
   padding: 0;
   margin: 0;
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
   list-style: none;
 }
-
 .video .header .nav .links li {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-transform: translateY(10px);
-          transform: translateY(10px);
+  justify-content: center;
+  align-items: center;
+  transform: translateY(10px);
   height: 100px;
   padding: 0 10px;
   font-size: 20pt;
   text-align: center;
   color: #bbbbbb;
 }
-
 .video .header .nav .links li:hover img {
   width: 100%;
 }
-
 .video .header .nav .links li a {
   color: inherit;
   text-decoration: none;
 }
-
 .video .header .nav .links li.active img {
   width: 100%;
   background: white;
 }
-
 .video .header .nav .links li img {
   width: 0;
   height: 2px;
-  -webkit-transform: translateY(-20px);
-          transform: translateY(-20px);
+  transform: translateY(-20px);
   background: #bbbbbb;
   border-radius: 6px;
-  -webkit-transition: width 0.3s cubic-bezier(0.45, 0.06, 0.41, 0.71);
   transition: width 0.3s cubic-bezier(0.45, 0.06, 0.41, 0.71);
 }
-
 .video .video-overlay {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
   z-index: 0;
-  background: #000000a0;
+  background: rgba(0, 0, 0, 0.6274509804);
 }
-
 .video .video-overlay .main-text {
-  display: -ms-grid;
   display: grid;
   gap: 2vw;
-  font-family: 'Heebo', sans-serif;
+  font-family: "Heebo", sans-serif;
   font-size: 5vw;
   text-align: center;
   color: white;
 }
-
 @media only screen and (max-width: 700px) {
   .video .video-overlay .main-text {
-    -ms-grid-rows: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 0;
     font-size: 12vw;
   }
 }
-
 @media only screen and (min-width: 701px) {
   .video .video-overlay .main-text {
-    -ms-grid-columns: max-content max-content;
-        grid-template-columns: -webkit-max-content -webkit-max-content;
-        grid-template-columns: max-content max-content;
+    grid-template-columns: max-content max-content;
   }
 }
-
 .video .video-overlay .main-text .month {
   font-weight: 900;
 }
-
 .video .video-overlay .main-text .date {
   font-weight: 300;
 }
-
 .video video {
   position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
-
-@media screen and (max-aspect-ratio: 16 / 9) {
+@media screen and (max-aspect-ratio: 16/9) {
   .video video {
     height: 100vh;
   }
 }
-
-@media screen and (min-aspect-ratio: 16 / 9) {
+@media screen and (min-aspect-ratio: 16/9) {
   .video video {
     width: 100vw;
   }
 }
 
 .lineup .container {
-  display: -ms-grid;
   display: grid;
 }
-
 @media screen and (orientation: landscape) {
   .lineup .container {
-    -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
-
 @media screen and (orientation: portrait) {
   .lineup .container {
-    -ms-grid-rows: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
   }
 }
-
 .lineup .container .box2 ul {
   padding: 0;
-}
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */
