@@ -1,0 +1,11 @@
+body {
+  background: url("img/stars2.gif");
+  margin: 0;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}/*# sourceMappingURL=main.css.map */
