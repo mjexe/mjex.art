@@ -123,9 +123,9 @@ function animation(time) {
 	camera.rotation.x = camPoint1.rotation.x + noise.perlin2(time / 8, time / 8) / 50;
 	camera.rotation.y = camPoint1.rotation.y + noise.perlin2(-time / 8, -time / 8) / 50;
 
-	camera.position.x = camPoint1.position.x + noise.perlin2(time / 4, time / 4) / 8;
-	camera.position.y = camPoint1.position.y + noise.perlin2(-time / 4, -time / 4) / 8;
-	camera.position.z = camPoint1.position.z + noise.perlin2(time / 4, time / 4) / 8;
+	camera.position.x = camPoint1.position.x + noise.perlin2(time / 4, time / 4) / 16;
+	camera.position.y = camPoint1.position.y + noise.perlin2(-time / 4, -time / 4) / 16;
+	camera.position.z = camPoint1.position.z + noise.perlin2(time / 4, time / 4) / 16;
 	
 	// camera.lookAt(textMesh.position);
 

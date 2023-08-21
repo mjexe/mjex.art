@@ -12,7 +12,8 @@
 				0,
 				1,
 				2,
-				3
+				3,
+				4
 			]
 		}
 	],
@@ -53,15 +54,30 @@
 			"camera":1,
 			"name":"webView",
 			"rotation":[
-				0.013780326582491398,
-				0.03610408678650856,
-				-0.0006034587859176099,
-				0.9992528557777405
+				-0.0032239544671028852,
+				0.04657197371125221,
+				4.474292654776946e-05,
+				0.9989097714424133
 			],
 			"translation":[
 				0.27322718501091003,
-				0.48081791400909424,
+				0.6591976284980774,
 				9.1114501953125
+			]
+		},
+		{
+			"mesh":1,
+			"name":"Plane.001",
+			"rotation":[
+				0,
+				0,
+				-0.004358337260782719,
+				0.9999905228614807
+			],
+			"translation":[
+				-1.2642459869384766,
+				1.307990550994873,
+				8.270008087158203
 			]
 		}
 	],
@@ -109,6 +125,28 @@
 				"metallicFactor":0,
 				"roughnessFactor":0.5
 			}
+		},
+		{
+			"doubleSided":true,
+			"emissiveFactor":[
+				1,
+				1,
+				1
+			],
+			"emissiveTexture":{
+				"index":1
+			},
+			"name":"Material.001",
+			"pbrMetallicRoughness":{
+				"baseColorFactor":[
+					0,
+					0,
+					0,
+					1
+				],
+				"metallicFactor":0,
+				"roughnessFactor":0.5
+			}
 		}
 	],
 	"meshes":[
@@ -125,12 +163,30 @@
 					"material":0
 				}
 			]
+		},
+		{
+			"name":"Plane.001",
+			"primitives":[
+				{
+					"attributes":{
+						"POSITION":4,
+						"NORMAL":5,
+						"TEXCOORD_0":6
+					},
+					"indices":7,
+					"material":1
+				}
+			]
 		}
 	],
 	"textures":[
 		{
 			"sampler":0,
 			"source":0
+		},
+		{
+			"sampler":0,
+			"source":1
 		}
 	],
 	"images":[
@@ -138,67 +194,130 @@
 			"mimeType":"image/jpeg",
 			"name":"0147-web",
 			"uri":"0147-web.jpg"
+		},
+		{
+			"mimeType":"image/jpeg",
+			"name":"0151-web",
+			"uri":"0151-web.jpg"
 		}
 	],
 	"accessors":[
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":1976,
+			"count":10487,
 			"max":[
-				38.414302825927734,
-				28.466976165771484,
+				1.8260364532470703,
+				1.2164664268493652,
 				1.3059682846069336
 			],
 			"min":[
-				-41.174163818359375,
-				-5.335477352142334,
-				-23.509185791015625
+				-2.089630126953125,
+				-1.7741261720657349,
+				-11.89987850189209
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":1976,
+			"count":10487,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":1976,
+			"count":10487,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5123,
-			"count":6144,
+			"count":31104,
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":4,
+			"componentType":5126,
+			"count":81,
+			"max":[
+				38.414302825927734,
+				28.466976165771484,
+				-23.509180068969727
+			],
+			"min":[
+				-41.17416000366211,
+				-5.335477828979492,
+				-23.509185791015625
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":5,
+			"componentType":5126,
+			"count":81,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":6,
+			"componentType":5126,
+			"count":81,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":7,
+			"componentType":5123,
+			"count":384,
 			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":23712,
+			"byteLength":125844,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":23712,
-			"byteOffset":23712,
+			"byteLength":125844,
+			"byteOffset":125844,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":15808,
-			"byteOffset":47424,
+			"byteLength":83896,
+			"byteOffset":251688,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":12288,
-			"byteOffset":63232,
+			"byteLength":62208,
+			"byteOffset":335584,
+			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":972,
+			"byteOffset":397792,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":972,
+			"byteOffset":398764,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":648,
+			"byteOffset":399736,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":768,
+			"byteOffset":400384,
 			"target":34963
 		}
 	],
@@ -210,7 +329,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":75520,
+			"byteLength":401152,
 			"uri":"beach1.bin"
 		}
 	]
