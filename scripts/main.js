@@ -2,6 +2,7 @@
 // This isn't a template, can you tell I'm proud of that?
 
 import * as THREE from "three";
+import { CSS3DRenderer, CSS3DObject } from "three/addons/renderers/CSS3DRenderer.js"
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js"
 import { FontLoader } from "three/addons/loaders/FontLoader.js"
 import { TextGeometry } from "three/addons/geometries/TextGeometry.js"
@@ -11,28 +12,40 @@ noise.seed(Math.random());
 let time;
 let width, height;
 
-const scene    = new THREE.Scene();
-const camera   = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10);
+const scene     = new THREE.Scene();
+const scene2    = new THREE.Scene();
+const clock     = new THREE.Clock(true);
+
+
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-const clock    = new THREE.Clock(true);
-
-const camPoint1   = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10);
-
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setAnimationLoop(animation);
 document.body.appendChild(renderer.domElement);
+
+const renderer2 = new CSS3DRenderer();
+renderer2.setSize(window.innerWidth, window.innerHeight);
+renderer2.domElement.style.position = 'absolute';
+renderer2.domElement.style.top = 0;
+document.body.appendChild(renderer2.domElement);
+
+const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10);
 camera.position.z = -1;
 camera.position.set(10, 10, 10);
 
 const gltfLoader = new GLTFLoader();
 const fontLoader = new FontLoader();
 
-// add geometry
-scene.background = new THREE.Color(0x888888);
 
-const sun = new THREE.DirectionalLight(0xffffff, 0.5);
-sun.position.z = 5;
-scene.add(sun);
+
+// add geometry
+// scene.background = new THREE.Color(0x888888);
+
+// const sun = new THREE.DirectionalLight(0xffffff, 0.5);
+// sun.position.z = 5;
+// scene.add(sun);
+
+
+const camPoint1   = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10);
 
 
 
@@ -60,11 +73,31 @@ gltfLoader.load('assets/gltf/beach1.gltf', function(gltf) {
 				curveSegments: 12
 			});
 			
-			const textMaterial = new THREE.MeshBasicMaterial({color: 0xffffff});
+			const textMaterial = new THREE.MeshBasicMaterial({color: 0xefa4e0});
 			const textMesh = new THREE.Mesh(textGeo, textMaterial);
 			textMesh.position.copy(titlePH.position);
 			textMesh.rotation.copy(titlePH.rotation);
 			scene.add(textMesh);
+
+
+			const element = document.createElement('div');
+			element.classList.add('main-links')
+			element.innerHTML = `
+				<a href ="//www.youtube.com/@mjexart" target="_blank">YouTube</a><br>
+				<a href ="//mjex.itch.io" target="_blank">Itch.io</a><br>
+				<a href ="//www.instagram.com/mjexart/" target="_blank">Instagram</a><br>
+			`
+			// element.style.width = '100px'; 
+			// element.style.fontSize = '10pt';
+
+			const cssObj = new CSS3DObject(element);
+			cssObj.position.copy(titlePH.position);
+			cssObj.translateX(0.7);
+			cssObj.translateY(-0.6);
+			cssObj.scale.x = 0.015
+			cssObj.scale.y = 0.015
+			cssObj.scale.z = 0.015
+			scene2.add(cssObj);
 		}
 	);
 	
@@ -74,27 +107,6 @@ gltfLoader.load('assets/gltf/beach1.gltf', function(gltf) {
 }, undefined, function(error) {
 	console.error(error);
 });
-
-
-
-// Text test
-let fonts = {
-	Caprasimo: null
-}
-
-
-
-
-
-
-
-
-
-
-// sun.lookAt(textMesh.position);
-
-
-
 
 
 
@@ -130,6 +142,7 @@ function animation(time) {
 	// camera.lookAt(textMesh.position);
 
 	renderer.render(scene, camera);
+	renderer2.render(scene2, camera);
 }
 
 
@@ -151,5 +164,6 @@ function resizeUpdate() {
 	// update renderer
 	renderer.setSize(width, height);
 	renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+	renderer2.setSize(width, height);
 	// renderer.render(scene, camera);
 }

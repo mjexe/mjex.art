@@ -4,3 +4,18 @@ body {
 	
 	text-align: center;
 }
+
+
+.main-links {
+	text-align: left;
+	a {
+		color: #9ad0dc;
+		font-family: 'Special Elite', cursive;
+		text-decoration: none;
+		-webkit-text-stroke: 0.3px #728dbb;
+	
+		:visited {
+			color: blue;
+		}
+	}
+}
