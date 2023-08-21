@@ -1,11 +1,5 @@
 body {
-  background: url("assets/img/stars2.gif");
+  background: #1b2847;
   margin: 0;
-}
-
-.wrapper {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
 }/*# sourceMappingURL=main.css.map */
