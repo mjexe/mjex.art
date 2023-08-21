@@ -68,12 +68,6 @@
 		{
 			"mesh":1,
 			"name":"Plane.001",
-			"rotation":[
-				0,
-				0,
-				-0.004358337260782719,
-				0.9999905228614807
-			],
 			"translation":[
 				-1.2642459869384766,
 				1.307990550994873,
@@ -239,15 +233,15 @@
 		{
 			"bufferView":4,
 			"componentType":5126,
-			"count":81,
+			"count":1122,
 			"max":[
 				38.414302825927734,
 				28.466976165771484,
-				-23.509180068969727
+				-13.691770553588867
 			],
 			"min":[
 				-41.17416000366211,
-				-5.335477828979492,
+				-4.118211269378662,
 				-23.509185791015625
 			],
 			"type":"VEC3"
@@ -255,19 +249,19 @@
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":81,
+			"count":1122,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":81,
+			"count":1122,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":7,
 			"componentType":5123,
-			"count":384,
+			"count":6144,
 			"type":"SCALAR"
 		}
 	],
@@ -298,26 +292,26 @@
 		},
 		{
 			"buffer":0,
-			"byteLength":972,
+			"byteLength":13464,
 			"byteOffset":397792,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":972,
-			"byteOffset":398764,
+			"byteLength":13464,
+			"byteOffset":411256,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":648,
-			"byteOffset":399736,
+			"byteLength":8976,
+			"byteOffset":424720,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":768,
-			"byteOffset":400384,
+			"byteLength":12288,
+			"byteOffset":433696,
 			"target":34963
 		}
 	],
@@ -329,7 +323,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":401152,
+			"byteLength":445984,
 			"uri":"beach1.bin"
 		}
 	]
