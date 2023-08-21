@@ -56,7 +56,7 @@ const camPoint1   = new THREE.PerspectiveCamera(70, window.innerWidth / window.i
 // Load GLTFs
 
 let pic3d;
-gltfLoader.load('assets/gltf/beach1.gltf', function(gltf) {
+gltfLoader.load('assets/gltf/websitespace.gltf', function(gltf) {
 	pic3d = gltf;
 	scene.add(pic3d.scene);
 	// console.log(pic3d);
@@ -68,7 +68,7 @@ gltfLoader.load('assets/gltf/beach1.gltf', function(gltf) {
 		function (font) {
 			const textGeo = new TextGeometry('mjexart', {
 				font: font,
-				size: 0.3,
+				size: 2,
 				height: 0,
 				curveSegments: 12
 			});
@@ -77,6 +77,7 @@ gltfLoader.load('assets/gltf/beach1.gltf', function(gltf) {
 			const textMesh = new THREE.Mesh(textGeo, textMaterial);
 			textMesh.position.copy(titlePH.position);
 			textMesh.rotation.copy(titlePH.rotation);
+			textMesh.translateX(-12);
 			scene.add(textMesh);
 
 
@@ -92,11 +93,13 @@ gltfLoader.load('assets/gltf/beach1.gltf', function(gltf) {
 
 			const cssObj = new CSS3DObject(element);
 			cssObj.position.copy(titlePH.position);
-			cssObj.translateX(0.7);
-			cssObj.translateY(-0.6);
-			cssObj.scale.x = 0.015
-			cssObj.scale.y = 0.015
-			cssObj.scale.z = 0.015
+			cssObj.translateX(-9);
+			cssObj.translateY(-7.5);
+			cssObj.translateZ(4.5);
+			cssObj.rotation.copy(titlePH.rotation);
+			cssObj.scale.x = 0.1;
+			cssObj.scale.y = 0.1;
+			cssObj.scale.z = 0.1;
 			scene2.add(cssObj);
 		}
 	);
