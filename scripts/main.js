@@ -66,7 +66,7 @@ gltfLoader.load('assets/gltf/websitespace.gltf', function(gltf) {
 	console.log(titlePH.userData);
 
 	fontLoader.load(
-		'assets/fonts/Caprasimo_Regular.json',
+		'assets/fonts/Fontdiner_Swanky_Regular.json',
 		function (font) {
 			const textGeo = new TextGeometry('mjexart', {
 				font: font,
@@ -75,11 +75,11 @@ gltfLoader.load('assets/gltf/websitespace.gltf', function(gltf) {
 				curveSegments: 12
 			});
 			
-			const textMaterial = new THREE.MeshBasicMaterial({color: 0xefa4e0});
+			const textMaterial = new THREE.MeshBasicMaterial({color: 0x98a4ff});
 			const textMesh = new THREE.Mesh(textGeo, textMaterial);
 			textMesh.position.copy(titlePH.position);
 			textMesh.rotation.copy(titlePH.rotation);
-			textMesh.translateX(-12);
+			textMesh.translateX(-12.5);
 			scene.add(textMesh);
 
 
@@ -94,7 +94,7 @@ gltfLoader.load('assets/gltf/websitespace.gltf', function(gltf) {
 			// Translate main links
 			const mainlinksObj = new CSS3DObject(mainlinks);
 			mainlinksObj.position.copy(titlePH.position);
-			mainlinksObj.translateX(-9);
+			mainlinksObj.translateX(-8.5);
 			mainlinksObj.translateY(-7.5);
 			mainlinksObj.translateZ(4.5);
 			mainlinksObj.rotation.copy(titlePH.rotation);
