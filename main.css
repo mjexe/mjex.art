@@ -11,8 +11,8 @@ body {
   color: #9ad0dc;
   font-family: "Special Elite", cursive;
   text-decoration: none;
-  -webkit-text-stroke: 0.3px #728dbb;
+  transition: color 0.15s;
 }
-.main-links a :visited {
-  color: blue;
+.main-links a:hover {
+  color: #5b99a7;
 }/*# sourceMappingURL=main.css.map */

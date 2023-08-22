@@ -53,15 +53,17 @@ const camPoint1   = new THREE.PerspectiveCamera(70, window.innerWidth / window.i
 
 
 
-// Load GLTFs
+// Make an automated GLTF loader that uses custom properties for links and labels
+// as well as a way to dynamically load in other sections of the webspace
 
-let pic3d;
+// Load GLTF;
+let webspace;
 gltfLoader.load('assets/gltf/websitespace.gltf', function(gltf) {
-	pic3d = gltf;
-	scene.add(pic3d.scene);
-	// console.log(pic3d);
+	webspace = gltf;
+	scene.add(webspace.scene);
 
-	let titlePH = pic3d.scene.getObjectByName('textTitle');
+	let titlePH = webspace.scene.getObjectByName('textTitle');
+	console.log(titlePH.userData);
 
 	fontLoader.load(
 		'assets/fonts/Caprasimo_Regular.json',
@@ -81,30 +83,29 @@ gltfLoader.load('assets/gltf/websitespace.gltf', function(gltf) {
 			scene.add(textMesh);
 
 
-			const element = document.createElement('div');
-			element.classList.add('main-links')
-			element.innerHTML = `
+			const mainlinks = document.createElement('div');
+			mainlinks.classList.add('main-links')
+			mainlinks.innerHTML = `
 				<a href ="//www.youtube.com/@mjexart" target="_blank">YouTube</a><br>
 				<a href ="//mjex.itch.io" target="_blank">Itch.io</a><br>
 				<a href ="//www.instagram.com/mjexart/" target="_blank">Instagram</a><br>
 			`
-			// element.style.width = '100px'; 
-			// element.style.fontSize = '10pt';
 
-			const cssObj = new CSS3DObject(element);
-			cssObj.position.copy(titlePH.position);
-			cssObj.translateX(-9);
-			cssObj.translateY(-7.5);
-			cssObj.translateZ(4.5);
-			cssObj.rotation.copy(titlePH.rotation);
-			cssObj.scale.x = 0.1;
-			cssObj.scale.y = 0.1;
-			cssObj.scale.z = 0.1;
-			scene2.add(cssObj);
+			// Translate main links
+			const mainlinksObj = new CSS3DObject(mainlinks);
+			mainlinksObj.position.copy(titlePH.position);
+			mainlinksObj.translateX(-9);
+			mainlinksObj.translateY(-7.5);
+			mainlinksObj.translateZ(4.5);
+			mainlinksObj.rotation.copy(titlePH.rotation);
+			mainlinksObj.scale.x = 0.1;
+			mainlinksObj.scale.y = 0.1;
+			mainlinksObj.scale.z = 0.1;
+			scene2.add(mainlinksObj);
 		}
 	);
 	
-	camera.copy(pic3d.cameras[1])
+	camera.copy(webspace.cameras[1])
 	camPoint1.copy(camera);
 	resizeUpdate();
 }, undefined, function(error) {
@@ -113,36 +114,17 @@ gltfLoader.load('assets/gltf/websitespace.gltf', function(gltf) {
 
 
 
-// Default cube mesh
-// const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-// const material = new THREE.MeshNormalMaterial();
-
-// const mesh = new THREE.Mesh(geometry, material);
-// scene.add(mesh);
-
-
-
-
 
 // animation
 function animation(time) {
-	// if(pic3d) pic3d.rotation.x = time / 2000;
-	// if(pic3d) pic3d.scene.rotation.y = time / 1000;
-	// mesh.rotation.x += 1;
-
-	// textMesh.rotation.y += 0.01;
-
 	time = clock.getElapsedTime();
-
-
+	
 	camera.rotation.x = camPoint1.rotation.x + noise.perlin2(time / 8, time / 8) / 50;
 	camera.rotation.y = camPoint1.rotation.y + noise.perlin2(-time / 8, -time / 8) / 50;
 
 	camera.position.x = camPoint1.position.x + noise.perlin2(time / 4, time / 4) / 16;
 	camera.position.y = camPoint1.position.y + noise.perlin2(-time / 4, -time / 4) / 16;
 	camera.position.z = camPoint1.position.z + noise.perlin2(time / 4, time / 4) / 16;
-	
-	// camera.lookAt(textMesh.position);
 
 	renderer.render(scene, camera);
 	renderer2.render(scene2, camera);

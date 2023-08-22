@@ -7,6 +7,55 @@
 	"scene":0,
 	"scenes":[
 		{
+			"extras":{
+				"keentools_fb_settings":{},
+				"bpa_prop":{},
+				"luxcore":{
+					"devices":{
+						"devices_hash":"opencl.device.0.platform.name = \"NVIDIA Corporation\"\nopencl.device.0.platform.version = \"OpenCL 3.0 CUDA\"\nopencl.device.0.name = \"NVIDIA GeForce GTX 1070\"\nopencl.device.0.type = \"OPENCL_GPU\"\nopencl.device.0.units = 15\nopencl.device.0.clock = 1,797\nopencl.device.0.nativevectorwidthfloat = 1\nopencl.device.0.maxmemory = 8,589,803,520\nopencl.device.0.maxmemoryallocsize = 2,147,450,880\nopencl.device.0.localmemory = 49,152\nopencl.device.0.constmemory = 65,536\nopencl.device.1.platform.name = \"NVIDIA\"\nopencl.device.1.platform.version = \"UNKNOWN\"\nopencl.device.1.name = \"NVIDIA GeForce GTX 1070\"\nopencl.device.1.type = \"CUDA_GPU\"\nopencl.device.1.units = 128\nopencl.device.1.clock = 0\nopencl.device.1.nativevectorwidthfloat = 1\nopencl.device.1.maxmemory = 8,589,803,520\nopencl.device.1.maxmemoryallocsize = 18,446,744,073,709,551,615\nopencl.device.1.localmemory = 0\nopencl.device.1.constmemory = 0\nopencl.device.1.cuda.compute.major = 6\nopencl.device.1.cuda.compute.minor = 1\n",
+						"devices":[
+							{
+								"name":"NVIDIA GeForce GTX 1070",
+								"type":"OPENCL_GPU"
+							},
+							{
+								"name":"NVIDIA GeForce GTX 1070",
+								"type":"CUDA_GPU"
+							}
+						]
+					},
+					"config":{
+						"filesaver_path":"/tmp\\",
+						"photongi":{
+							"file_path":"C:\\Users\\mjex\\AppData\\Local\\Temp\\Untitled.pgi"
+						},
+						"envlight_cache":{
+							"file_path":"C:\\Users\\mjex\\AppData\\Local\\Temp\\Untitled.env"
+						},
+						"dls_cache":{
+							"file_path":"C:\\Users\\mjex\\AppData\\Local\\Temp\\Untitled.dlsc"
+						}
+					}
+				},
+				"luxcoreOL":{
+					"ui":{
+						"assetbar_on":0,
+						"turn_off":0,
+						"ToC_loaded":0
+					},
+					"on_search":0,
+					"search_category":"",
+					"model":{
+						"thumbnails_loaded":0
+					},
+					"scene":{
+						"thumbnails_loaded":0
+					},
+					"material":{
+						"thumbnails_loaded":0
+					}
+				}
+			},
 			"name":"Scene",
 			"nodes":[
 				0,
@@ -16,13 +65,88 @@
 				4,
 				5,
 				6,
-				7
+				7,
+				8
 			]
 		}
 	],
 	"nodes":[
 		{
 			"camera":0,
+			"extras":{
+				"perspective_plotter":{
+					"is_dirty":1,
+					"running_uuid":"",
+					"is_valid":1,
+					"error_message":"",
+					"is_camera_sync":1,
+					"axis_vp1_point_b":[
+						0.05631282553076744,
+						67.8050765991211
+					],
+					"axis_vp1_point_a":[
+						37.2917366027832,
+						54.58476638793945
+					],
+					"axis_vp1_point_d":[
+						0.47772017121315,
+						47.59552001953125
+					],
+					"axis_vp1_point_c":[
+						34.48967361450195,
+						41.49909973144531
+					],
+					"axis_vp2_point_b":[
+						37.726356506347656,
+						53.721431732177734
+					],
+					"axis_vp2_point_c":[
+						9.216160774230957,
+						48.47776412963867
+					],
+					"vp_2_type":2,
+					"axis_vp2_point_a":[
+						35.780845642089844,
+						31.70695686340332
+					],
+					"axis_vp2_point_d":[
+						13.092874526977539,
+						62.43361282348633
+					],
+					"vp_1_type":0,
+					"grid_point":[
+						52.27890396118164,
+						11.983559608459473
+					],
+					"camera_distance":5.0
+				},
+				"perspective_plotter_visualisation":{
+					"horizon_vec":[
+						0.4943764805793762,
+						-0.8692479729652405
+					],
+					"principal_point":[
+						1226.086669921875,
+						668.5386962890625
+					],
+					"grid_point":[
+						1246.178955078125,
+						445.0864562988281
+					],
+					"vp_1":[
+						1795.4876708984375,
+						534.1903076171875
+					],
+					"vp_2":[
+						1229.163330078125,
+						1529.942138671875
+					],
+					"vp_3":[
+						994.8935546875,
+						537.0498657226562
+					]
+				}
+			},
 			"name":"Camera",
 			"rotation":[
 				0.17778338491916656,
@@ -67,6 +191,9 @@
 			]
 		},
 		{
+			"extras":{
+				"test":"hi"
+			},
 			"name":"textTitle",
 			"translation":[
 				20.278343200683594,
@@ -76,6 +203,11 @@
 		},
 		{
 			"camera":1,
+			"extras":{
+				"perspective_plotter":{
+					"running_uuid":""
+				}
+			},
 			"name":"webView",
 			"rotation":[
 				0.18595120310783386,
@@ -88,10 +220,33 @@
 				1.3213361501693726,
 				1.0514637231826782
 			]
+		},
+		{
+			"mesh":5,
+			"name":"Text",
+			"rotation":[
+				0.4124293327331543,
+				0.5743709802627563,
+				0.5743710398674011,
+				0.4124293327331543
+			],
+			"scale":[
+				1.1802972555160522,
+				1.1802973747253418,
+				1.1802972555160522
+			],
+			"translation":[
+				-12.694841384887695,
+				-0.12461510300636292,
+				-19.030820846557617
+			]
 		}
 	],
 	"cameras":[
 		{
+			"extras":{
+				"luxcore":{}
+			},
 			"name":"Camera",
 			"perspective":{
 				"aspectRatio":1.5,
@@ -172,6 +327,23 @@
 					1
 				]
 			}
+		},
+		{
+			"doubleSided":true,
+			"emissiveFactor":[
+				1,
+				1,
+				1
+			],
+			"name":"emissive white",
+			"pbrMetallicRoughness":{
+				"baseColorFactor":[
+					0,
+					0,
+					0,
+					1
+				]
+			}
 		}
 	],
 	"meshes":[
@@ -244,6 +416,20 @@
 					"material":2
 				}
 			]
+		},
+		{
+			"name":"Text",
+			"primitives":[
+				{
+					"attributes":{
+						"POSITION":20,
+						"NORMAL":21,
+						"TEXCOORD_0":22
+					},
+					"indices":23,
+					"material":3
+				}
+			]
 		}
 	],
 	"textures":[
@@ -281,11 +467,11 @@
 		{
 			"bufferView":0,
 			"componentType":5126,
-			"count":9255,
+			"count":7315,
 			"max":[
-				90.21312713623047,
+				90.21311950683594,
 				410.8147888183594,
-				18.986623764038086
+				18.986591339111328
 			],
 			"min":[
 				-118.10005950927734,
@@ -297,32 +483,32 @@
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":9255,
+			"count":7315,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":9255,
+			"count":7315,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5123,
-			"count":53376,
+			"count":41856,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":4,
 			"componentType":5126,
-			"count":1834,
+			"count":1875,
 			"max":[
 				2.3537282943725586,
 				26.20134162902832,
 				-17.82517433166504
 			],
 			"min":[
-				-26.259572982788086,
+				-26.259571075439453,
 				0,
 				-40.12245559692383
 			],
@@ -331,19 +517,19 @@
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":1834,
+			"count":1875,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":1834,
+			"count":1875,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":7,
 			"componentType":5123,
-			"count":4800,
+			"count":4896,
 			"type":"SCALAR"
 		},
 		{
@@ -447,127 +633,185 @@
 			"componentType":5123,
 			"count":582,
 			"type":"SCALAR"
+		},
+		{
+			"bufferView":20,
+			"componentType":5126,
+			"count":3379,
+			"max":[
+				10.260001182556152,
+				0,
+				1.2300000190734863
+			],
+			"min":[
+				0,
+				0,
+				-0.7160000205039978
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":21,
+			"componentType":5126,
+			"count":3379,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":22,
+			"componentType":5126,
+			"count":3379,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":23,
+			"componentType":5123,
+			"count":9969,
+			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":111060,
+			"byteLength":87780,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":111060,
-			"byteOffset":111060,
+			"byteLength":87780,
+			"byteOffset":87780,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":74040,
-			"byteOffset":222120,
+			"byteLength":58520,
+			"byteOffset":175560,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":106752,
-			"byteOffset":296160,
+			"byteLength":83712,
+			"byteOffset":234080,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":22008,
-			"byteOffset":402912,
+			"byteLength":22500,
+			"byteOffset":317792,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":22008,
-			"byteOffset":424920,
+			"byteLength":22500,
+			"byteOffset":340292,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":14672,
-			"byteOffset":446928,
+			"byteLength":15000,
+			"byteOffset":362792,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":9600,
-			"byteOffset":461600,
+			"byteLength":9792,
+			"byteOffset":377792,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":7728,
-			"byteOffset":471200,
+			"byteOffset":387584,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":7728,
-			"byteOffset":478928,
+			"byteOffset":395312,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":5152,
-			"byteOffset":486656,
+			"byteOffset":403040,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":3186,
-			"byteOffset":491808,
+			"byteOffset":408192,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":21780,
-			"byteOffset":494996,
+			"byteOffset":411380,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":21780,
-			"byteOffset":516776,
+			"byteOffset":433160,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":14520,
-			"byteOffset":538556,
+			"byteOffset":454940,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":12624,
-			"byteOffset":553076,
+			"byteOffset":469460,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":4560,
-			"byteOffset":565700,
+			"byteOffset":482084,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":4560,
-			"byteOffset":570260,
+			"byteOffset":486644,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":3040,
-			"byteOffset":574820,
+			"byteOffset":491204,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":1164,
-			"byteOffset":577860,
+			"byteOffset":494244,
+			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":40548,
+			"byteOffset":495408,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":40548,
+			"byteOffset":535956,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":27032,
+			"byteOffset":576504,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":19938,
+			"byteOffset":603536,
 			"target":34963
 		}
 	],
@@ -579,7 +823,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":579024,
+			"byteLength":623476,
 			"uri":"websitespace.bin"
 		}
 	]

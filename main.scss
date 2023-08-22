@@ -12,10 +12,16 @@ body {
 		color: #9ad0dc;
 		font-family: 'Special Elite', cursive;
 		text-decoration: none;
-		-webkit-text-stroke: 0.3px #728dbb;
+		// -webkit-text-stroke: 0.3px #728dbb;
+
+		transition: color 0.15s;
 	
-		:visited {
-			color: blue;
+		// &:visited {
+		// 	color: blue;
+		// }
+
+		&:hover {
+			color: #5b99a7;
 		}
 	}
 }
