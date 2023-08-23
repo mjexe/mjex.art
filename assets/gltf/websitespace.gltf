@@ -66,7 +66,8 @@
 				5,
 				6,
 				7,
-				8
+				8,
+				12
 			]
 		}
 	],
@@ -192,13 +193,17 @@
 		},
 		{
 			"extras":{
-				"test":"hi"
+				"type":"gltext",
+				"text":"mjexart",
+				"font":"Fontdiner_Swanky_Regular.json",
+				"textColor":"#98a4ff",
+				"textAlign":"right"
 			},
-			"name":"textTitle",
+			"name":"gltext_mjexart",
 			"translation":[
-				20.278343200683594,
+				21.59269905090332,
 				22.177387237548828,
-				-23.80182647705078
+				-25.456100463867188
 			]
 		},
 		{
@@ -208,7 +213,7 @@
 					"running_uuid":""
 				}
 			},
-			"name":"webView",
+			"name":"main_cam",
 			"rotation":[
 				0.18595120310783386,
 				-0.26188188791275024,
@@ -239,6 +244,57 @@
 				-12.694841384887695,
 				-0.12461510300636292,
 				-19.030820846557617
+			]
+		},
+		{
+			"extras":{
+				"type":"csslink",
+				"text":"YouTube",
+				"font":"Fontdiner_Swanky_Regular.json",
+				"textColor":"#98a4ff",
+				"textAlign":"right",
+				"href":"//www.youtube.com/@mjexart"
+			},
+			"name":"csslink_1YouTube"
+		},
+		{
+			"extras":{
+				"type":"csslink",
+				"text":"Itch.io",
+				"font":"Fontdiner_Swanky_Regular.json",
+				"textColor":"#98a4ff",
+				"textAlign":"right",
+				"href":"//mjex.itch.io/"
+			},
+			"name":"csslink_2Itch"
+		},
+		{
+			"extras":{
+				"type":"csslink",
+				"text":"Instagram",
+				"font":"Fontdiner_Swanky_Regular.json",
+				"textColor":"#98a4ff",
+				"textAlign":"right",
+				"href":"//www.instagram.com/mjexart/"
+			},
+			"name":"csslink_3Instagram"
+		},
+		{
+			"children":[
+				9,
+				10,
+				11
+			],
+			"extras":{
+				"type":"cssdiv",
+				"textAlign":"right",
+				"class":"main-links"
+			},
+			"name":"cssdiv_links",
+			"translation":[
+				17.945756912231445,
+				18.416372299194336,
+				-25.456100463867188
 			]
 		}
 	],
