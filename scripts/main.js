@@ -1,11 +1,12 @@
 // 3D Image Landing Page by mjexart 8/19/2023
-// This isn't a template, can you tell I'm proud of that?
+// Where would I be without Stackexchange...
 
 import * as THREE from "three";
 import { CSS3DRenderer, CSS3DObject } from "three/addons/renderers/CSS3DRenderer.js"
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js"
 import { FontLoader } from "three/addons/loaders/FontLoader.js"
 import { TextGeometry } from "three/addons/geometries/TextGeometry.js"
+
 
 // Init
 noise.seed(Math.random());
