@@ -30,17 +30,9 @@ renderer2.domElement.style.top = 0;
 document.body.appendChild(renderer2.domElement);
 
 const cambox = new THREE.Group();
-
-scene.add(cambox)
 const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 1000);
-// camera.rotation.y = 0;
 cambox.add(camera);
-
-// console.log(scene)
-
-// const camtgt = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10);
-
-// camera.position.z = -1;
+scene.add(cambox)
 
 const gltfLoader = new GLTFLoader();
 const fontLoader = new FontLoader();
@@ -116,6 +108,7 @@ class Space {
 					});
 				}
 
+				// Creates a <div> with everything inside it for every 'cssdiv' empty
 				if(e.userData.type == 'cssdiv') {
 					let textAlign = e.userData.textAlign ? e.userData.textAlign : 'left';
 					const div = document.createElement('div');
@@ -123,29 +116,43 @@ class Space {
 
 					if(e.children) {
 						e.children.forEach((f) => {
-							const link = document.createElement('a');
-							link.textContent = f.userData.text;
-							link.href = f.userData.href;
-							link.setAttribute('rel', 'noopener');
-							link.setAttribute('target', '_blank');
-							div.appendChild(link);
-							div.appendChild(document.createElement('br'));
-							console.log(link);
+							this.cssGen(f, div);
 						})
 					}
 
 					const element3d = new CSS3DObject(div);
 					element3d.position.copy(e.position);
+					element3d.rotation.copy(e.rotation);
 					element3d.scale.set(0.1, 0.1, 0.1);
 					scene2.add(element3d);
 				}
-			})
+			});
 
 			// console.log(this.gltf.scene.getObjectsByProperty('type', 'gltext'));
 			// this.gltf.scene.getObjectsByProperty('type', 'gltext').forEach(e => {
 			// 	console.log(e.userData)
 			// })
 		});
+	}
+
+	cssGen(object, container) {
+		if(object.userData.type == 'csslink') {
+			const link = document.createElement('a');
+			link.textContent = object.userData.text;
+			link.href = object.userData.href;
+			link.setAttribute('rel', 'noopener');
+			link.setAttribute('target', '_blank');
+			if(container) {
+				container.appendChild(link);
+				container.appendChild(document.createElement('br'));
+			} else {
+				const element3d = new CSS3DObject(link);
+				element3d.position.copy(object.position);
+				element3d.rotation.copy(object.rotation);
+				element3d.scale.set(0.1, 0.1, 0.1);
+				scene2.add(element3d);
+			}
+		}
 	}
 }
 
@@ -154,65 +161,6 @@ spaces.push(new Space({
 	name: 'websitespace.gltf',
 	forceCam: true
 }));
-
-
-// Load GLTF;
-function oldLoader() {
-	let webspace;
-	gltfLoader.load('assets/gltf/websitespace.gltf', function(gltf) {
-		webspace = gltf;
-		scene.add(webspace.scene);
-	
-		let titlePH = webspace.scene.getObjectByName('textTitle');
-		console.log(titlePH.userData);
-	
-		fontLoader.load(
-			'assets/fonts/Fontdiner_Swanky_Regular.json',
-			function (font) {
-				const textGeo = new TextGeometry('mjexart', {
-					font: font,
-					size: 2,
-					height: 0,
-					curveSegments: 12
-				});
-				
-				const textMaterial = new THREE.MeshBasicMaterial({color: 0x98a4ff});
-				const textMesh = new THREE.Mesh(textGeo, textMaterial);
-				textMesh.position.copy(titlePH.position);
-				textMesh.rotation.copy(titlePH.rotation);
-				textMesh.translateX(-12.5);
-				scene.add(textMesh);
-	
-	
-				const mainlinks = document.createElement('div');
-				mainlinks.classList.add('main-links')
-				mainlinks.innerHTML = `
-					<a href ="//www.youtube.com/@mjexart" target="_blank">YouTube</a><br>
-					<a href ="//mjex.itch.io" target="_blank">Itch.io</a><br>
-					<a href ="//www.instagram.com/mjexart/" target="_blank">Instagram</a><br>
-				`
-	
-				// Translate main links
-				const mainlinksObj = new CSS3DObject(mainlinks);
-				mainlinksObj.position.copy(titlePH.position);
-				mainlinksObj.translateX(-8.5);
-				mainlinksObj.translateY(-7.5);
-				mainlinksObj.translateZ(4.5);
-				mainlinksObj.rotation.copy(titlePH.rotation);
-				mainlinksObj.scale.x = 0.1;
-				mainlinksObj.scale.y = 0.1;
-				mainlinksObj.scale.z = 0.1;
-				scene2.add(mainlinksObj);
-			}
-		);
-		
-		camera.copy(webspace.cameras[1])
-		camPoint1.copy(camera);
-		resizeUpdate();
-	}, undefined, function(error) {
-		console.error(error);
-	});
-}
 
 
 
@@ -227,23 +175,14 @@ function animation(time) {
 	camera.position.x = noise.perlin2(time / 4, time / 4) / 16;
 	camera.position.y = noise.perlin2(-time / 4, -time / 4) / 16;
 	camera.position.z = noise.perlin2(time / 5, time / 5) / 16;
-
-	// cambox.rotateY(0.01);
-	// console.log(camera.rotation.y);
-
-	// camera.position.lerp(camtgt.position, 0.4);
-	// camera.rotation.lerp(camtgt.rotation, 0.4);
+	
+	camera.updateProjectionMatrix();
 
 	renderer.render(scene, camera);
 	renderer2.render(scene2, camera);
 }
 
 
-
-// resize canvas
-window.addEventListener("resize", () => {
-	resizeUpdate();
-});
 
 function resizeUpdate() {
 	// update display width and height
@@ -260,3 +199,51 @@ function resizeUpdate() {
 	renderer2.setSize(width, height);
 	// renderer.render(scene, camera);
 }
+
+
+// Smoothly moves the main camera to the camera specified
+function slerpCam(to, duration = 1, ease = 'power1.inOut') {
+	let newcam = scene.getObjectByName(to);
+	let currentQuat = new THREE.Quaternion();
+	currentQuat.copy(cambox.quaternion);
+
+	gsap.to(cambox.position, {
+		x: newcam.position.x,
+		y: newcam.position.y,
+		z: newcam.position.z,
+		duration: duration,
+		ease: ease
+	});
+
+	// Quaternions aren't that scary when you don't have to deal with the math
+	let tween = {step: 0}
+	gsap.to(tween, {
+		step: 1,
+		duration: duration,
+		ease: ease,
+		onUpdate: () => {
+			cambox.quaternion.slerpQuaternions(currentQuat, newcam.quaternion, tween.step);
+		}
+	});
+
+	gsap.to(camera, {fov: newcam.fov, duration: duration, ease: ease});
+}
+
+
+
+// resize canvas
+window.addEventListener("resize", () => {
+	resizeUpdate();
+});
+
+window.addEventListener('hashchange', (e) => {
+	console.log(e);
+}, false);
+
+document.addEventListener('keydown', (event) => {
+	if(event.code == 'KeyA') slerpCam('cam_aux1');
+
+	if(event.code == 'KeyS') slerpCam('main_cam');
+});
+
+
