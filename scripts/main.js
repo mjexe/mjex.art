@@ -12,7 +12,11 @@ import { TextGeometry } from "three/addons/geometries/TextGeometry.js"
 noise.seed(Math.random());
 let time;
 let width, height;
-const spaces = [];
+const spaces = {};
+const spacelist = {
+	defaultCam: 'default.gltf',
+	cam_aux1: 'default.gltf'
+}
 
 const scene     = new THREE.Scene();
 const scene2    = new THREE.Scene();
@@ -62,18 +66,21 @@ const fontLoader = new FontLoader();
 // The space loader that automatically loads in GLTFs and creates things
 // from empties and custom properties
 class Space {
-	constructor(data) {
+	constructor(data, finished) {
 		this.scene = data.scene ? data.scene : scene;
 		this.maincam = data.camera ? data.camera : camera;
+		let cameraName = data.cameraName ? data.cameraName : 'defaultCam';
+		let spaceFile = spacelist[cameraName] ? spacelist[cameraName] : 'default.gltf';
 		
-		gltfLoader.load('assets/gltf/' + data.name, (gltf) => {
+		gltfLoader.load('assets/gltf/' + spaceFile, (gltf) => {
 			this.gltf = gltf;
 			this.scene.add(this.gltf.scene);
 
 			if(data.forceCam) {
-				let newcam = this.gltf.scene.getObjectByName('main_cam');
+				let newcam = this.gltf.scene.getObjectByName(cameraName);
 				this.maincam.parent.position.copy(newcam.position);
 				this.maincam.parent.rotation.copy(newcam.rotation);
+				this.maincam.fov = newcam.fov;
 			}
 
 
@@ -81,7 +88,7 @@ class Space {
 
 			// Go through all the objects in the GLTF and find ones that have 'type' tags
 			this.gltf.scene.children.forEach((e, i)=> {
-				console.log(e.userData);
+				// console.log(e.userData);
 
 				// Creates GL text for every empty with a 'gltext' type
 				if(e.userData.type == 'gltext') {
@@ -132,6 +139,8 @@ class Space {
 			// this.gltf.scene.getObjectsByProperty('type', 'gltext').forEach(e => {
 			// 	console.log(e.userData)
 			// })
+
+			finished();
 		});
 	}
 
@@ -157,11 +166,9 @@ class Space {
 }
 
 
-spaces.push(new Space({
-	name: 'websitespace.gltf',
-	forceCam: true
-}));
+loadFromHash(true);
 
+console.log(spaces)
 
 
 
@@ -183,6 +190,21 @@ function animation(time) {
 }
 
 
+
+function loadFromHash(firstLoad) {
+	let hash = window.location.hash.substring(1);
+	let cam = hash in spacelist ? hash : 'defaultCam';
+	console.log(cam);
+
+	if(!spaces.hasOwnProperty(spacelist[cam])) {
+		spaces[spacelist[cam]] = (new Space({
+			cameraName: cam,
+			forceCam: true
+		}, () => {if(firstLoad) slerpCam(cam)}));
+	}
+
+	console.log(spaces);
+}
 
 function resizeUpdate() {
 	// update display width and height
@@ -237,7 +259,11 @@ window.addEventListener("resize", () => {
 });
 
 window.addEventListener('hashchange', (e) => {
-	console.log(e);
+	let hash = window.location.hash.substring(1);
+	console.log(hash);
+
+	let goto = hash in spacelist ? hash : 'defaultCam';
+	slerpCam(goto);
 }, false);
 
 document.addEventListener('keydown', (event) => {
