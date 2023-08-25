@@ -4,15 +4,28 @@ body {
   text-align: center;
 }
 
-.main-links {
-  text-align: right;
-}
-.main-links a {
+a {
   color: #9ad0dc;
   font-family: "Averia Sans Libre", cursive;
   text-decoration: none;
   transition: color 0.15s;
 }
+a:hover {
+  color: #5b99a7;
+}
+
+.main-links {
+  text-align: right;
+}
+.main-links a {
+  color: #9ad0dc;
+}
 .main-links a:hover {
+  color: #5b99a7;
+}
+.main-links .museum-link {
+  color: #80adf0;
+}
+.main-links .museum-link:hover {
   color: #5b99a7;
 }/*# sourceMappingURL=main.css.map */

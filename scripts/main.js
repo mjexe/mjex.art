@@ -12,19 +12,26 @@ import { TextGeometry } from "three/addons/geometries/TextGeometry.js"
 noise.seed(Math.random());
 let time;
 let width, height;
+let intersected;
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
 const spaces = {};
 const spacelist = {
 	defaultCam: 'default.gltf',
-	cam_aux1: 'default.gltf'
+	cam_aux1: 'default.gltf',
+	museum: 'museum.gltf',
+	secret: 'secret.gltf'
 }
 
-const scene     = new THREE.Scene();
-const scene2    = new THREE.Scene();
-const clock     = new THREE.Clock(true);
+const scene  = new THREE.Scene();
+const scene2 = new THREE.Scene();
+const clock  = new THREE.Clock(true);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setAnimationLoop(animation);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.VSMShadowMap;
 document.body.appendChild(renderer.domElement);
 
 const renderer2 = new CSS3DRenderer();
@@ -75,6 +82,18 @@ class Space {
 		gltfLoader.load('assets/gltf/' + spaceFile, (gltf) => {
 			this.gltf = gltf;
 			this.scene.add(this.gltf.scene);
+
+			this.gltf.scene.traverse((child) => {
+				if (child.isMesh) {
+					child.castShadow = true;
+					child.receiveShadow = true;
+				}
+				
+				if(child.isLight) {
+					child.castShadow = true;
+					child.shadow.bias = -0.0005;
+				}
+			});
 
 			if(data.forceCam) {
 				let newcam = this.gltf.scene.getObjectByName(cameraName);
@@ -132,6 +151,11 @@ class Space {
 					element3d.rotation.copy(e.rotation);
 					element3d.scale.set(0.1, 0.1, 0.1);
 					scene2.add(element3d);
+					console.log(element3d);
+				}
+
+				if(e.userData.type == 'csslink') {
+					this.cssGen(e);
 				}
 			});
 
@@ -144,18 +168,24 @@ class Space {
 		});
 	}
 
-	cssGen(object, container) {
+	cssGen(object, container = null) {
 		if(object.userData.type == 'csslink') {
 			const link = document.createElement('a');
 			link.textContent = object.userData.text;
 			link.href = object.userData.href;
 			link.setAttribute('rel', 'noopener');
-			link.setAttribute('target', '_blank');
+			if(object.userData.class) link.classList.add(object.userData.class);
+			if(object.userData.newTab) link.setAttribute('target', '_blank');
+			if(object.userData.textColor) link.style.color = object.userData.textColor;
+
 			if(container) {
 				container.appendChild(link);
 				container.appendChild(document.createElement('br'));
 			} else {
-				const element3d = new CSS3DObject(link);
+				const div = document.createElement('div');
+				div.appendChild(link);
+				
+				const element3d = new CSS3DObject(div);
 				element3d.position.copy(object.position);
 				element3d.rotation.copy(object.rotation);
 				element3d.scale.set(0.1, 0.1, 0.1);
@@ -166,9 +196,8 @@ class Space {
 }
 
 
+resizeUpdate();
 loadFromHash(true);
-
-console.log(spaces)
 
 
 
@@ -178,12 +207,27 @@ function animation(time) {
 	
 	camera.rotation.x = noise.perlin2(time / 8, time / 8) / 50;
 	camera.rotation.y = noise.perlin2(-time / 8, -time / 8) / 50;
-
 	camera.position.x = noise.perlin2(time / 4, time / 4) / 16;
 	camera.position.y = noise.perlin2(-time / 4, -time / 4) / 16;
 	camera.position.z = noise.perlin2(time / 5, time / 5) / 16;
-	
 	camera.updateProjectionMatrix();
+
+	raycaster.setFromCamera(pointer, camera);
+	const intersects = raycaster.intersectObjects(scene.children);
+	if(intersects.length > 0) {
+		if(intersected != intersects[0].object) {
+			if(intersected) {}
+			renderer2.domElement.style.cursor = 'default';
+
+			intersected = intersects[0].object;
+			if(intersected.userData.target) {
+				if(intersected.userData.changeCursor) renderer2.domElement.style.cursor = 'pointer';
+			}
+		}
+	} else {
+		// renderer2.domElement.style.cursor = 'defualt';
+		intersected = null;
+	}
 
 	renderer.render(scene, camera);
 	renderer2.render(scene2, camera);
@@ -191,19 +235,19 @@ function animation(time) {
 
 
 
-function loadFromHash(firstLoad) {
+// Random functions for important things
+function loadFromHash(firstLoad = false) {
 	let hash = window.location.hash.substring(1);
 	let cam = hash in spacelist ? hash : 'defaultCam';
-	console.log(cam);
 
 	if(!spaces.hasOwnProperty(spacelist[cam])) {
 		spaces[spacelist[cam]] = (new Space({
 			cameraName: cam,
-			forceCam: true
-		}, () => {if(firstLoad) slerpCam(cam)}));
+			forceCam: firstLoad
+		}, () => {if(!firstLoad) slerpCam(cam)}));
+	} else {
+		if(!firstLoad) slerpCam(cam);
 	}
-
-	console.log(spaces);
 }
 
 function resizeUpdate() {
@@ -254,22 +298,27 @@ function slerpCam(to, duration = 1, ease = 'power1.inOut') {
 
 
 // resize canvas
-window.addEventListener("resize", () => {
+window.addEventListener('resize', () => {
 	resizeUpdate();
 });
 
-window.addEventListener('hashchange', (e) => {
-	let hash = window.location.hash.substring(1);
-	console.log(hash);
+window.addEventListener('pointermove', (e) => {
+	pointer.x = (e.clientX / width) * 2 - 1;
+	pointer.y = -(e.clientY / height) * 2 + 1;
+});
 
-	let goto = hash in spacelist ? hash : 'defaultCam';
-	slerpCam(goto);
-}, false);
+window.addEventListener('click', (e) => {
+	if(intersected.userData.target && intersected.userData.type == 'raylink') {
+		window.location.href = intersected.userData.href;
+	}
+})
+
+window.addEventListener('hashchange', (e) => {loadFromHash()});
 
 document.addEventListener('keydown', (event) => {
 	if(event.code == 'KeyA') slerpCam('cam_aux1');
 
-	if(event.code == 'KeyS') slerpCam('main_cam');
+	if(event.code == 'KeyS') slerpCam('defaultCam');
 });
 
 

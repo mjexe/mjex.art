@@ -54,7 +54,8 @@
 					"material":{
 						"thumbnails_loaded":0
 					}
-				}
+				},
+				"paper_model":{}
 			},
 			"name":"Scene",
 			"nodes":[
@@ -67,9 +68,9 @@
 				6,
 				7,
 				8,
-				12,
 				13,
-				14
+				14,
+				15
 			]
 		}
 	],
@@ -165,7 +166,7 @@
 		},
 		{
 			"mesh":0,
-			"name":"Plane"
+			"name":"Backsplash"
 		},
 		{
 			"mesh":1,
@@ -230,7 +231,7 @@
 		},
 		{
 			"mesh":5,
-			"name":"Text",
+			"name":"dont look at this",
 			"rotation":[
 				0.4124293327331543,
 				0.5743709802627563,
@@ -253,9 +254,9 @@
 				"type":"csslink",
 				"text":"YouTube",
 				"font":"Fontdiner_Swanky_Regular.json",
-				"textColor":"#98a4ff",
 				"textAlign":"right",
-				"href":"//www.youtube.com/@mjexart"
+				"href":"//www.youtube.com/@mjexart",
+				"newTab":true
 			},
 			"name":"csslink_1YouTube"
 		},
@@ -264,9 +265,9 @@
 				"type":"csslink",
 				"text":"Itch.io",
 				"font":"Fontdiner_Swanky_Regular.json",
-				"textColor":"#98a4ff",
 				"textAlign":"right",
-				"href":"//mjex.itch.io/"
+				"href":"//mjex.itch.io/",
+				"newTab":true
 			},
 			"name":"csslink_2Itch"
 		},
@@ -275,27 +276,40 @@
 				"type":"csslink",
 				"text":"Instagram",
 				"font":"Fontdiner_Swanky_Regular.json",
-				"textColor":"#98a4ff",
 				"textAlign":"right",
-				"href":"//www.instagram.com/mjexart/"
+				"href":"//www.instagram.com/mjexart/",
+				"newTab":true
 			},
 			"name":"csslink_3Instagram"
+		},
+		{
+			"extras":{
+				"type":"csslink",
+				"text":"Museum",
+				"font":"Fontdiner_Swanky_Regular.json",
+				"textAlign":"right",
+				"href":"#museum",
+				"newTab":false,
+				"class":"museum-link"
+			},
+			"name":"csslink_3Museum"
 		},
 		{
 			"children":[
 				9,
 				10,
-				11
+				11,
+				12
 			],
 			"extras":{
 				"type":"cssdiv",
 				"textAlign":"right",
 				"class":"main-links"
 			},
-			"name":"cssdiv_links",
+			"name":"cssdiv_mainlinks",
 			"translation":[
 				17.945756912231445,
-				18.416372299194336,
+				17.515552520751953,
 				-25.456100463867188
 			]
 		},
@@ -316,18 +330,31 @@
 		},
 		{
 			"extras":{
-				"type":"csslink",
-				"text":"Instagram",
-				"font":"Fontdiner_Swanky_Regular.json",
-				"textColor":"#98a4ff",
-				"textAlign":"right",
-				"href":"//www.instagram.com/mjexart/"
+				"target":true,
+				"enabled":true,
+				"type":"raylink",
+				"href":"#secret",
+				"hoverColor":"#ccffcc",
+				"changeCursor":true,
+				"changeColor":false
 			},
-			"name":"csslink_4joe",
+			"mesh":6,
+			"name":"raylink secret",
+			"rotation":[
+				-0.5,
+				0.5,
+				-0.5,
+				0.5000000596046448
+			],
+			"scale":[
+				0.452995240688324,
+				0.452995240688324,
+				0.452995240688324
+			],
 			"translation":[
-				19.69559097290039,
-				12.567110061645508,
-				-23.80182647705078
+				-1.5205336809158325,
+				11.037703514099121,
+				-19.33767318725586
 			]
 		}
 	],
@@ -527,6 +554,20 @@
 					},
 					"indices":23,
 					"material":3
+				}
+			]
+		},
+		{
+			"name":"Plane.007",
+			"primitives":[
+				{
+					"attributes":{
+						"POSITION":24,
+						"NORMAL":25,
+						"TEXCOORD_0":26
+					},
+					"indices":27,
+					"material":1
 				}
 			]
 		}
@@ -766,6 +807,40 @@
 			"componentType":5123,
 			"count":9969,
 			"type":"SCALAR"
+		},
+		{
+			"bufferView":24,
+			"componentType":5126,
+			"count":25,
+			"max":[
+				1.0000001192092896,
+				0,
+				1.0000001192092896
+			],
+			"min":[
+				-1.0000001192092896,
+				0,
+				-1.0000001192092896
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":25,
+			"componentType":5126,
+			"count":25,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":26,
+			"componentType":5126,
+			"count":25,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":27,
+			"componentType":5123,
+			"count":96,
+			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
@@ -912,6 +987,30 @@
 			"byteLength":19938,
 			"byteOffset":603536,
 			"target":34963
+		},
+		{
+			"buffer":0,
+			"byteLength":300,
+			"byteOffset":623476,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":300,
+			"byteOffset":623776,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":200,
+			"byteOffset":624076,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":192,
+			"byteOffset":624276,
+			"target":34963
 		}
 	],
 	"samplers":[
@@ -922,7 +1021,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":623476,
+			"byteLength":624468,
 			"uri":"default.bin"
 		}
 	]

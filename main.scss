@@ -6,23 +6,28 @@ body {
 }
 
 
+a {
+	color: #9ad0dc;
+	font-family: 'Averia Sans Libre', cursive;
+	text-decoration: none;
+	transition: color 0.15s;
+
+	&:hover {
+		color: #5b99a7;
+	}
+}
+
+
 .main-links {
 	text-align: right;
-	// margin-left: 50px;
 
 	a {
 		color: #9ad0dc;
-		font-family: 'Averia Sans Libre', cursive;
-		text-decoration: none;
+		&:hover {color: #5b99a7}
+	}
 
-		transition: color 0.15s;
-	
-		// &:visited {
-		// 	color: blue;
-		// }
-
-		&:hover {
-			color: #5b99a7;
-		}
+	.museum-link {
+		color: #80adf0;
+		&:hover {color: #5b99a7}
 	}
 }
