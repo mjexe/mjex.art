@@ -199,7 +199,7 @@
 				"type":"gltext",
 				"text":"mjexart",
 				"font":"Fontdiner_Swanky_Regular.json",
-				"textColor":"#98a4ff",
+				"textColor":"#63d686",
 				"textAlign":"right"
 			},
 			"name":"gltext_mjexart",
@@ -589,18 +589,18 @@
 	"images":[
 		{
 			"mimeType":"image/jpeg",
-			"name":"0113-background",
-			"uri":"0113-background.jpg"
+			"name":"default-nobuilding",
+			"uri":"default-nobuilding.jpg"
 		},
 		{
 			"mimeType":"image/jpeg",
-			"name":"0113-web",
-			"uri":"0113-web.jpg"
+			"name":"default-all",
+			"uri":"default-all.jpg"
 		},
 		{
 			"mimeType":"image/jpeg",
-			"name":"0113-nocars",
-			"uri":"0113-nocars.jpg"
+			"name":"default-nocar",
+			"uri":"default-nocar.jpg"
 		}
 	],
 	"accessors":[

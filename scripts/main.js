@@ -311,7 +311,13 @@ window.addEventListener('click', (e) => {
 	if(intersected.userData.target && intersected.userData.type == 'raylink') {
 		window.location.href = intersected.userData.href;
 	}
-})
+});
+
+window.addEventListener('touchstart', (e) => {
+	if(intersected.userData.target && intersected.userData.type == 'raylink') {
+		window.location.href = intersected.userData.href;
+	}
+});
 
 window.addEventListener('hashchange', (e) => {loadFromHash()});
 
