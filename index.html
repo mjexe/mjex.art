@@ -53,8 +53,10 @@
 			<div class="item"><div class="link"><a href="#videos">videos</a></div></div>
 			<div class="item"><div class="link"><a href="#about">about</a></div></div>
 			<div class="item"><div class="link"><a href="#contact">contact</a></div></div>
-			<div class="itemicon"><div class="youtube"><a href="//youtube.com/@mjexart" rel="noopener" target="_blank"></a></div></div>
-			<div class="itemicon"><div class="instagram"><a href="//instagram.com/mjexart" rel="noopener" target="_blank"></a></div></div>
+			<div class="item"><div class="link dark"><a href="//youtube.com/@mjexart" rel="noopener" target="_blank">youtube</a></div></div>
+			<div class="item"><div class="link dark"><a href="//instagram.com/mjexart" rel="noopener" target="_blank">insta</a></div></div>
+			<!-- <div class="itemicon"><div class="youtube"><a href="//youtube.com/@mjexart" rel="noopener" target="_blank"></a></div></div> -->
+			<!-- <div class="itemicon"><div class="instagram"><a href="//instagram.com/mjexart" rel="noopener" target="_blank"></a></div></div> -->
 		</div>
 	</div>
 
@@ -69,6 +71,7 @@
 	<!-- <script src="https://web3forms.com/client/script.js" async defer></script> -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> -->
 	<!-- <script src="assets/scripts/perlin.js"></script> -->
+	<script type="text/javascript" src="assets/scripts/js.cookie.min.js"></script>
 	<script type="text/javascript" src="assets/scripts/imagedb.js"></script>
 	<script type="module" src="assets/scripts/main.js"></script>
 
@@ -81,6 +84,17 @@
 			
 			// document.getElementById('wrapper').style.marginLeft = navShown ? '25px' : '0px';
 			document.getElementById('nav-container').style.left = navShown ? '0px' : '-50px';
+
+			if(set == undefined) {
+				if(Cookies.get('navHint') == 1) Cookies.set('navHint', 2);
+				if(Cookies.get('navHint') == undefined) Cookies.set('navHint', 1);
+	
+				let taphere = document.getElementById('taphere');
+				if(taphere != null) {
+					taphere.style.opacity = 0;
+					setTimeout(() => {taphere.remove()}, 1000);
+				}
+			}
 		}
 
 		// toggleNav();

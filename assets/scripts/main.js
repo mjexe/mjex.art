@@ -8,6 +8,7 @@ Array.prototype.random = function() {
 }
 
 
+// Hash slinging slasher (the hash page loading stuff)
 loadHash();
 
 function loadHash() {
@@ -27,19 +28,7 @@ function loadPage(name) {
 		if(this.status !== 200) return;
 		document.getElementById('content').innerHTML = this.responseText;
 
-		if(name == 'home') {
-			let options = [
-				'photos-street',
-				'photos-landscape',
-				'photos-portrait'
-			]
-
-			let choice = options.random();
-			let random = imgdb[choice].images.random();
-			while(random.f == 0) random = imgdb[choice].images.random();
-			document.querySelector('#landingimg > img').setAttribute('src', random.img);
-			document.getElementById('landingimg').setAttribute('href', '#' + choice);
-		}
+		if(name == 'home') randomImage('#landingimg > img', '#landingimg');
 
 		if(name == 'photos') {
 			let elements = document.getElementsByClassName('preview-image');
@@ -88,7 +77,24 @@ function loadPage(name) {
 }
 
 
+
+setTimeout(() => {
+	console.log(Cookies.get('navHint') < 2);
+	if(Cookies.get('navHint') < 2 || Cookies.get('navHint') == undefined) {
+		let taphere = document.createElement('img');
+		taphere.setAttribute('id', 'taphere');
+		taphere.setAttribute('src', 'assets/svg/taphere.svg');
+		document.getElementById('signature').appendChild(taphere);
+	
+		setTimeout(() => {
+			taphere.style.opacity = 1;
+		}, 50)
+	}
+}, 2000);
+
+
 window.addEventListener('hashchange', (e) => {loadHash()});
+
 window.addEventListener("click", e => {
 	let notSig = !document.getElementById('signature').contains(e.target);
 	let notNav = !document.getElementById('nav-container').contains(e.target);
@@ -106,9 +112,6 @@ window.addEventListener("click", e => {
 			randomImage('#landingimg > img', '#landingimg');
 		}
 	}
-
-	// console.log(navShown);
-	// console.log(sigContains, navContains);
 });
 
 window.addEventListener("dblclick", e => {
@@ -122,9 +125,6 @@ window.addEventListener("dblclick", e => {
 			randomImage('#landingimg > img', '#landingimg');
 		}
 	}
-
-	// console.log(navShown);
-	// console.log(sigContains, navContains);
 });
 
 
