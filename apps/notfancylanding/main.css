@@ -4,30 +4,29 @@ body {
   text-align: center;
 }
 
-.wrapper {
+#nojs .wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.wrapper .main {
+#nojs .wrapper .main {
   background: #283a64;
   width: -moz-min-content;
   width: min-content;
   padding: 40px;
 }
-
-.header {
+#nojs .header {
   text-align: center;
   color: #555578;
 }
-.header .title {
-  font-family: "Caprasimo", cursive;
+#nojs .header .title {
+  font-family: "Fontdiner Swanky", serif;
   font-size: 100pt;
   color: #888899;
   text-shadow: 0px 5px 5px #1b2847;
 }
-.header .subtitle {
-  font-family: "Dela Gothic One", cursive;
+#nojs .header .subtitle {
+  font-family: "Georgia", serif;
   font-size: 24pt;
   color: #555578;
 }/*# sourceMappingURL=main.css.map */

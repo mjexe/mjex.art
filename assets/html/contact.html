@@ -1,0 +1,29 @@
+<div id="contact">
+	<div class="info"></div>
+
+	<div class="contact-form">
+		<div class="form-title">Contact me!</div>
+		<!-- <hr> -->
+
+		<form action="https://api.web3forms.com/submit" method="POST">
+		
+			<!-- Replace with your Access Key -->
+			<input type="hidden" name="access_key" value="74a8d84f-3943-466f-be6e-ec69bde397b8">
+		
+			<!-- Form Inputs. Each input must have a name="" attribute -->
+			<label for="name">Name:</label>
+			<input type="text" name="name" placeholder="John Smith" required>
+
+			<label for="email">Email:</label>
+			<input type="email" name="email" placeholder="example@email.com" required>
+
+			<label for="message">Message:</label>
+			<textarea name="message" placeholder="Hi, this is an example message." required></textarea>
+			
+			<!-- hCaptcha Spam Protection -->
+			<!-- <div class="h-captcha" data-captcha="true"></div> -->
+		
+			<button type="submit">Send</button>
+		</form>
+	</div>
+</div>

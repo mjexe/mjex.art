@@ -1,7 +1,7 @@
 {
 	"asset":{
 		"copyright":"mjexart",
-		"generator":"Khronos glTF Blender I/O v3.6.27",
+		"generator":"Khronos glTF Blender I/O v4.0.44",
 		"version":"2.0"
 	},
 	"scene":0,
@@ -315,6 +315,11 @@
 		},
 		{
 			"camera":2,
+			"extras":{
+				"perspective_plotter":{
+					"running_uuid":""
+				}
+			},
 			"name":"cam_aux1",
 			"rotation":[
 				-0.014144588261842728,
@@ -424,27 +429,7 @@
 			"emissiveTexture":{
 				"index":1
 			},
-			"name":"Material",
-			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0,
-					0,
-					0,
-					1
-				]
-			}
-		},
-		{
-			"doubleSided":true,
-			"emissiveFactor":[
-				1,
-				1,
-				1
-			],
-			"emissiveTexture":{
-				"index":2
-			},
-			"name":"No cars",
+			"name":"HouseMaterial",
 			"pbrMetallicRoughness":{
 				"baseColorFactor":[
 					0,
@@ -539,7 +524,7 @@
 						"TEXCOORD_0":18
 					},
 					"indices":19,
-					"material":2
+					"material":1
 				}
 			]
 		},
@@ -553,7 +538,7 @@
 						"TEXCOORD_0":22
 					},
 					"indices":23,
-					"material":3
+					"material":2
 				}
 			]
 		},
@@ -580,10 +565,6 @@
 		{
 			"sampler":0,
 			"source":1
-		},
-		{
-			"sampler":0,
-			"source":2
 		}
 	],
 	"images":[
@@ -596,11 +577,6 @@
 			"mimeType":"image/jpeg",
 			"name":"default-all",
 			"uri":"default-all.jpg"
-		},
-		{
-			"mimeType":"image/jpeg",
-			"name":"default-nocar",
-			"uri":"default-nocar.jpg"
 		}
 	],
 	"accessors":[
