@@ -228,8 +228,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
   padding: 40px;
   text-align: center;
+  background: url(https://iili.io/du9XzYX.jpg);
+  background-size: cover;
 }
 #wrapper .main .display #content #about iframe {
   width: 100%;
