@@ -148,6 +148,7 @@ body {
 }
 
 #wrapper {
+  overflow-x: hidden;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -166,7 +167,13 @@ body {
   font-weight: 500;
   font-size: 24px;
 }
-#wrapper .main .display #content #home .center {
+#wrapper .main .display #content {
+  transition: transform 0.15s;
+}
+#wrapper .main .display #content #home {
+  height: 100vh;
+}
+#wrapper .main .display #content #home .center-container {
   width: 90%;
   height: 90%;
   position: absolute;
@@ -176,7 +183,15 @@ body {
   left: 0;
   right: 0;
 }
-#wrapper .main .display #content #home img {
+#wrapper .main .display #content #home .center {
+  text-align: center;
+}
+#wrapper .main .display #content #home .center iframe {
+  width: 90vw;
+  height: 90vh;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6666666667);
+}
+#wrapper .main .display #content #home .center img {
   max-width: 100%;
   max-height: 100%;
   position: absolute;
@@ -187,6 +202,12 @@ body {
   right: 0;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6666666667);
 }
+#wrapper .main .display #content #home .center a {
+  color: rgba(0, 0, 0, 0.4);
+}
+#wrapper .main .display #content #home .center a:hover {
+  color: rgba(111, 102, 235, 0.5333333333);
+}
 #wrapper .main .display #content .photo-gallery {
   display: flex;
   flex-direction: row;
@@ -196,8 +217,9 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 16px;
   justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
 }
 #wrapper .main .display #content #photos {
   display: flex;

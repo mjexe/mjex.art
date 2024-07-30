@@ -21,7 +21,7 @@ var imgdb = {
 	},
 
 	"photos-landscape": {
-		"title": "Street Photography",
+		"title": "Landscape Photography",
 		"images": [
 			{"img": "https://iili.io/dTyUYKJ.jpg", "thm": "https://iili.io/dTyghzP.jpg", "w": 1565, "h": 1038, "b": 0, "f": 1, "t": ""},
 			{"img": "https://iili.io/dTyUacv.jpg", "thm": "https://iili.io/dTygjX1.jpg", "w": 1842, "h": 1842, "b": 0, "f": 1, "t": ""},
@@ -46,7 +46,7 @@ var imgdb = {
 	},
 
 	"photos-portrait": {
-		"title": "Street Photography",
+		"title": "Landscape Photography",
 		"images": [
 			{"img": "https://iili.io/du9XFTJ.jpg", "thm": "https://iili.io/du9hYNa.jpg", "w": 3976, "h": 2652, "b": 1, "f": 1, "t": ""},
 			{"img": "https://iili.io/du9XfQR.jpg", "thm": "https://iili.io/du9h5HF.jpg", "w": 2652, "h": 3976, "b": 1, "f": 0, "t": ""},
@@ -55,7 +55,7 @@ var imgdb = {
 			{"img": "https://iili.io/du9X5Q4.jpg", "thm": "https://iili.io/du9hMlI.jpg", "w": 3976, "h": 2652, "b": 1, "f": 0, "t": ""},
 			{"img": "https://iili.io/du9XKhv.jpg", "thm": "https://iili.io/du9haDJ.jpg", "w": 2264, "h": 1698, "b": 1, "f": 1, "t": ""},
 			{"img": "https://iili.io/du9XATG.jpg", "thm": "https://iili.io/du9hVSt.jpg", "w": 1872, "h": 2496, "b": 1, "f": 0, "t": ""},
-			{"img": "https://iili.io/du9XIvn.jpg", "thm": "https://iili.io/du9h0VR.jpg", "w": 1872, "h": 2496, "b": 1, "f": 0, "t": ""},
+			{"img": "https://iili.io/du9XIvn.jpg", "thm": "https://iili.io/du9h0VR.jpg", "w": 2652, "h": 3976, "b": 1, "f": 0, "t": ""},
 			{"img": "https://iili.io/du9XTps.jpg", "thm": "https://iili.io/du9hGKN.jpg", "w": 3976, "h": 2652, "b": 1, "f": 0, "t": ""},
 			{"img": "https://iili.io/du9XzYX.jpg", "thm": "https://iili.io/du9h1Pp.jpg", "w": 2652, "h": 2652, "b": 1, "f": 0, "t": ""},
 		]

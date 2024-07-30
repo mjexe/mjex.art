@@ -67,6 +67,7 @@ function loadPage(name) {
 			gallery: '#' + name + '-gallery',
 			children: 'a',
 			// showHideAnimationType: 'fade',
+			wheelToZoom: true,
 			pswpModule: PhotoSwipe
 		});
 	
@@ -79,7 +80,6 @@ function loadPage(name) {
 
 
 setTimeout(() => {
-	console.log(Cookies.get('navHint') < 2);
 	if(Cookies.get('navHint') < 2 || Cookies.get('navHint') == undefined) {
 		let taphere = document.createElement('img');
 		taphere.setAttribute('id', 'taphere');
@@ -88,7 +88,7 @@ setTimeout(() => {
 	
 		setTimeout(() => {
 			taphere.style.opacity = 1;
-		}, 50)
+		}, 50);
 	}
 }, 2000);
 
@@ -140,6 +140,7 @@ function randomImage(imgQuery, aQuery) {
 	let random = imgdb[choice].images.random();
 	while(random.f == 0) random = imgdb[choice].images.random();
 	document.querySelector('#landingimg > img').setAttribute('src', random.img);
+	// document.querySelector('#landingimg > .caption').textContent = imgdb[choice].title + ' Gallery'
 	document.getElementById('landingimg').setAttribute('href', '#' + choice);
 }
 

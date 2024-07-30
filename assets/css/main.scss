@@ -207,6 +207,8 @@ body {
 #wrapper {
 	// margin-left: 25px;
 
+	overflow-x: hidden;
+
 	user-select: none;
 
 	transition: margin 0.15s;
@@ -237,14 +239,17 @@ body {
 			font-size: 24px;
 
 			#content {
+				transition: transform 0.15s;
+
 				#home {
 					// display: flex;
 					// flex-direction: column;
 					// align-items: center;
 					// justify-content: center;
-					// height: 100vh;
+					// // padding: 40px;
+					height: 100vh;
 
-					.center {
+					.center-container {
 						width: 90%;
 						height: 90%;
 						position: absolute;
@@ -255,17 +260,50 @@ body {
 						right: 0;
 					}
 					
-					img {
-						max-width: 100%;
-						max-height: 100%;
-						position: absolute;
-						margin:auto;
-						top: 0;
-						bottom: 0;
-						left: 0;
-						right: 0;
+					.center {
+						// display: flex;
+						// flex-direction: column;
+						// align-items: center;
+						// justify-content: center;
 
-						box-shadow: 0px 10px 20px #000000aa;
+						// max-width: 100%;
+						// max-height: 100%;
+						// position: absolute;
+						// margin:auto;
+						// top: 0;
+						// bottom: 0;
+						// left: 0;
+						// right: 0;
+
+						text-align: center;
+
+
+						iframe {
+							width: 90vw;
+							height: 90vh;
+							
+							// object-fit: contain;
+
+							box-shadow: 0px 10px 20px #000000aa;
+						}
+
+						img {
+							max-width: 100%;
+							max-height: 100%;
+							position: absolute;
+							margin:auto;
+							top: 0;
+							bottom: 0;
+							left: 0;
+							right: 0;
+
+							box-shadow: 0px 10px 20px #000000aa;
+						}
+
+						a {
+							color: #00000066;
+							&:hover {color: #6f66eb88}
+						}
 					}
 				}
 
@@ -280,8 +318,10 @@ body {
 						display: flex;
 						flex-direction: row;
 						flex-wrap: wrap;
-						gap: 16px;
 						justify-content: center;
+						gap: 16px;
+
+						margin-top: 30px;
 
 						// align-items: center;
 
