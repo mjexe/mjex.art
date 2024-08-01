@@ -212,7 +212,6 @@ body {
 	user-select: none;
 
 	transition: margin 0.15s;
-
 	a {
 		margin-bottom: 32px;
 		color: black;
@@ -228,6 +227,8 @@ body {
 
 		// max-width: 1400px;
 		// padding-top: 8px;
+
+		transition: transform 0.15s;
 		
 		.display {
 			// display: grid;
@@ -239,8 +240,6 @@ body {
 			font-size: 24px;
 
 			#content {
-				transition: transform 0.15s;
-
 				#home {
 					// display: flex;
 					// flex-direction: column;
@@ -323,10 +322,16 @@ body {
 
 						margin-top: 30px;
 
-						// align-items: center;
+						@media screen and (min-width: 580px) {
+							a > img {
+								height: 200px;
+							}
+						}
 
-						a {
-							// position: absolute;
+						@media screen and (max-width: 579px) {
+							a > img {
+								width: 300px;
+							}
 						}
 					}
 				}
@@ -406,17 +411,17 @@ body {
 				#about {
 					display: flex;
 					flex-direction: column;
-					justify-content: center;
+					// justify-content: center;
 					align-items: center;
 
 					height: 100vh;
 
 					padding: 40px;
 
-					text-align: center;
+					text-align: left;
 
-					background: url(https://iili.io/du9XzYX.jpg);
-					background-size: cover;
+					// background: url(https://iili.io/du9XzYX.jpg);
+					// background-size: cover;
 
 					iframe {
 						width: 100%;
@@ -440,7 +445,7 @@ body {
 
 					// background: #0d0724;
 					background: url(https://iili.io/du9XTps.jpg);
-					background-position: left center;
+					background-position: 25% center;
 					background-size: cover;
 
 					font-weight: 500;

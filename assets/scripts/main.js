@@ -17,6 +17,13 @@ function loadHash() {
 	loadPage(pageName);
 }
 
+const getMeta = (url, cb) => {
+	const img = new Image();
+	img.onload = () => cb(null, img);
+	img.onerror = (err) => cb(err);
+	img.src = url;
+};
+
 
 function loadPage(name) {
 	// document.getElementById('content').innerHTML = '<object type="text/html" data="assets/html/' + name + '.html"></object>';
@@ -37,7 +44,7 @@ function loadPage(name) {
 				let category = elements[i].getAttribute('category');
 				let random = imgdb['photos-' + category].images.random();
 				while(random.b == 0) random = imgdb['photos-' + category].images.random();
-				elements[i].style.backgroundImage = 'url(' + random.img + ')';
+				elements[i].style.backgroundImage = 'url(' + imgdb['photos-' + category].path + random.img + '.jpg)';
 			}
 		}
 
@@ -52,10 +59,10 @@ function loadPage(name) {
 
 			imgdb[name].images.forEach(e => {
 				let anchor = '<a ';
-				anchor += 'href="' + e.img + '" ';
-				anchor += 'data-pswp-width="' + e.w + '" ';
+				anchor += 'href="' + imgdb[name].path + e.img + '.jpg"';
+				anchor += 'data-pswp-width="' + e.w + '"';
 				anchor += 'data-pswp-height="' + e.h + '">';
-				anchor += '<img src="' + e.thm + '"></a>\n';
+				anchor += '<img src="' + imgdb[name].thumbpath + e.img + '-thumb.jpg"></a>\n';
 				gallery += anchor;
 			});
 			
@@ -72,6 +79,15 @@ function loadPage(name) {
 		});
 	
 		lightbox.init();
+
+		// Log the resolutions of all the images in the current gallery to the console
+		// let imgarr = [];
+		// imgdb[name].images.forEach((e, i) => {
+		// 	getMeta(imgdb[name].path + e.img + '.jpg', (err, img) => {
+		// 		imgarr[i] = {"width": img.naturalWidth, "height": img.naturalHeight, "img": e.img};
+		// 		if(i == imgdb[name].images.length - 1) imgarr.forEach((e, i) => console.log(e.width, e.height, i, e.img));
+		// 	});
+		// });
 	};
 
 	xhr.send();
@@ -139,9 +155,7 @@ function randomImage(imgQuery, aQuery) {
 	let choice = options.random();
 	let random = imgdb[choice].images.random();
 	while(random.f == 0) random = imgdb[choice].images.random();
-	document.querySelector('#landingimg > img').setAttribute('src', random.img);
+	document.querySelector('#landingimg > img').setAttribute('src', imgdb[choice].path + random.img + '.jpg');
 	// document.querySelector('#landingimg > .caption').textContent = imgdb[choice].title + ' Gallery'
 	document.getElementById('landingimg').setAttribute('href', '#' + choice);
 }
-
-

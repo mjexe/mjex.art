@@ -83,7 +83,7 @@
 			else navShown = !navShown;
 			
 			// document.getElementById('wrapper').style.marginLeft = navShown ? '25px' : '0px';
-			document.querySelector('#content').style.transform = navShown ? 'translateX(24px)' : 'translateX(0px)';
+			document.querySelector('#wrapper > .main').style.transform = navShown ? 'translateX(24px)' : 'translateX(0px)';
 			document.getElementById('nav-container').style.left = navShown ? '0px' : '-35px';
 
 			if(set == undefined) {

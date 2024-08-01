@@ -161,14 +161,14 @@ body {
 #wrapper a:hover {
   color: #4c40ee;
 }
+#wrapper .main {
+  transition: transform 0.15s;
+}
 #wrapper .main .display {
   font-family: "Frank Ruhl Libre", serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-size: 24px;
-}
-#wrapper .main .display #content {
-  transition: transform 0.15s;
 }
 #wrapper .main .display #content #home {
   height: 100vh;
@@ -221,6 +221,16 @@ body {
   gap: 16px;
   margin-top: 30px;
 }
+@media screen and (min-width: 580px) {
+  #wrapper .main .display #content .photo-gallery .pswp-gallery a > img {
+    height: 200px;
+  }
+}
+@media screen and (max-width: 579px) {
+  #wrapper .main .display #content .photo-gallery .pswp-gallery a > img {
+    width: 300px;
+  }
+}
 #wrapper .main .display #content #photos {
   display: flex;
   flex-direction: column;
@@ -267,13 +277,10 @@ body {
 #wrapper .main .display #content #about {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100vh;
   padding: 40px;
-  text-align: center;
-  background: url(https://iili.io/du9XzYX.jpg);
-  background-size: cover;
+  text-align: left;
 }
 #wrapper .main .display #content #about iframe {
   width: 100%;
@@ -287,7 +294,7 @@ body {
   grid-template-columns: minmax(0px, 100px) minmax(100px, 350px);
   height: 100vh;
   background: url(https://iili.io/du9XTps.jpg);
-  background-position: left center;
+  background-position: 25% center;
   background-size: cover;
   font-weight: 500;
   font-size: 20px;
