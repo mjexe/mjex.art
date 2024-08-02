@@ -184,6 +184,14 @@ body {
   right: 0;
 }
 #wrapper .main .display #content #home .center {
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   text-align: center;
 }
 #wrapper .main .display #content #home .center iframe {
@@ -278,9 +286,35 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
   padding: 40px;
+  padding-top: 60px;
   text-align: left;
+}
+@media screen and (max-width: 880px) {
+  #wrapper .main .display #content #about {
+    font-size: 15pt;
+  }
+  #wrapper .main .display #content #about .about-me {
+    flex-direction: column;
+    width: 300px;
+  }
+}
+@media screen and (min-width: 881px) {
+  #wrapper .main .display #content #about .about-me {
+    flex-direction: row;
+    width: 800px;
+  }
+}
+#wrapper .main .display #content #about .about-me {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+#wrapper .main .display #content #about .about-me img {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6666666667);
+}
+#wrapper .main .display #content #about .about-image > img {
+  width: 300px;
 }
 #wrapper .main .display #content #about iframe {
   width: 100%;
@@ -326,7 +360,12 @@ body {
   width: 100%;
   margin-top: -4px;
   box-sizing: border-box;
+  border: 0;
   border-radius: 0px;
+  transition: outline 0.25s;
+}
+#wrapper .main .display #content #contact .contact-form form input:focus-visible, #wrapper .main .display #content #contact .contact-form form textarea:focus-visible {
+  outline: 2px solid #9e85e4;
 }
 #wrapper .main .display #content #contact .contact-form form button {
   background: #ffffff;
@@ -337,6 +376,14 @@ body {
   border-radius: 0px;
   width: 50%;
   margin: 8px auto 0px auto;
+  transition: outline 0.25s, border 0.25s, background 0.15s;
+}
+#wrapper .main .display #content #contact .contact-form form button:hover {
+  border: 1px solid #67b847;
+  outline: 2px solid #67b847;
+}
+#wrapper .main .display #content #contact .contact-form form button:active {
+  background: #d3eed3;
 }
 a {
   color: #ffffff;

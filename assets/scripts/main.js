@@ -155,7 +155,8 @@ function randomImage(imgQuery, aQuery) {
 	let choice = options.random();
 	let random = imgdb[choice].images.random();
 	while(random.f == 0) random = imgdb[choice].images.random();
-	document.querySelector('#landingimg > img').setAttribute('src', imgdb[choice].path + random.img + '.jpg');
+	document.querySelector('#landingimg .img').setAttribute('src', imgdb[choice].path + random.img + '.jpg');
+	// document.querySelector('#landingimg > img').setAttribute('src', imgdb[choice].thumbpath + random.img + '-thumb.jpg');
 	// document.querySelector('#landingimg > .caption').textContent = imgdb[choice].title + ' Gallery'
 	document.getElementById('landingimg').setAttribute('href', '#' + choice);
 }

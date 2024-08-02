@@ -245,7 +245,7 @@ body {
 					// flex-direction: column;
 					// align-items: center;
 					// justify-content: center;
-					// // padding: 40px;
+					// margin: 40px;
 					height: 100vh;
 
 					.center-container {
@@ -265,14 +265,14 @@ body {
 						// align-items: center;
 						// justify-content: center;
 
-						// max-width: 100%;
-						// max-height: 100%;
-						// position: absolute;
-						// margin:auto;
-						// top: 0;
-						// bottom: 0;
-						// left: 0;
-						// right: 0;
+						max-width: 100%;
+						max-height: 100%;
+						position: absolute;
+						margin:auto;
+						top: 0;
+						bottom: 0;
+						left: 0;
+						right: 0;
 
 						text-align: center;
 
@@ -414,11 +414,52 @@ body {
 					// justify-content: center;
 					align-items: center;
 
-					height: 100vh;
+					// height: 100vh;
+					// width: 800px;
 
 					padding: 40px;
+					padding-top: 60px;
 
 					text-align: left;
+					
+					@media screen and (max-width: 880px) {
+						font-size: 15pt;
+
+						.about-me {
+							flex-direction: column;
+							width: 300px;
+						}
+					}
+					
+					@media screen and (min-width: 881px) {
+						// font-size: 15pt;
+						
+						.about-me {
+							flex-direction: row;
+							width: 800px;
+						}
+					}
+
+
+
+					.about-me {
+						display: flex;
+						// flex-direction: row;
+						align-items: flex-start;
+						gap: 30px;
+
+
+						img {
+							// width: 100%;
+							// height: auto;
+							// object-fit: contain;
+							box-shadow: 0px 5px 10px #000000aa;
+						}
+					}
+
+					.about-image > img {
+						width: 300px;
+					}
 
 					// background: url(https://iili.io/du9XzYX.jpg);
 					// background-size: cover;
@@ -489,7 +530,14 @@ body {
 								width: 100%;
 								margin-top: -4px;
 								box-sizing: border-box;
+								border: 0;
 								border-radius: 0px;
+
+								transition: outline 0.25s;
+
+								&:focus-visible {
+									outline: 2px solid #9e85e4;
+								}
 							}
 
 							button {
@@ -501,6 +549,17 @@ body {
 								border-radius: 0px;
 								width: 50%;
 								margin: 8px auto 0px auto;
+
+								transition: outline 0.25s, border 0.25s, background 0.15s;
+
+								&:hover {
+									border: 1px solid #67b847;
+									outline: 2px solid #67b847;
+								}
+
+								&:active {
+									background: #d3eed3;
+								}
 							}
 						}
 					}
