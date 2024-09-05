@@ -368,7 +368,7 @@ body {
 				/////////////////////////
 				// PHOTO GALLERY PAGE STYLING //
 				/////////////////////////
-				#photos-street, #photos-landscape, #photos-portrait {
+				#photos-street, #photos-landscape, #photos-event, #photos-portrait {
 					display: flex;
 					flex-direction: column;
 
@@ -420,46 +420,69 @@ body {
 					padding: 40px;
 					padding-top: 60px;
 
-					text-align: left;
+					text-align: justify;
+
 					
 					@media screen and (max-width: 880px) {
 						font-size: 15pt;
+						
+						.container {
+							width: 300px;
+						}
 
 						.about-me {
 							flex-direction: column;
-							width: 300px;
 						}
 					}
 					
 					@media screen and (min-width: 881px) {
 						// font-size: 15pt;
+
+						.container {
+							width: 800px;
+						}
 						
 						.about-me {
 							flex-direction: row;
-							width: 800px;
+						}
+					}
+
+					.container {
+						.about-me {
+							display: flex;
+							// flex-direction: row;
+							align-items: flex-start;
+							gap: 30px;
+
+							img {
+								// width: 100%;
+								// height: auto;
+								// object-fit: contain;
+								box-shadow: 0px 5px 10px #000000aa;
+							}
+							
+						}
+						.about-image > img {
+							width: 300px;
+						}
+					}
+
+					ul {
+						text-align: left;
+					}
+
+					a {
+						color: #6000ce;
+						text-decoration: none;
+						transition: color 0.15s;
+					
+						&:hover {
+							color: #00e759;
 						}
 					}
 
 
 
-					.about-me {
-						display: flex;
-						// flex-direction: row;
-						align-items: flex-start;
-						gap: 30px;
-
-
-						img {
-							// width: 100%;
-							// height: auto;
-							// object-fit: contain;
-							box-shadow: 0px 5px 10px #000000aa;
-						}
-					}
-
-					.about-image > img {
-						width: 300px;
-					}
 
 					// background: url(https://iili.io/du9XzYX.jpg);
 					// background-size: cover;

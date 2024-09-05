@@ -258,13 +258,13 @@ body {
 #wrapper .main .display #content #photos a {
   margin-bottom: 32px;
 }
-#wrapper .main .display #content #photos-street, #wrapper .main .display #content #photos-landscape, #wrapper .main .display #content #photos-portrait {
+#wrapper .main .display #content #photos-street, #wrapper .main .display #content #photos-landscape, #wrapper .main .display #content #photos-event, #wrapper .main .display #content #photos-portrait {
   display: flex;
   flex-direction: column;
   padding: 40px;
   text-align: center;
 }
-#wrapper .main .display #content #photos-street img, #wrapper .main .display #content #photos-landscape img, #wrapper .main .display #content #photos-portrait img {
+#wrapper .main .display #content #photos-street img, #wrapper .main .display #content #photos-landscape img, #wrapper .main .display #content #photos-event img, #wrapper .main .display #content #photos-portrait img {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6666666667);
 }
 #wrapper .main .display #content #videos {
@@ -288,33 +288,48 @@ body {
   align-items: center;
   padding: 40px;
   padding-top: 60px;
-  text-align: left;
+  text-align: justify;
 }
 @media screen and (max-width: 880px) {
   #wrapper .main .display #content #about {
     font-size: 15pt;
   }
+  #wrapper .main .display #content #about .container {
+    width: 300px;
+  }
   #wrapper .main .display #content #about .about-me {
     flex-direction: column;
-    width: 300px;
   }
 }
 @media screen and (min-width: 881px) {
-  #wrapper .main .display #content #about .about-me {
-    flex-direction: row;
+  #wrapper .main .display #content #about .container {
     width: 800px;
   }
+  #wrapper .main .display #content #about .about-me {
+    flex-direction: row;
+  }
 }
-#wrapper .main .display #content #about .about-me {
+#wrapper .main .display #content #about .container .about-me {
   display: flex;
   align-items: flex-start;
   gap: 30px;
 }
-#wrapper .main .display #content #about .about-me img {
+#wrapper .main .display #content #about .container .about-me img {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6666666667);
 }
-#wrapper .main .display #content #about .about-image > img {
+#wrapper .main .display #content #about .container .about-image > img {
   width: 300px;
+}
+#wrapper .main .display #content #about ul {
+  text-align: left;
+}
+#wrapper .main .display #content #about a {
+  color: #6000ce;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+#wrapper .main .display #content #about a:hover {
+  color: #00e759;
 }
 #wrapper .main .display #content #about iframe {
   width: 100%;

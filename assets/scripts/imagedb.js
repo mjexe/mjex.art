@@ -49,6 +49,21 @@ var imgdb = {
 		]
 	},
 
+	"photos-event": {
+		"title": "Event Photography",
+		"category": "event",
+		"path": 'assets/img/event/',
+		"thumbpath": 'assets/img/event/thm/',
+		"images": [
+			{"w": 2652, "h": 3976, "b": 1, "f": 1, "img": "_A7R1795", "t": ""},
+			{"w": 2986, "h": 1992, "b": 1, "f": 0, "img": "_A7R5416", "t": ""},
+			{"w": 2852, "h": 1902, "b": 1, "f": 0, "img": "_A7R5406", "t": ""},
+			{"w": 3976, "h": 2652, "b": 1, "f": 0, "img": "_A7R5408", "t": ""},
+			{"w": 3976, "h": 2652, "b": 1, "f": 0, "img": "_A7R0668", "t": ""},
+			{"w": 3965, "h": 2645, "b": 1, "f": 0, "img": "_A7R0675", "t": ""},
+		]
+	},
+
 	"photos-portrait": {
 		"title": "Portrait Photography",
 		"category": "Portrait",
