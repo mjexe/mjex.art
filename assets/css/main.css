@@ -89,13 +89,27 @@ body {
 #nav-container .logo .textlogo:hover {
   background: url(/assets/svg/textlogovert-hover.svg) no-repeat;
 }
+#nav-container .logo .oddwarplogo {
+  width: 50px;
+  height: 71px;
+  background: url(/assets/svg/oddwarp-logo-bw-vert.svg) no-repeat;
+  filter: drop-shadow(1px 1px 2px rgb(0, 0, 0));
+  transition: background 0.15s;
+}
+#nav-container .logo .oddwarplogo a {
+  display: block;
+  width: 30px;
+  height: 71px;
+}
+#nav-container .logo .oddwarplogo:hover {
+  background: url(/assets/svg/oddwarp-logo-vert-hover.svg) no-repeat;
+}
 #nav-container .nav {
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
   flex-direction: column;
   width: 50px;
-  height: 100vh;
   gap: 16px;
   transform: scaleY(75%) translateX(0px);
   transform-origin: top right;

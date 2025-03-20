@@ -108,6 +108,8 @@ body {
 		.textlogo {
 			width: 50px;
 			height: 115px;
+			
+			// margin-left: 11px;
 
 			// margin-bottom: -12px;
 			
@@ -128,6 +130,30 @@ body {
 				// filter: invert(24%) sepia(91%) saturate(479%) hue-rotate(85deg) brightness(93%) contrast(83%);
 			}
 		}
+
+		.oddwarplogo {
+			width: 50px;
+			height: 71px;
+
+			// margin-bottom: -12px;
+			
+			background: url(/assets/svg/oddwarp-logo-bw-vert.svg) no-repeat;
+
+			filter: drop-shadow(1px 1px 2px rgb(0 0 0));
+
+			transition: background 0.15s;
+
+			a {
+				display: block;
+				width: 30px;
+				height: 71px;
+			}
+
+			&:hover {
+				background: url(/assets/svg/oddwarp-logo-vert-hover.svg) no-repeat;
+				// filter: invert(24%) sepia(91%) saturate(479%) hue-rotate(85deg) brightness(93%) contrast(83%);
+			}
+		}
 	}
 
 	.nav {
@@ -137,7 +163,7 @@ body {
 		flex-direction: column;
 
 		width: 50px;
-		height: 100vh;
+		// height: 100vh;
 
 		gap: 16px;
 
