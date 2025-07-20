@@ -17,4 +17,3 @@ network['10.29.17.0'].data = {
 network['10.29.17.0'].addConnection(1, 'camera');
 
 console.log(network)
-// console.log(sw17);
